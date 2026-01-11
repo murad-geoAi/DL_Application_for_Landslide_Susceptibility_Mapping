@@ -1,20 +1,66 @@
-<h1 align="center">Hi 👋, I'm Murad</h1>
-<h3 align="center">ML & Deep Learning Applications for Earth Observation</h3>
+# Deep Learning Application for Landslide Susceptibility Mapping
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=murad-geoai&label=Profile%20views&color=0e75b6&style=flat" alt="murad-geoai" /> </p>
+## Overview
+This research project applies Deep Learning techniques, specifically Convolutional Neural Networks (CNN), to map landslide susceptibility. The goal is to address spatial sparsity in data and provide accurate susceptibility maps to aid in disaster management and planning.
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=murad-geoai" alt="murad-geoai" /></a> </p>
+## Key Features
+- **Deep Learning Model**: Utilizes CNNs to process spatial data for landslide prediction.
+- **Data Preprocessing**: Handles missing values using KNN and Simple Imputers.
+- **Visualization**: Generates susceptibility maps and analyzes feature distributions.
 
-- 👨‍💻 All of my research outputs are available at [https://alarnaarchives.my.canva.site/golam-murad](https://alarnaarchives.my.canva.site/golam-murad)
+## Directory Structure
+The repository is organized as follows:
+```
+├── data/
+│   ├── raw/            # Original data (e.g., Labeled Data Set.csv)
+│   └── processed/      # Cleaned and processed data
+├── docs/               # Project documentation and presentations
+├── notebooks/          # Jupyter notebooks for analysis and modeling
+├── reports/            # Generated figures and reports
+│   └── figures/
+├── src/                # Source code (scripts, utilities)
+├── README.md           # Project overview and instructions
+└── requirements.txt    # Python dependencies
+```
 
-- 📫 How to reach me **golammurad19@gmail.com**
+## Getting Started
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://linkedin.com/in/golam murad" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="golam murad" height="30" width="40" /></a>
-<a href="https://fb.com/golam murad" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="golam murad" height="30" width="40" /></a>
-<a href="https://instagram.com/golam.murad19" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="golam.murad19" height="30" width="40" /></a>
-</p>
+### Prerequisites
+- Python 3.8+
+- Jupyter Notebook
+- Dependencies listed in `requirements.txt`
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a> <a href="https://www.adobe.com/in/products/illustrator.html" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="illustrator" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://opencv.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/opencv/opencv-icon.svg" alt="opencv" width="40" height="40"/> </a> <a href="https://pandas.pydata.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/pandas/pandas-original.svg" alt="pandas" width="40" height="40"/> </a> <a href="https://www.photoshop.com/en" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg" alt="photoshop" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://scikit-learn.org/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit_learn" width="40" height="40"/> </a> <a href="https://seaborn.pydata.org/" target="_blank" rel="noreferrer"> <img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" alt="seaborn" width="40" height="40"/> </a> <a href="https://www.tensorflow.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="40" height="40"/> </a> </p>
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/murad-geoAi/DL_Application_for_Landslide_Susceptibility_Mapping.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd DL_Application_for_Landslide_Susceptibility_Mapping
+   ```
+3. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Data Setup
+Place your dataset (e.g., `Labeled Data Set.csv`) in the `data/raw/` directory. The notebook expects the file at `../data/raw/Labeled Data Set.csv`.
+
+### Usage
+1. Launch Jupyter Notebook:
+   ```bash
+   jupyter notebook
+   ```
+2. Open `notebooks/landslide_susceptibility_mapping.ipynb`.
+3. Run the cells to perform data cleaning, analysis, and model training.
+
+## Results
+### Study Area
+![Study Area Map](reports/figures/study_area_map.jpg)
+
+### Landslide Susceptibility Map (CNN)
+![LSM by CNN](reports/figures/lsm_by_cnn.png)
+
+## License
+[MIT License](LICENSE) (or appropriate license)
