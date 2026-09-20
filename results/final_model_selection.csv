@@ -1,0 +1,8 @@
+model,selected_dataset,pooled_AUC[terrain],pooled_AUC[terrain+Cluster],path,note
+DNN,terrain,0.528,0.7331,models/dnn.joblib,"terrain-only enforced for all models regardless of pooled AUC; DNN and LSTM would otherwise select terrain+Cluster (pooled AUC 0.7331/0.6516 vs 0.528/0.5495 on terrain) but Cluster is excluded from the final feature set by design, so both were refit and re-saved on terrain-only"
+1D-CNN,terrain,0.8193,0.6059,models/cnn1d.joblib,
+LSTM,terrain,0.5495,0.6516,models/lstm.joblib,"terrain-only enforced for all models regardless of pooled AUC; DNN and LSTM would otherwise select terrain+Cluster (pooled AUC 0.7331/0.6516 vs 0.528/0.5495 on terrain) but Cluster is excluded from the final feature set by design, so both were refit and re-saved on terrain-only"
+RandomForest,terrain,0.7567,0.7292,models/random_forest.joblib,
+XGBoost,terrain,0.6962,0.6712,models/xgboost.joblib,
+SVM-RBF,terrain,0.8099,0.7388,models/svm_rbf.joblib,
+LogisticRegression,terrain,0.7996,0.7723,models/logistic.joblib,

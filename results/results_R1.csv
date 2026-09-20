@@ -1,0 +1,15 @@
+regime,model,dataset,fold,AUC,accuracy,precision,recall,F1
+R1,DNN,terrain,NA,0.8125,0.67,0.6842,0.325,0.4407
+R1,1D-CNN,terrain,NA,0.93,0.85,0.8788,0.725,0.7945
+R1,LSTM,terrain,NA,0.7404,0.69,0.6552,0.475,0.5507
+R1,RandomForest,terrain,NA,0.9452,0.86,0.8611,0.775,0.8158
+R1,XGBoost,terrain,NA,0.9312,0.89,0.8718,0.85,0.8608
+R1,SVM-RBF,terrain,NA,0.9246,0.88,0.8889,0.8,0.8421
+R1,LogisticRegression,terrain,NA,0.9021,0.83,0.8108,0.75,0.7792
+R1,DNN,terrain+Cluster,NA,0.8929,0.85,0.931,0.675,0.7826
+R1,1D-CNN,terrain+Cluster,NA,0.9238,0.86,0.9643,0.675,0.7941
+R1,LSTM,terrain+Cluster,NA,0.8554,0.85,0.963,0.65,0.7761
+R1,RandomForest,terrain+Cluster,NA,0.9581,0.89,0.9143,0.8,0.8533
+R1,XGBoost,terrain+Cluster,NA,0.9521,0.88,0.8889,0.8,0.8421
+R1,SVM-RBF,terrain+Cluster,NA,0.9371,0.88,0.9118,0.775,0.8378
+R1,LogisticRegression,terrain+Cluster,NA,0.9325,0.88,0.9375,0.75,0.8333

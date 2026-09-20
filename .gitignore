@@ -30,6 +30,10 @@ data/raw/*
 !data/raw/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+Labeled Data Set.csv
+
+# Unpublished manuscript
+*.docx
 
 # Environment
 .env

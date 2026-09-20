@@ -4,4 +4,6 @@ matplotlib
 seaborn
 scikit-learn
 tensorflow
+xgboost
+joblib
 jupyter

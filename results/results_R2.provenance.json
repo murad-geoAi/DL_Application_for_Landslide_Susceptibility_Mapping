@@ -1,0 +1,22 @@
+{
+  "label": "R2 spatial block CV (balance='both')",
+  "written": "2026-09-20T05:54:54+00:00",
+  "commit": "12dabdf",
+  "python": "3.12.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "scikit-learn": "1.8.0",
+    "tensorflow": "2.17.0",
+    "xgboost": "2.1.3"
+  },
+  "seed": 42,
+  "deterministic_ops": true,
+  "data": "Labeled Data Set.csv",
+  "n_rows": 496,
+  "n_positives": 196,
+  "split": "splits.spatial_block_cv, 10 sub-blocks merged into 5 folds, balance='both'",
+  "aggregates": "fold in {1..5, within_mean, within_sd(ddof=0), pooled}",
+  "sensitivity": "dataset 'terrain+DrainageDensity' is session3 config (b)"
+}

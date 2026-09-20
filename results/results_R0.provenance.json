@@ -1,0 +1,21 @@
+{
+  "label": "R0 original buggy protocol (documentation spot-check)",
+  "written": "2026-09-20T05:44:09+00:00",
+  "commit": "12dabdf",
+  "python": "3.12.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "scikit-learn": "1.8.0",
+    "tensorflow": "2.17.0",
+    "xgboost": "2.1.3"
+  },
+  "seed": 42,
+  "deterministic_ops": true,
+  "data": "Labeled Data Set.csv",
+  "n_rows": 498,
+  "n_positives": 196,
+  "protocol": "KNN imputation, mode/median imputation and DBSCAN all fit on all 498 rows before the split; stratified 80/20 train/test; validation_data = test; EarlyStopping(val_accuracy, patience=5, restore_best_weights=True)",
+  "note": "not a result; reproduces the manuscript's own protocol for comparison"
+}
