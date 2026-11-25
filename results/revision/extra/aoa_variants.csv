@@ -1,0 +1,8 @@
+variant,description,n_outside_AOA,by_fold,landslides_outside,non_landslides_outside
+current_global_weights,"7 continuous, global OOF-SHAP weights (uses test-fold information)",36,"0,0,1,6,29",2,34
+infold_weights,"7 continuous, fold-specific TreeSHAP weights from training folds only (ADOPTED)",41,"0,0,0,4,37",2,39
+continuous7_via_encoded,"7 continuous (global weights) through encoded matrix, KNN-imputed",38,"0,0,1,7,30",2,36
+all23_weighted_standardised,"23 encoded, per-column mean|SHAP| weights (global), standardised",32,"4,0,0,3,25",5,27
+all23_weighted_as_preprocessed,"23 encoded, weighted (global), not re-standardised",47,"0,0,1,6,40",2,45
+all23_unweighted_standardised,"23 encoded, unweighted, standardised",15,"0,2,1,1,11",2,13
+all23_unweighted_as_preprocessed,"23 encoded, unweighted, not re-standardised",19,"0,2,0,2,15",2,17

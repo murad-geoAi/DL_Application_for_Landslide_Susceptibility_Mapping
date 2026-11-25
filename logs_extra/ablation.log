@@ -1,0 +1,273 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795499367.654417 3732902 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795499367.654460 3732902 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70a0c5e5c0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70a0c5e5c0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[ablation seed 42] no_ndvi_lulc  1D-CNN             within=0.610 pooled=0.687
+[ablation seed 42] no_ndvi_lulc  RandomForest       within=0.562 pooled=0.560
+[ablation seed 42] no_ndvi_lulc  XGBoost            within=0.544 pooled=0.580
+[ablation seed 42] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 42] no_rainfall   1D-CNN             within=0.728 pooled=0.794
+[ablation seed 42] no_rainfall   RandomForest       within=0.771 pooled=0.769
+[ablation seed 42] no_rainfall   XGBoost            within=0.738 pooled=0.769
+[ablation seed 42] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 42] no_flags      1D-CNN             within=0.767 pooled=0.856
+[ablation seed 42] no_flags      RandomForest       within=0.805 pooled=0.758
+[ablation seed 42] no_flags      XGBoost            within=0.767 pooled=0.699
+[ablation seed 42] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 42 done in 180s
+[ablation seed 0] no_ndvi_lulc  1D-CNN             within=0.611 pooled=0.703
+[ablation seed 0] no_ndvi_lulc  RandomForest       within=0.568 pooled=0.558
+[ablation seed 0] no_ndvi_lulc  XGBoost            within=0.540 pooled=0.585
+[ablation seed 0] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 0] no_rainfall   1D-CNN             within=0.686 pooled=0.810
+[ablation seed 0] no_rainfall   RandomForest       within=0.771 pooled=0.769
+[ablation seed 0] no_rainfall   XGBoost            within=0.748 pooled=0.767
+[ablation seed 0] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 0] no_flags      1D-CNN             within=0.766 pooled=0.847
+[ablation seed 0] no_flags      RandomForest       within=0.801 pooled=0.754
+[ablation seed 0] no_flags      XGBoost            within=0.764 pooled=0.710
+[ablation seed 0] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 0 done in 193s
+[ablation seed 1] no_ndvi_lulc  1D-CNN             within=0.618 pooled=0.635
+[ablation seed 1] no_ndvi_lulc  RandomForest       within=0.564 pooled=0.559
+[ablation seed 1] no_ndvi_lulc  XGBoost            within=0.547 pooled=0.578
+[ablation seed 1] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 1] no_rainfall   1D-CNN             within=0.738 pooled=0.811
+[ablation seed 1] no_rainfall   RandomForest       within=0.770 pooled=0.768
+[ablation seed 1] no_rainfall   XGBoost            within=0.743 pooled=0.763
+[ablation seed 1] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 1] no_flags      1D-CNN             within=0.784 pooled=0.823
+[ablation seed 1] no_flags      RandomForest       within=0.808 pooled=0.765
+[ablation seed 1] no_flags      XGBoost            within=0.769 pooled=0.711
+[ablation seed 1] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 1 done in 200s
+[ablation seed 2] no_ndvi_lulc  1D-CNN             within=0.622 pooled=0.667
+[ablation seed 2] no_ndvi_lulc  RandomForest       within=0.569 pooled=0.570
+[ablation seed 2] no_ndvi_lulc  XGBoost            within=0.527 pooled=0.593
+[ablation seed 2] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 2] no_rainfall   1D-CNN             within=0.703 pooled=0.808
+[ablation seed 2] no_rainfall   RandomForest       within=0.772 pooled=0.768
+[ablation seed 2] no_rainfall   XGBoost            within=0.751 pooled=0.769
+[ablation seed 2] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 2] no_flags      1D-CNN             within=0.746 pooled=0.845
+[ablation seed 2] no_flags      RandomForest       within=0.808 pooled=0.769
+[ablation seed 2] no_flags      XGBoost            within=0.778 pooled=0.710
+[ablation seed 2] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 2 done in 231s
+[ablation seed 3] no_ndvi_lulc  1D-CNN             within=0.610 pooled=0.679
+[ablation seed 3] no_ndvi_lulc  RandomForest       within=0.572 pooled=0.566
+[ablation seed 3] no_ndvi_lulc  XGBoost            within=0.531 pooled=0.578
+[ablation seed 3] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 3] no_rainfall   1D-CNN             within=0.736 pooled=0.839
+[ablation seed 3] no_rainfall   RandomForest       within=0.772 pooled=0.774
+[ablation seed 3] no_rainfall   XGBoost            within=0.747 pooled=0.764
+[ablation seed 3] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 3] no_flags      1D-CNN             within=0.797 pooled=0.874
+[ablation seed 3] no_flags      RandomForest       within=0.804 pooled=0.768
+[ablation seed 3] no_flags      XGBoost            within=0.775 pooled=0.698
+[ablation seed 3] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 3 done in 235s
+[ablation seed 4] no_ndvi_lulc  1D-CNN             within=0.646 pooled=0.663
+[ablation seed 4] no_ndvi_lulc  RandomForest       within=0.565 pooled=0.553
+[ablation seed 4] no_ndvi_lulc  XGBoost            within=0.535 pooled=0.582
+[ablation seed 4] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 4] no_rainfall   1D-CNN             within=0.726 pooled=0.808
+[ablation seed 4] no_rainfall   RandomForest       within=0.780 pooled=0.766
+[ablation seed 4] no_rainfall   XGBoost            within=0.752 pooled=0.773
+[ablation seed 4] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 4] no_flags      1D-CNN             within=0.761 pooled=0.844
+[ablation seed 4] no_flags      RandomForest       within=0.813 pooled=0.763
+[ablation seed 4] no_flags      XGBoost            within=0.767 pooled=0.704
+[ablation seed 4] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 4 done in 255s
+[ablation seed 5] no_ndvi_lulc  1D-CNN             within=0.639 pooled=0.687
+[ablation seed 5] no_ndvi_lulc  RandomForest       within=0.570 pooled=0.563
+[ablation seed 5] no_ndvi_lulc  XGBoost            within=0.535 pooled=0.581
+[ablation seed 5] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 5] no_rainfall   1D-CNN             within=0.744 pooled=0.830
+[ablation seed 5] no_rainfall   RandomForest       within=0.773 pooled=0.771
+[ablation seed 5] no_rainfall   XGBoost            within=0.744 pooled=0.761
+[ablation seed 5] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 5] no_flags      1D-CNN             within=0.806 pooled=0.872
+[ablation seed 5] no_flags      RandomForest       within=0.804 pooled=0.753
+[ablation seed 5] no_flags      XGBoost            within=0.766 pooled=0.704
+[ablation seed 5] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 5 done in 230s
+[ablation seed 6] no_ndvi_lulc  1D-CNN             within=0.633 pooled=0.662
+[ablation seed 6] no_ndvi_lulc  RandomForest       within=0.587 pooled=0.567
+[ablation seed 6] no_ndvi_lulc  XGBoost            within=0.523 pooled=0.586
+[ablation seed 6] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 6] no_rainfall   1D-CNN             within=0.697 pooled=0.770
+[ablation seed 6] no_rainfall   RandomForest       within=0.780 pooled=0.781
+[ablation seed 6] no_rainfall   XGBoost            within=0.744 pooled=0.770
+[ablation seed 6] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 6] no_flags      1D-CNN             within=0.769 pooled=0.835
+[ablation seed 6] no_flags      RandomForest       within=0.807 pooled=0.758
+[ablation seed 6] no_flags      XGBoost            within=0.757 pooled=0.695
+[ablation seed 6] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 6 done in 139s
+[ablation seed 7] no_ndvi_lulc  1D-CNN             within=0.612 pooled=0.651
+[ablation seed 7] no_ndvi_lulc  RandomForest       within=0.551 pooled=0.555
+[ablation seed 7] no_ndvi_lulc  XGBoost            within=0.530 pooled=0.580
+[ablation seed 7] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 7] no_rainfall   1D-CNN             within=0.749 pooled=0.831
+[ablation seed 7] no_rainfall   RandomForest       within=0.770 pooled=0.768
+[ablation seed 7] no_rainfall   XGBoost            within=0.757 pooled=0.768
+[ablation seed 7] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 7] no_flags      1D-CNN             within=0.790 pooled=0.844
+[ablation seed 7] no_flags      RandomForest       within=0.801 pooled=0.755
+[ablation seed 7] no_flags      XGBoost            within=0.769 pooled=0.708
+[ablation seed 7] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 7 done in 130s
+[ablation seed 8] no_ndvi_lulc  1D-CNN             within=0.633 pooled=0.652
+[ablation seed 8] no_ndvi_lulc  RandomForest       within=0.574 pooled=0.560
+[ablation seed 8] no_ndvi_lulc  XGBoost            within=0.536 pooled=0.590
+[ablation seed 8] no_ndvi_lulc  LogisticRegression within=0.586 pooled=0.654
+[ablation seed 8] no_rainfall   1D-CNN             within=0.691 pooled=0.786
+[ablation seed 8] no_rainfall   RandomForest       within=0.776 pooled=0.769
+[ablation seed 8] no_rainfall   XGBoost            within=0.748 pooled=0.767
+[ablation seed 8] no_rainfall   LogisticRegression within=0.586 pooled=0.763
+[ablation seed 8] no_flags      1D-CNN             within=0.750 pooled=0.819
+[ablation seed 8] no_flags      RandomForest       within=0.801 pooled=0.753
+[ablation seed 8] no_flags      XGBoost            within=0.761 pooled=0.690
+[ablation seed 8] no_flags      LogisticRegression within=0.628 pooled=0.763
+[ablation] seed 8 done in 145s
+                 model      ablation  n_seeds  within_AUC_mean  within_AUC_sd  pooled_AUC_mean  pooled_AUC_sd  delta_within_mean  delta_within_sd  delta_pooled_mean  delta_pooled_sd
+0               1D-CNN          none       10            0.789          0.015            0.850          0.013              0.000            0.000              0.000            0.000
+4               1D-CNN  no_ndvi_lulc       10            0.623          0.014            0.669          0.020             -0.166            0.018             -0.181            0.014
+8               1D-CNN   no_rainfall       10            0.720          0.023            0.809          0.021             -0.069            0.013             -0.041            0.018
+12              1D-CNN      no_flags       10            0.774          0.020            0.846          0.018             -0.016            0.011             -0.004            0.009
+3   LogisticRegression          none       10            0.638          0.000            0.768          0.000              0.000            0.000              0.000            0.000
+7   LogisticRegression  no_ndvi_lulc       10            0.586          0.000            0.654          0.000             -0.052            0.000             -0.115            0.000
+11  LogisticRegression   no_rainfall       10            0.586          0.000            0.763          0.000             -0.052            0.000             -0.005            0.000
+15  LogisticRegression      no_flags       10            0.628          0.000            0.763          0.000             -0.010            0.000             -0.005            0.000
+1         RandomForest          none       10            0.811          0.007            0.761          0.005              0.000            0.000              0.000            0.000
+5         RandomForest  no_ndvi_lulc       10            0.568          0.009            0.561          0.005             -0.243            0.009             -0.200            0.006
+9         RandomForest   no_rainfall       10            0.773          0.004            0.770          0.004             -0.037            0.006              0.009            0.005
+13        RandomForest      no_flags       10            0.805          0.004            0.760          0.006             -0.005            0.008             -0.001            0.009
+2              XGBoost          none       10            0.778          0.008            0.707          0.009              0.000            0.000              0.000            0.000
+6              XGBoost  no_ndvi_lulc       10            0.535          0.007            0.583          0.005             -0.243            0.010             -0.123            0.009
+10             XGBoost   no_rainfall       10            0.747          0.005            0.767          0.003             -0.030            0.010              0.060            0.008
+14             XGBoost      no_flags       10            0.767          0.006            0.703          0.007             -0.010            0.008             -0.004            0.010
+{
+ "projection": "project_km, FIXED_LAT0",
+ "knn_k": 5,
+ "permutations": 999,
+ "TWI_was_missing": {
+  "n_missing": 200,
+  "share_missing": 0.4032258064516129,
+  "morans_I": 0.056648648648648645,
+  "expected_I": -0.00202020202020202,
+  "p_sim": 0.02,
+  "z_sim": 2.236020426525695,
+  "missing_among_landslides": 83,
+  "n_landslides": 196,
+  "share_missing_among_landslides": 0.42346938775510207,
+  "missing_among_negatives": 117,
+  "n_negatives": 300,
+  "share_missing_among_negatives": 0.39,
+  "mean_elevation_missing": 111.62,
+  "mean_elevation_nonmissing": 118.76013513513513,
+  "mean_dist_to_nearest_landslide_km_missing": 15.896349490786825,
+  "mean_dist_to_nearest_landslide_km_nonmissing": 16.13933093975643,
+  "median_dist_to_nearest_landslide_km_missing": 3.575161126906516,
+  "median_dist_to_nearest_landslide_km_nonmissing": 4.426926348441333,
+  "fisher_exact_p_landslide_vs_negative": 0.5123288737636122,
+  "mean_elevation_landslides_missing": 72.44578313253012,
+  "mean_elevation_landslides_nonmissing": 66.93805309734513,
+  "mean_dist_nn_landslide_km_landslides_missing": 0.6803740367262504,
+  "mean_dist_nn_landslide_km_landslides_nonmissing": 0.4386968440644146,
+  "mean_elevation_negatives_missing": 139.4102564102564,
+  "mean_elevation_negatives_nonmissing": 150.75956284153006,
+  "mean_dist_nn_landslide_km_negatives_missing": 26.69058848811185,
+  "mean_dist_nn_landslide_km_negatives_nonmissing": 25.834258004309422
+ },
+ "Soil_Texture_was_missing": {
+  "n_missing": 48,
+  "share_missing": 0.0967741935483871,
+  "morans_I": 0.4407738095238096,
+  "expected_I": -0.00202020202020202,
+  "p_sim": 0.001,
+  "z_sim": 16.813853804000804,
+  "missing_among_landslides": 20,
+  "n_landslides": 196,
+  "share_missing_among_landslides": 0.10204081632653061,
+  "missing_among_negatives": 28,
+  "n_negatives": 300,
+  "share_missing_among_negatives": 0.09333333333333334,
+  "mean_elevation_missing": 50.770833333333336,
+  "mean_elevation_nonmissing": 122.85714285714286,
+  "mean_dist_to_nearest_landslide_km_missing": 6.3752249749703305,
+  "mean_dist_to_nearest_landslide_km_nonmissing": 17.07701128912208,
+  "median_dist_to_nearest_landslide_km_missing": 3.0842697345985215,
+  "median_dist_to_nearest_landslide_km_nonmissing": 4.184459552720603,
+  "fisher_exact_p_landslide_vs_negative": 0.7579985454604169,
+  "mean_elevation_landslides_missing": 36.35,
+  "mean_elevation_landslides_nonmissing": 73.01136363636364,
+  "mean_dist_nn_landslide_km_landslides_missing": 0.4851128642275353,
+  "mean_dist_nn_landslide_km_landslides_nonmissing": 0.5473950633125395,
+  "mean_elevation_negatives_missing": 61.07142857142857,
+  "mean_elevation_negatives_nonmissing": 155.11029411764707,
+  "mean_dist_nn_landslide_km_negatives_missing": 10.582447911215185,
+  "mean_dist_nn_landslide_km_negatives_nonmissing": 27.772645317587074
+ },
+ "sparse_missing_points": [
+  {
+   "variable": "Slope",
+   "row": 101,
+   "lat": 22.37230756,
+   "lon": 92.11969099,
+   "landslide": 0,
+   "inside_district": true,
+   "dist_to_boundary_km": 0.0214234118089073
+  },
+  {
+   "variable": "Slope",
+   "row": 184,
+   "lat": 22.611873,
+   "lon": 92.040762,
+   "landslide": 1,
+   "inside_district": true,
+   "dist_to_boundary_km": 0.02243349005940899
+  },
+  {
+   "variable": "Slope",
+   "row": 396,
+   "lat": 22.13160426,
+   "lon": 92.58902238,
+   "landslide": 0,
+   "inside_district": true,
+   "dist_to_boundary_km": 0.0016143979170654254
+  },
+  {
+   "variable": "Slope",
+   "row": 456,
+   "lat": 22.617797,
+   "lon": 92.041207,
+   "landslide": 1,
+   "inside_district": true,
+   "dist_to_boundary_km": 0.0135587434135713
+  },
+  {
+   "variable": "Aspect",
+   "row": 101,
+   "lat": 22.37230756,
+   "lon": 92.11969099,
+   "landslide": 0,
+   "inside_district": true,
+   "dist_to_boundary_km": 0.0214234118089073
+  },
+  {
+   "variable": "Aspect",
+   "row": 184,
+   "lat": 22.611873,
+   "lon": 92.040762,
+   "landslide": 1,
+   "inside_district": true,
+   "dist_to_boundary_km": 0.02243349005940899
+  },
+  {
+   "variable": "Aspect",
+   "row": 
+[ablation] total 1940s

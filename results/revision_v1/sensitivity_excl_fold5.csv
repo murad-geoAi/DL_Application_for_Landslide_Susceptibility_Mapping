@@ -1,0 +1,8 @@
+model,within_AUC_excl_fold5
+RandomForest,0.801
+XGBoost,0.769
+1D-CNN,0.767
+SVM-RBF,0.743
+LogisticRegression,0.737
+DNN,0.636
+LSTM,0.541

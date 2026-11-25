@@ -1,0 +1,18 @@
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x704e48cb80> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x704e48cb80> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+fixed epochs {'1D-CNN': 38, 'DNN': 28, 'LSTM': 17}
+[dl_b seed 42] DNN     E=28 within=0.787 pooled=0.869
+[dl_b seed 42] 1D-CNN  E=38 within=0.789 pooled=0.886
+[dl_b_rest] seed 42 done in 486s
+[dl_b seed 0] DNN     E=28 within=0.774 pooled=0.857
+[dl_b seed 0] 1D-CNN  E=38 within=0.787 pooled=0.873
+[dl_b_rest] seed 0 done in 11s
+[dl_b seed 1] DNN     E=28 within=0.774 pooled=0.857
+[dl_b seed 1] 1D-CNN  E=38 within=0.784 pooled=0.858
+[dl_b_rest] seed 1 done in 11s
+[dl_b seed 2] DNN     E=28 within=0.768 pooled=0.848
+[dl_b seed 2] 1D-CNN  E=38 within=0.788 pooled=0.864
+[dl_b_rest] seed 2 done in 11s
+[dl_b seed 3] DNN     E=28 within=0.770 pooled=0.847
+[dl_b seed 3] 1D-CNN  E=38 within=0.786 pooled=0.844
+[dl_b_rest] seed 3 done in 11s

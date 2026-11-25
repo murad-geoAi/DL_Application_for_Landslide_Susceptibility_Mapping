@@ -1,0 +1,108 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795499367.653485 3732907 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795499367.653567 3732907 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 7 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70884cdb20> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 8 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x709a32a700> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[bbox seed 42] DNN within=0.577 pooled=0.586
+[bbox seed 42] 1D-CNN within=0.634 pooled=0.725
+[bbox seed 42] LSTM within=0.560 pooled=0.474
+[bbox seed 42] RandomForest within=0.631 pooled=0.670
+[bbox seed 42] XGBoost within=0.588 pooled=0.599
+[bbox seed 42] SVM-RBF within=0.686 pooled=0.772
+[bbox seed 42] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 42 done in 116s
+[bbox seed 0] DNN within=0.562 pooled=0.527
+[bbox seed 0] 1D-CNN within=0.680 pooled=0.776
+[bbox seed 0] LSTM within=0.511 pooled=0.361
+[bbox seed 0] RandomForest within=0.629 pooled=0.672
+[bbox seed 0] XGBoost within=0.579 pooled=0.600
+[bbox seed 0] SVM-RBF within=0.686 pooled=0.763
+[bbox seed 0] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 0 done in 133s
+[bbox seed 1] DNN within=0.595 pooled=0.530
+[bbox seed 1] 1D-CNN within=0.671 pooled=0.771
+[bbox seed 1] LSTM within=0.616 pooled=0.389
+[bbox seed 1] RandomForest within=0.625 pooled=0.672
+[bbox seed 1] XGBoost within=0.583 pooled=0.597
+[bbox seed 1] SVM-RBF within=0.686 pooled=0.758
+[bbox seed 1] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 1 done in 132s
+[bbox seed 2] DNN within=0.600 pooled=0.581
+[bbox seed 2] 1D-CNN within=0.711 pooled=0.764
+[bbox seed 2] LSTM within=0.561 pooled=0.414
+[bbox seed 2] RandomForest within=0.648 pooled=0.674
+[bbox seed 2] XGBoost within=0.566 pooled=0.585
+[bbox seed 2] SVM-RBF within=0.686 pooled=0.761
+[bbox seed 2] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 2 done in 158s
+[bbox seed 3] DNN within=0.573 pooled=0.550
+[bbox seed 3] 1D-CNN within=0.711 pooled=0.798
+[bbox seed 3] LSTM within=0.544 pooled=0.476
+[bbox seed 3] RandomForest within=0.640 pooled=0.674
+[bbox seed 3] XGBoost within=0.591 pooled=0.593
+[bbox seed 3] SVM-RBF within=0.686 pooled=0.767
+[bbox seed 3] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 3 done in 175s
+[bbox seed 4] DNN within=0.567 pooled=0.584
+[bbox seed 4] 1D-CNN within=0.673 pooled=0.742
+[bbox seed 4] LSTM within=0.524 pooled=0.435
+[bbox seed 4] RandomForest within=0.650 pooled=0.679
+[bbox seed 4] XGBoost within=0.588 pooled=0.610
+[bbox seed 4] SVM-RBF within=0.686 pooled=0.762
+[bbox seed 4] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 4 done in 169s
+[bbox seed 5] DNN within=0.552 pooled=0.469
+[bbox seed 5] 1D-CNN within=0.675 pooled=0.765
+[bbox seed 5] LSTM within=0.544 pooled=0.444
+[bbox seed 5] RandomForest within=0.632 pooled=0.678
+[bbox seed 5] XGBoost within=0.584 pooled=0.592
+[bbox seed 5] SVM-RBF within=0.686 pooled=0.763
+[bbox seed 5] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 5 done in 196s
+[bbox seed 6] DNN within=0.546 pooled=0.548
+[bbox seed 6] 1D-CNN within=0.645 pooled=0.743
+[bbox seed 6] LSTM within=0.549 pooled=0.431
+[bbox seed 6] RandomForest within=0.635 pooled=0.668
+[bbox seed 6] XGBoost within=0.592 pooled=0.609
+[bbox seed 6] SVM-RBF within=0.686 pooled=0.767
+[bbox seed 6] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 6 done in 206s
+[bbox seed 7] DNN within=0.582 pooled=0.544
+[bbox seed 7] 1D-CNN within=0.684 pooled=0.766
+[bbox seed 7] LSTM within=0.507 pooled=0.408
+[bbox seed 7] RandomForest within=0.638 pooled=0.665
+[bbox seed 7] XGBoost within=0.585 pooled=0.583
+[bbox seed 7] SVM-RBF within=0.686 pooled=0.761
+[bbox seed 7] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 7 done in 202s
+[bbox seed 8] DNN within=0.579 pooled=0.595
+[bbox seed 8] 1D-CNN within=0.663 pooled=0.774
+[bbox seed 8] LSTM within=0.434 pooled=0.436
+[bbox seed 8] RandomForest within=0.646 pooled=0.679
+[bbox seed 8] XGBoost within=0.584 pooled=0.596
+[bbox seed 8] SVM-RBF within=0.686 pooled=0.762
+[bbox seed 8] LogisticRegression within=0.655 pooled=0.709
+[bbox] seed 8 done in 137s
+                model  within_AUC_mean  within_AUC_sd  pooled_AUC_mean  pooled_AUC_sd  n_seeds
+0                 DNN            0.573          0.017            0.551          0.038       10
+1              1D-CNN            0.675          0.025            0.762          0.021       10
+2                LSTM            0.535          0.047            0.427          0.036       10
+3        RandomForest            0.637          0.008            0.673          0.005       10
+4             XGBoost            0.584          0.008            0.596          0.009       10
+5             SVM-RBF            0.686          0.000            0.764          0.004       10
+6  LogisticRegression            0.655          0.000            0.709          0.000       10
+{'n_samples': 349, 'n_pos': 196, 'n_neg': 153, 'bbox_latmin_latmax_lonmin_lonmax': [22.35216672, 22.874182, 92.002117, 92.53953896], 'fold_sizes': [75, 64, 52, 53, 105], 'fold_pos': [65, 58, 38, 20, 15], 'probe_random_test_AUC': 0.9826302729528535, 'probe_spatial_within_AUC': 0.4821473305211962, 'probe_spatial_pooled_AUC': 0.7202380952380951}
+            factor  sum_abs_coef  share
+4             LULC         6.145  0.419
+1           Aspect         3.487  0.238
+7     Soil texture         1.229  0.084
+3        Elevation         1.044  0.071
+5             NDVI         0.839  0.057
+8              TRI         0.823  0.056
+9              TWI         0.747  0.051
+6            Slope         0.238  0.016
+0  Annual rainfall         0.093  0.006
+2        Curvature         0.009  0.001
+[bbox] total 1626s
+fold map written
+[foldmap] total 0s

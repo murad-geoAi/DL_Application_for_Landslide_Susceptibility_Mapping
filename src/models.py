@@ -40,10 +40,9 @@ penalised logistic regression. Their hyperparameters are stated in each
 builder's docstring and collected in ``CLASSICAL_DEFAULTS``, so that "reasonable
 defaults" is a checkable claim rather than an assertion.
 
-Fidelity note. The original LSTM was written without L2, dropout, or early
-stopping ("as per previous request", cell 47), and it is kept that way. Changing
-its regularisation here would confound the protocol correction this session is
-measuring with an architecture change nobody asked for.
+Fidelity note. The original LSTM was written without L2 or dropout and is kept
+that way. Revision 2 gives it the same stratified 20% internal validation split
+and ``val_loss`` early stopping as the DNN and 1D-CNN.
 
 Where early stopping looks
 --------------------------
@@ -291,6 +290,7 @@ def _cnn1d_architecture(
             L.Conv1D(
                 filters,
                 kernel_size=kernel_size,
+                padding="valid",
                 activation="relu",
                 kernel_regularizer=reg(l2),
             ),
@@ -350,13 +350,12 @@ class KerasBinaryClassifier(BaseEstimator, ClassifierMixin):
     architecture:
         ``"dnn"``, ``"cnn1d"``, or ``"lstm"``.
     early_stopping:
-        Whether to fit an ``EarlyStopping`` callback at all. ``True`` for the
-        dense and convolutional models; forced off for the LSTM by
-        ``build_lstm``, matching the notebook.
+        Whether to fit an ``EarlyStopping`` callback at all. ``True`` for all
+        three architectures (the LSTM gained early stopping in Revision 2).
     monitor, patience, restore_best_weights:
-        Passed to ``EarlyStopping``. The notebook's ``val_accuracy`` / 5 /
-        ``True`` are kept, because the point of R1 is to change *where* the
-        validation set comes from and nothing else. ``restore_best_weights`` is
+        Passed to ``EarlyStopping``. Revision 2: monitor ``val_loss`` (smoother
+        than ``val_accuracy`` on a ~80-row validation slice), patience 5,
+        restore best weights. ``restore_best_weights`` is
         only a leak when the validation set is the test set; pointed at a
         genuine held-out validation fold it is ordinary model selection.
     val_fraction:
@@ -377,12 +376,13 @@ class KerasBinaryClassifier(BaseEstimator, ClassifierMixin):
         epochs: int = DEEP_DEFAULTS["epochs"],
         batch_size: int = DEEP_DEFAULTS["batch_size"],
         early_stopping: bool = True,
-        monitor: str = "val_accuracy",
+        monitor: str = "val_loss",
         patience: int = 5,
         restore_best_weights: bool = True,
         val_fraction: float = 0.2,
         verbose: int = 0,
         random_state: int = RANDOM_STATE,
+        sampler: Any = None,
     ) -> None:
         self.architecture = architecture
         self.dropout = dropout
@@ -399,6 +399,7 @@ class KerasBinaryClassifier(BaseEstimator, ClassifierMixin):
         self.val_fraction = val_fraction
         self.verbose = verbose
         self.random_state = random_state
+        self.sampler = sampler
 
     # -- shape handling ---------------------------------------------------
 
@@ -478,6 +479,14 @@ class KerasBinaryClassifier(BaseEstimator, ClassifierMixin):
         else:
             self.validation_source_ = "none"
 
+        # Oversampling (if any) is applied AFTER the validation split, so the
+        # validation set contains real training-fold points only and no
+        # synthetic row (or neighbour of one) leaks into early stopping.
+        if self.sampler is not None:
+            X_fit, y_fit = self.sampler.fit_resample(X_fit, y_fit)
+            X_fit = np.asarray(X_fit, dtype="float32")
+            y_fit = np.asarray(y_fit).astype("float32").ravel()
+
         self.model_ = self._build(self.n_features_in_)
 
         callbacks = []
@@ -543,9 +552,9 @@ def _pipeline(estimator, include_cluster: bool, drainage_mode: str) -> Pipeline:
     """Preprocessor + estimator, with the feature set selected by flags.
 
     ``include_cluster`` and ``drainage_mode`` are the only two feature-set
-    switches Session 4 uses: terrain-only (both at their defaults, 21 features),
-    terrain + ``Cluster`` (31 features), and the terrain + ``Drainage_Density``
-    sensitivity (22 features).
+    switches Session 4 uses: terrain-only (both at their defaults, 23 encoded features),
+    terrain + ``Cluster`` (23 + cluster one-hot columns), and the terrain + ``Drainage_Density``
+    sensitivity (24 features).
     """
     return Pipeline(
         [
@@ -665,16 +674,17 @@ def build_lstm(
     declared. It is ~100,000 parameters -- by far the largest model in the sweep
     -- fitted to at most 455 training rows.
 
-    Kept unregularised and without early stopping, exactly as cell 47 wrote it.
-    The full 50 epochs always run.
+    Kept without L2 or dropout, as cell 47 wrote it. Revision 2: same stratified
+    20% internal validation split and ``val_loss`` early stopping (patience 5,
+    best weights restored) as the DNN and 1D-CNN.
     """
     est = KerasBinaryClassifier(
         architecture="lstm",
         epochs=epochs,
         batch_size=batch_size,
         learning_rate=learning_rate,
-        early_stopping=False,
-        val_fraction=0.0,
+        early_stopping=True,
+        val_fraction=0.2,
         random_state=random_state,
         **kwargs,
     )
@@ -941,3 +951,39 @@ def build_coordinates_only_probe(random_state: int = RANDOM_STATE) -> Pipeline:
             ),
         ]
     )
+
+
+class ResampledClassifier(BaseEstimator, ClassifierMixin):
+    """Fit ``estimator`` on ``sampler.fit_resample(X, y)``; predict on raw X.
+
+    Used for the non-Keras models in the SMOTE configuration. Keras models take
+    the sampler directly (``KerasBinaryClassifier(sampler=...)``) so that the
+    internal validation split is drawn before oversampling.
+    """
+
+    def __init__(self, estimator=None, sampler=None):
+        self.estimator = estimator
+        self.sampler = sampler
+
+    def fit(self, X, y):
+        from sklearn.base import clone
+
+        Xr, yr = self.sampler.fit_resample(np.asarray(X, dtype=float), np.asarray(y))
+        self.estimator_ = clone(self.estimator).fit(Xr, yr)
+        self.classes_ = self.estimator_.classes_
+        return self
+
+    def predict_proba(self, X):
+        return self.estimator_.predict_proba(np.asarray(X, dtype=float))
+
+    def predict(self, X):
+        return self.estimator_.predict(np.asarray(X, dtype=float))
+
+
+def count_keras_params(input_dim: int) -> dict[str, int]:
+    """Keras ``count_params()`` of the three architectures for ``input_dim`` inputs."""
+    return {
+        "DNN": int(_dnn_architecture(input_dim, 0.2, 0.01, 1e-3).count_params()),
+        "1D-CNN": int(_cnn1d_architecture(input_dim, 64, 3, 0.2, 0.01, 1e-3).count_params()),
+        "LSTM": int(_lstm_architecture(input_dim, 1e-3).count_params()),
+    }

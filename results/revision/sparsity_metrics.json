@@ -1,0 +1,120 @@
+{
+  "convex_hull_area_km2": 7284.887972281749,
+  "district_area_km2": 5755.5695845539285,
+  "clark_evans_landslides_hull": {
+    "n": 196,
+    "area_km2": 7284.887972281749,
+    "mean_nn_km": 0.541039736875294,
+    "median_nn_km": 0.133646115837324,
+    "expected_nn_km_CSR": 3.0482698279904494,
+    "R": 0.17749076276228826,
+    "z": -22.029249543403665
+  },
+  "clark_evans_landslides_district": {
+    "n": 196,
+    "area_km2": 5755.5695845539285,
+    "mean_nn_km": 0.541039736875294,
+    "median_nn_km": 0.133646115837324,
+    "expected_nn_km_CSR": 2.7094810823108584,
+    "R": 0.19968389534347766,
+    "z": -21.43485128786217
+  },
+  "clark_evans_nonlandslides_hull": {
+    "n": 300,
+    "area_km2": 7284.887972281749,
+    "mean_nn_km": 2.333977855608575,
+    "median_nn_km": 2.1124633750396926,
+    "expected_nn_km_CSR": 2.46388716805406,
+    "R": 0.9472746503452569,
+    "z": -1.7470727052504058
+  },
+  "clark_evans_nonlandslides_district": {
+    "n": 300,
+    "area_km2": 5755.5695845539285,
+    "mean_nn_km": 2.333977855608575,
+    "median_nn_km": 2.1124633750396926,
+    "expected_nn_km_CSR": 2.1900474851309215,
+    "R": 1.0657202053630583,
+    "z": 2.177661745727687
+  },
+  "clark_evans_all_hull": {
+    "n": 496,
+    "area_km2": 7284.887972281749,
+    "mean_nn_km": 1.4779595361202214,
+    "median_nn_km": 1.321590778188824,
+    "expected_nn_km_CSR": 1.9161989809036546,
+    "R": 0.7712975274745396,
+    "z": -9.744119040544618
+  },
+  "voronoi_landslides": {
+    "n_cells": 196,
+    "mean_km2": 29.365150941601634,
+    "median_km2": 1.274220461850128,
+    "p10_km2": 0.10900172553535076,
+    "p90_km2": 36.91689793322028,
+    "max_km2": 1914.1790557622535,
+    "cv": 5.473942854527724,
+    "p90_p10_ratio": 338.6817754664592,
+    "share_area_in_largest_10pct_cells": 0.8930298341237912
+  },
+  "voronoi_all": {
+    "n_cells": 496,
+    "mean_km2": 11.603970936600648,
+    "median_km2": 9.966010931136463,
+    "p10_km2": 0.2741604095798899,
+    "p90_km2": 26.727540074740936,
+    "max_km2": 61.21322883844905,
+    "cv": 0.9349217656563722,
+    "p90_p10_ratio": 97.48869326427153,
+    "share_area_in_largest_10pct_cells": 0.29111666983305984
+  },
+  "grid_occupancy_landslides": {
+    "2km": {
+      "cells": 1435,
+      "occupied": 54,
+      "occupancy": 0.037630662020905925
+    },
+    "5km": {
+      "cells": 228,
+      "occupied": 26,
+      "occupancy": 0.11403508771929824
+    },
+    "10km": {
+      "cells": 60,
+      "occupied": 15,
+      "occupancy": 0.25
+    }
+  },
+  "join_counts": {
+    "weights": "KNN k=5 on projected km coordinates, binary (asymmetric kNN graph)",
+    "n_joins_total": 1240.0
+  },
+  "join_counts_bb": 440.0,
+  "join_counts_ww": 650.5,
+  "join_counts_bw": 149.5,
+  "join_counts_mean_bb_sim": 193.26326326326327,
+  "join_counts_mean_bw_sim": 594.3958958958959,
+  "join_counts_p_sim_bb": 0.001,
+  "join_counts_p_sim_bw": 1.0,
+  "join_counts_J": 1240.0,
+  "moran_label_knn5": {
+    "I": 0.7652925170068029,
+    "EI": -0.00202020202020202,
+    "z": 29.016087934813438,
+    "p_sim": 0.001
+  },
+  "gi_star_label_db005": {
+    "band_km": 5.5,
+    "islands": 8,
+    "classification": "analytic Ord-Getis Gi* z, |z| > 1.96 (two-sided alpha = 0.05); islands excluded",
+    "n_hot_p05": 208,
+    "share_landslides_hot": 0.8509615384615384,
+    "share_landslides_cold": 0.0,
+    "share_landslides_ns": 0.10160427807486631,
+    "n_hot_p_sim_lt_0.05_secondary": 208,
+    "n_cold_p_sim_lt_0.05_secondary": 224,
+    "n_cold_p05": 93,
+    "n_not_sig": 187,
+    "n_total_check": 496
+  }
+}

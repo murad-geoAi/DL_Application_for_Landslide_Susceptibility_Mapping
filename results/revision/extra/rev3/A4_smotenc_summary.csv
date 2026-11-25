@@ -1,0 +1,5 @@
+model,n_seeds,within_AUC_mean,within_AUC_sd,pooled_AUC_mean,pooled_AUC_sd,terrain_within_AUC_mean,terrain_within_AUC_sd,terrain_pooled_AUC_mean,terrain_pooled_AUC_sd,smote_within_AUC_mean,smote_within_AUC_sd,smote_pooled_AUC_mean,smote_pooled_AUC_sd
+RandomForest,10,0.7983,0.0056,0.8389,0.0037,0.8107,0.0066,0.7608,0.0053,0.8,0.0102,0.8433,0.0048
+XGBoost,10,0.7619,0.0113,0.807,0.0084,0.7778,0.0083,0.7067,0.0085,0.7586,0.0091,0.8088,0.0087
+SVM-RBF,10,0.7603,0.0088,0.8751,0.0052,0.7537,0.0001,0.8382,0.0032,0.7597,0.0103,0.8762,0.0053
+LogisticRegression,10,0.6365,0.0052,0.8625,0.0033,0.638,0.0,0.7683,0.0,0.6416,0.0085,0.8661,0.0037

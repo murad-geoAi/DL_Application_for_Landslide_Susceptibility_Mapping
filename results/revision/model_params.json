@@ -1,0 +1,31 @@
+{
+  "n_features": 23,
+  "DNN": 4161,
+  "1D-CNN": 43841,
+  "LSTM": 118081,
+  "feature_names": [
+    "Elevation",
+    "Slope",
+    "Curvature",
+    "TWI",
+    "TRI",
+    "NDVI",
+    "Annual_Rainfall",
+    "Aspect_sin",
+    "Aspect_cos",
+    "is_flat",
+    "TWI_was_missing",
+    "Soil_Texture_was_missing",
+    "LULC_1",
+    "LULC_11",
+    "LULC_2",
+    "LULC_4",
+    "LULC_5",
+    "LULC_7",
+    "LULC_missing",
+    "Soil_Texture_4",
+    "Soil_Texture_6",
+    "Soil_Texture_7",
+    "Soil_Texture_missing"
+  ]
+}

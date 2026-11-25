@@ -1,0 +1,29 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795584164.687209 8173554 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795584164.687629 8173554 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7098b79800> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7098b79800> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[dl_a seed 3] standard           DNN     within=0.596 pooled=0.626
+[dl_a seed 3] standard           1D-CNN  within=0.795 pooled=0.861
+[dl_a seed 3] standard           LSTM    within=0.598 pooled=0.555
+[dl_a seed 3] a_terrain          DNN     within=0.594 pooled=0.631
+[dl_a seed 3] a_terrain          1D-CNN  within=0.791 pooled=0.850
+[dl_a seed 3] a_terrain          LSTM    within=0.573 pooled=0.545
+[dl_a seed 3] a_terrain+Cluster  DNN     within=0.604 pooled=0.724
+[dl_a seed 3] a_terrain+Cluster  1D-CNN  within=0.732 pooled=0.827
+[dl_a seed 3] a_terrain+Cluster  LSTM    within=0.631 pooled=0.468
+[dl_a] seed 3 done in 1350s
+[dl_a seed 4] standard           DNN     within=0.623 pooled=0.669
+[dl_a seed 4] standard           1D-CNN  within=0.799 pooled=0.855
+[dl_a seed 4] standard           LSTM    within=0.570 pooled=0.481
+[dl_a seed 4] a_terrain          DNN     within=0.602 pooled=0.665
+[dl_a seed 4] a_terrain          1D-CNN  within=0.790 pooled=0.847
+[dl_a seed 4] a_terrain          LSTM    within=0.559 pooled=0.530
+[dl_a seed 4] a_terrain+Cluster  DNN     within=0.613 pooled=0.741
+[dl_a seed 4] a_terrain+Cluster  1D-CNN  within=0.772 pooled=0.825
+[dl_a seed 4] a_terrain+Cluster  LSTM    within=0.602 pooled=0.554
+[dl_a] seed 4 done in 725s
+[dl_a seed 5] standard           DNN     within=0.601 pooled=0.546
+[dl_a seed 5] standard           1D-CNN  within=0.812 pooled=0.877
+[dl_a seed 5] standard           LSTM    within=0.541 pooled=0.315
+[dl_a seed 5] a_terrain          DNN     within=0.594 pooled=0.545

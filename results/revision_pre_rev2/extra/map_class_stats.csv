@@ -1,0 +1,6 @@
+class,prob_min,prob_max,n_samples,n_landslides,share_of_landslides,share_of_samples,frequency_ratio,n_outside_AOA
+Very low,0.0,0.1012,99,4,0.0204,0.1996,0.1022,11
+Low,0.1014,0.2104,99,15,0.0765,0.1996,0.3834,6
+Moderate,0.2104,0.3832,99,35,0.1786,0.1996,0.8947,16
+High,0.3834,0.5752,99,60,0.3061,0.1996,1.5337,3
+Very high,0.5758,0.909,100,82,0.4184,0.2016,2.0751,0

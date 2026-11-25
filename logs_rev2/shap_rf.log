@@ -1,0 +1,21 @@
+[shap random_forest] seed 42 done in 5s, pooled AUC 0.7595
+[shap random_forest] seed 0 done in 2s, pooled AUC 0.7537
+[shap random_forest] seed 1 done in 2s, pooled AUC 0.7581
+[shap random_forest] seed 2 done in 2s, pooled AUC 0.7589
+[shap random_forest] seed 3 done in 2s, pooled AUC 0.7633
+[shap random_forest] seed 4 done in 2s, pooled AUC 0.7528
+[shap random_forest] seed 5 done in 2s, pooled AUC 0.7655
+[shap random_forest] seed 6 done in 2s, pooled AUC 0.7630
+[shap random_forest] seed 7 done in 2s, pooled AUC 0.7639
+[shap random_forest] seed 8 done in 3s, pooled AUC 0.7697
+                     mean       std
+Annual rainfall  0.167495  0.004829
+Aspect           0.062653  0.001627
+Curvature        0.030437  0.000815
+Elevation        0.143915  0.002463
+LULC             0.097014  0.002521
+NDVI             0.286185  0.006032
+Slope            0.031791  0.001146
+Soil texture     0.100770  0.001129
+TRI              0.041601  0.001811
+TWI              0.038139  0.001275

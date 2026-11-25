@@ -1,0 +1,24 @@
+training-fold prior thresholds [0.211 0.36  0.387 0.447 0.579]
+          dataset               model   threshold  n_seeds  accuracy_mean  accuracy_sd  precision_mean  precision_sd  recall_mean  recall_sd  F1_mean  F1_sd  pred_pos_rate_mean  pred_pos_rate_sd
+0         terrain                 DNN         0.5       10          0.558        0.016           0.413         0.029        0.281      0.029    0.334  0.028               0.269             0.021
+1         terrain                 DNN  fold_prior       10          0.729        0.021           0.612         0.020        0.861      0.031    0.715  0.022               0.556             0.017
+2         terrain              1D-CNN         0.5       10          0.737        0.020           0.729         0.019        0.532      0.065    0.613  0.045               0.288             0.034
+3         terrain              1D-CNN  fold_prior       10          0.835        0.009           0.770         0.017        0.833      0.023    0.800  0.011               0.428             0.018
+4         terrain                LSTM         0.5       10          0.460        0.037           0.242         0.030        0.170      0.029    0.199  0.026               0.280             0.051
+5         terrain                LSTM  fold_prior       10          0.662        0.031           0.556         0.030        0.746      0.037    0.636  0.021               0.532             0.048
+6         terrain        RandomForest         0.5       10          0.632        0.003           0.598         0.013        0.208      0.009    0.309  0.010               0.138             0.006
+7         terrain        RandomForest  fold_prior       10          0.815        0.008           0.801         0.008        0.709      0.019    0.752  0.013               0.350             0.008
+8         terrain             XGBoost         0.5       10          0.612        0.004           0.531         0.016        0.145      0.013    0.228  0.018               0.108             0.008
+9         terrain             XGBoost  fold_prior       10          0.678        0.011           0.711         0.020        0.312      0.027    0.433  0.029               0.173             0.011
+10        terrain             SVM-RBF         0.5       10          0.733        0.004           0.730         0.004        0.515      0.012    0.604  0.009               0.279             0.006
+11        terrain             SVM-RBF  fold_prior       10          0.824        0.003           0.782         0.004        0.770      0.006    0.776  0.004               0.390             0.003
+12        terrain  LogisticRegression         0.5       10          0.679        0.000           0.637         0.000        0.439      0.000    0.520  0.000               0.272             0.000
+13        terrain  LogisticRegression  fold_prior       10          0.804        0.000           0.726         0.000        0.811      0.000    0.766  0.000               0.442             0.000
+14  terrain+SMOTE              1D-CNN         0.5       10          0.804        0.022           0.770         0.019        0.718      0.058    0.742  0.037               0.368             0.027
+15  terrain+SMOTE                 DNN         0.5       10          0.720        0.023           0.608         0.019        0.820      0.044    0.698  0.028               0.532             0.015
+16  terrain+SMOTE                LSTM         0.5       10          0.577        0.062           0.455         0.088        0.529      0.193    0.483  0.135               0.446             0.112
+17  terrain+SMOTE        RandomForest         0.5       10          0.750        0.008           0.772         0.015        0.520      0.019    0.621  0.015               0.267             0.010
+18  terrain+SMOTE             XGBoost         0.5       10          0.734        0.012           0.763         0.017        0.476      0.029    0.586  0.025               0.246             0.012
+19  terrain+SMOTE             SVM-RBF         0.5       10          0.807        0.010           0.790         0.015        0.697      0.021    0.740  0.015               0.349             0.011
+20  terrain+SMOTE  LogisticRegression         0.5       10          0.802        0.003           0.730         0.006        0.794      0.012    0.760  0.005               0.430             0.009
+[thresholds] total 0s

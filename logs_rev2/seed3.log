@@ -1,0 +1,26 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795451559.518088 2490769 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795451559.518197 2490769 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x708ba8b1a0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x708ba8b1a0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[seed 3] terrain          DNN                 pooled=0.6258
+[seed 3] terrain          1D-CNN              pooled=0.8610
+[seed 3] terrain          LSTM                pooled=0.5546
+[seed 3] terrain          RandomForest        pooled=0.7633
+[seed 3] terrain          XGBoost             pooled=0.6970
+[seed 3] terrain          SVM-RBF             pooled=0.8331
+[seed 3] terrain          LogisticRegression  pooled=0.7683
+[seed 3] terrain+Cluster  DNN                 pooled=0.7375
+[seed 3] terrain+Cluster  1D-CNN              pooled=0.8250
+[seed 3] terrain+Cluster  LSTM                pooled=0.6239
+[seed 3] terrain+Cluster  RandomForest        pooled=0.7398
+[seed 3] terrain+Cluster  XGBoost             pooled=0.6811
+[seed 3] terrain+Cluster  SVM-RBF             pooled=0.7334
+[seed 3] terrain+Cluster  LogisticRegression  pooled=0.7390
+[seed 3] terrain+SMOTE    1D-CNN              pooled=0.9057
+[seed 3] terrain+SMOTE    DNN                 pooled=0.7936
+[seed 3] terrain+SMOTE    LSTM                pooled=0.6986
+[seed 3] terrain+SMOTE    RandomForest        pooled=0.8445
+[seed 3] terrain+SMOTE    XGBoost             pooled=0.7975
+[seed 3] terrain+SMOTE    SVM-RBF             pooled=0.8839
+[seed 3] terrain+SMOTE    LogisticRegression  pooled=0.8636

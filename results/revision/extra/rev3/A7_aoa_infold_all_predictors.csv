@@ -1,0 +1,5 @@
+variant,n_outside_AOA,by_fold,landslides_outside,non_landslides_outside,outside_of_33_east_negatives,outside_of_16_high_VH_east_negatives,idx_of_16_outside
+infold_7continuous_factor_weights (adopted),41,"0,0,0,4,37",2,39,1,1,83
+infold_all23_encoded_col_weights_standardised,28,"0,0,0,2,26",1,27,1,1,83
+infold_all23_encoded_col_weights_as_preprocessed,45,"0,0,0,5,40",2,43,1,1,83
+infold_all23_unweighted_standardised (no SHAP; reference),15,"0,2,1,1,11",2,13,0,0,

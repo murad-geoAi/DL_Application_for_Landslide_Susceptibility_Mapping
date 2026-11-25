@@ -1,0 +1,105 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795502641.806266 5536716 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795502641.806365 5536716 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70559f5da0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70559f5da0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+{
+ "fold_mode": "existing district-wide spatial fold labels kept (no re-clustering); water negatives dropped; landslides on water pixels kept",
+ "n_total_original": 496,
+ "water_negatives": 27,
+ "water_landslides": 6,
+ "n_samples": 469,
+ "n_pos": 196,
+ "n_neg": 273,
+ "lulc_class_counts_neg": {
+  "2": 242,
+  "1": 27,
+  "11": 11,
+  "5": 10,
+  "4": 5,
+  "7": 4,
+  "<NA>": 1
+ },
+ "fold_n_original": [
+  145,
+  74,
+  41,
+  75,
+  161
+ ],
+ "fold_pos_original": [
+  122,
+  44,
+  20,
+  8,
+  2
+ ],
+ "fold_n": [
+  140,
+  72,
+  40,
+  74,
+  143
+ ],
+ "fold_pos": [
+  122,
+  44,
+  20,
+  8,
+  2
+ ],
+ "fold_neg": [
+  18,
+  28,
+  20,
+  66,
+  141
+ ],
+ "fold_water_neg_dropped": [
+  5,
+  2,
+  1,
+  1,
+  18
+ ],
+ "alt_rederived_fold_n": [
+  141,
+  72,
+  42,
+  67,
+  147
+ ],
+ "alt_rederived_fold_pos": [
+  122,
+  44,
+  21,
+  8,
+  1
+ ],
+ "alt_rederived_same_as_kept": false
+}
+[water seed 3] DNN within=0.686 pooled=0.786
+[water seed 3] 1D-CNN within=0.756 pooled=0.839
+[water seed 3] LSTM within=0.519 pooled=0.458
+[water seed 3] RandomForest within=0.792 pooled=0.761
+[water seed 3] XGBoost within=0.738 pooled=0.715
+[water seed 3] SVM-RBF within=0.753 pooled=0.853
+[water seed 3] LogisticRegression within=0.687 pooled=0.808
+[water] seed 3 done in 157s
+[water seed 4] DNN within=0.725 pooled=0.767
+[water seed 4] 1D-CNN within=0.746 pooled=0.834
+[water seed 4] LSTM within=0.497 pooled=0.298
+[water seed 4] RandomForest within=0.794 pooled=0.752
+[water seed 4] XGBoost within=0.733 pooled=0.701
+[water seed 4] SVM-RBF within=0.753 pooled=0.858
+[water seed 4] LogisticRegression within=0.687 pooled=0.808
+[water] seed 4 done in 157s
+     model  within_AUC_mean  within_AUC_std  pooled_AUC_mean  pooled_AUC_std  n_samples  n_neg  n_seeds
+0      DNN            0.706           0.028            0.777           0.013        469    273        2
+1   1D-CNN            0.751           0.007            0.837           0.004        469    273        2
+2     LSTM            0.508           0.016            0.378           0.113        469    273        2
+3       RF            0.793           0.002            0.757           0.006        469    273        2
+4  XGBoost            0.736           0.004            0.708           0.010        469    273        2
+5      SVM            0.753           0.000            0.855           0.003        469    273        2
+6       LR            0.687           0.000            0.808           0.000        469    273        2
+[water] total 314s

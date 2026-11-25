@@ -1,0 +1,7 @@
+model,design,within_AUC_mean,within_AUC_sd,pooled_AUC_mean,pooled_AUC_sd,n_seeds
+LSTM (unregularised),"spatial CV, random_ES (main)",0.557,0.025,0.4619,0.0646,10
+LSTM (unregularised),"random CV, random_ES",0.7249,0.0186,0.7172,0.0189,10
+LSTM (L2+dropout),"spatial CV, random_ES",0.525,0.0329,0.4413,0.069,10
+LSTM (L2+dropout),"spatial CV, spatial_ES",0.5197,0.056,0.3569,0.0734,10
+LSTM (L2+dropout),"random CV, random_ES",0.715,0.0084,0.7032,0.0114,10
+LSTM (L2+dropout),"random CV, spatial_ES",0.678,0.0338,0.6744,0.021,10

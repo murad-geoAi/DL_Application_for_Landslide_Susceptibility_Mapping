@@ -44,3 +44,6 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
+
+# Training artifacts
+catboost_info/

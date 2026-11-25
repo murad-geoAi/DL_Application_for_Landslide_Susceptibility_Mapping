@@ -1,0 +1,11 @@
+factor,sum_abs_coef,share
+LULC,6.14534,0.41937
+Aspect,3.48663,0.23793
+Soil texture,1.22895,0.08387
+Elevation,1.0442,0.07126
+NDVI,0.83918,0.05727
+TRI,0.8229,0.05616
+TWI,0.74674,0.05096
+Slope,0.23837,0.01627
+Annual rainfall,0.09292,0.00634
+Curvature,0.00863,0.00059

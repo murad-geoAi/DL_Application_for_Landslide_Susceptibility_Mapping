@@ -1,0 +1,8 @@
+model,design,within_AUC_mean,within_AUC_sd,pooled_AUC_mean,pooled_AUC_sd,n_seeds
+DNN,bbox_spatial,0.5734,0.0172,0.5514,0.038,10
+1D-CNN,bbox_spatial,0.6747,0.0245,0.7624,0.0207,10
+LSTM,bbox_spatial,0.5349,0.0469,0.4267,0.0356,10
+RandomForest,bbox_spatial,0.6374,0.0084,0.6731,0.0048,10
+XGBoost,bbox_spatial,0.5839,0.0076,0.5964,0.0088,10
+SVM-RBF,bbox_spatial,0.6862,0.0,0.7637,0.004,10
+LogisticRegression,bbox_spatial,0.6551,0.0,0.7094,0.0,10

@@ -1,0 +1,56 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795584164.688712 8173551 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795584164.688756 8173551 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70996760c0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70996760c0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[abl seed 42] no_ndvi        DNN                within=0.578 pooled=0.601
+[abl seed 42] no_ndvi        1D-CNN             within=0.635 pooled=0.735
+[abl seed 42] no_ndvi        LSTM               within=0.504 pooled=0.508
+[abl seed 42] no_ndvi        RandomForest       within=0.622 pooled=0.625
+[abl seed 42] no_ndvi        XGBoost            within=0.533 pooled=0.606
+[abl seed 42] no_ndvi        SVM-RBF            within=0.661 pooled=0.693
+[abl seed 42] no_ndvi        LogisticRegression within=0.572 pooled=0.707
+[abl seed 42] no_lulc        DNN                within=0.599 pooled=0.556
+[abl seed 42] no_lulc        1D-CNN             within=0.776 pooled=0.830
+[abl seed 42] no_lulc        LSTM               within=0.542 pooled=0.360
+[abl seed 42] no_lulc        RandomForest       within=0.780 pooled=0.729
+[abl seed 42] no_lulc        XGBoost            within=0.766 pooled=0.700
+[abl seed 42] no_lulc        SVM-RBF            within=0.732 pooled=0.812
+[abl seed 42] no_lulc        LogisticRegression within=0.639 pooled=0.709
+[abl seed 42] no_flags_flat  DNN                within=0.606 pooled=0.596
+[abl seed 42] no_flags_flat  1D-CNN             within=0.781 pooled=0.856
+[abl seed 42] no_flags_flat  LSTM               within=0.533 pooled=0.311
+[abl seed 42] no_flags_flat  RandomForest       within=0.813 pooled=0.762
+[abl seed 42] no_flags_flat  XGBoost            within=0.769 pooled=0.711
+[abl seed 42] no_flags_flat  SVM-RBF            within=0.761 pooled=0.847
+[abl seed 42] no_flags_flat  LogisticRegression within=0.599 pooled=0.722
+[abl] seed 42 done in 1366s
+[abl seed 0] no_ndvi        DNN                within=0.581 pooled=0.620
+[abl seed 0] no_ndvi        1D-CNN             within=0.622 pooled=0.727
+[abl seed 0] no_ndvi        LSTM               within=0.560 pooled=0.482
+[abl seed 0] no_ndvi        RandomForest       within=0.622 pooled=0.634
+[abl seed 0] no_ndvi        XGBoost            within=0.538 pooled=0.619
+[abl seed 0] no_ndvi        SVM-RBF            within=0.661 pooled=0.689
+[abl seed 0] no_ndvi        LogisticRegression within=0.572 pooled=0.707
+[abl seed 0] no_lulc        DNN                within=0.593 pooled=0.586
+[abl seed 0] no_lulc        1D-CNN             within=0.780 pooled=0.825
+[abl seed 0] no_lulc        LSTM               within=0.549 pooled=0.500
+[abl seed 0] no_lulc        RandomForest       within=0.788 pooled=0.726
+[abl seed 0] no_lulc        XGBoost            within=0.773 pooled=0.698
+[abl seed 0] no_lulc        SVM-RBF            within=0.732 pooled=0.812
+[abl seed 0] no_lulc        LogisticRegression within=0.639 pooled=0.709
+[abl seed 0] no_flags_flat  DNN                within=0.603 pooled=0.618
+[abl seed 0] no_flags_flat  1D-CNN             within=0.762 pooled=0.852
+[abl seed 0] no_flags_flat  LSTM               within=0.556 pooled=0.460
+[abl seed 0] no_flags_flat  RandomForest       within=0.800 pooled=0.757
+[abl seed 0] no_flags_flat  XGBoost            within=0.767 pooled=0.698
+[abl seed 0] no_flags_flat  SVM-RBF            within=0.761 pooled=0.841
+[abl seed 0] no_flags_flat  LogisticRegression within=0.599 pooled=0.722
+[abl] seed 0 done in 806s
+[abl seed 1] no_ndvi        DNN                within=0.587 pooled=0.526
+[abl seed 1] no_ndvi        1D-CNN             within=0.624 pooled=0.671
+[abl seed 1] no_ndvi        LSTM               within=0.550 pooled=0.485
+[abl seed 1] no_ndvi        RandomForest       within=0.612 pooled=0.625
+[abl seed 1] no_ndvi        XGBoost            within=0.552 pooled=0.602
+[abl seed 1] no_ndvi        SVM-RBF            within=0.661 pooled=0.690
+[abl seed 1] no_ndvi        LogisticRegression within=0.572 pooled=0.707

@@ -1,0 +1,75 @@
+{
+  "fold_mode": "existing district-wide spatial fold labels kept (no re-clustering); water negatives dropped; landslides on water pixels kept",
+  "n_total_original": 496,
+  "water_negatives": 27,
+  "water_landslides": 6,
+  "n_samples": 469,
+  "n_pos": 196,
+  "n_neg": 273,
+  "lulc_class_counts_neg": {
+    "2": 242,
+    "1": 27,
+    "11": 11,
+    "5": 10,
+    "4": 5,
+    "7": 4,
+    "<NA>": 1
+  },
+  "fold_n_original": [
+    145,
+    74,
+    41,
+    75,
+    161
+  ],
+  "fold_pos_original": [
+    122,
+    44,
+    20,
+    8,
+    2
+  ],
+  "fold_n": [
+    140,
+    72,
+    40,
+    74,
+    143
+  ],
+  "fold_pos": [
+    122,
+    44,
+    20,
+    8,
+    2
+  ],
+  "fold_neg": [
+    18,
+    28,
+    20,
+    66,
+    141
+  ],
+  "fold_water_neg_dropped": [
+    5,
+    2,
+    1,
+    1,
+    18
+  ],
+  "alt_rederived_fold_n": [
+    141,
+    72,
+    42,
+    67,
+    147
+  ],
+  "alt_rederived_fold_pos": [
+    122,
+    44,
+    21,
+    8,
+    1
+  ],
+  "alt_rederived_same_as_kept": false
+}

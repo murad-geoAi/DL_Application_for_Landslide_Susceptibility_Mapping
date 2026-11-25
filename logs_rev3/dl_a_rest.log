@@ -1,0 +1,30 @@
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x703d6afec0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x703d6afec0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[dl_a seed 1] standard           DNN     within=0.761 pooled=0.825
+[dl_a seed 1] standard           1D-CNN  within=0.800 pooled=0.825
+[dl_a seed 1] a_terrain          DNN     within=0.762 pooled=0.827
+[dl_a seed 1] a_terrain          1D-CNN  within=0.809 pooled=0.833
+[dl_a seed 1] a_terrain+Cluster  DNN     within=0.728 pooled=0.778
+[dl_a seed 1] a_terrain+Cluster  1D-CNN  within=0.735 pooled=0.768
+[dl_a_rest] seed 1 done in 2917s
+[dl_a seed 2] standard           DNN     within=0.767 pooled=0.861
+[dl_a seed 2] standard           1D-CNN  within=0.770 pooled=0.839
+[dl_a seed 2] a_terrain          DNN     within=0.774 pooled=0.863
+[dl_a seed 2] a_terrain          1D-CNN  within=0.766 pooled=0.847
+[dl_a seed 2] a_terrain+Cluster  DNN     within=0.727 pooled=0.835
+[dl_a seed 2] a_terrain+Cluster  1D-CNN  within=0.720 pooled=0.806
+[dl_a_rest] seed 2 done in 3022s
+[dl_a seed 5] standard           DNN     within=0.810 pooled=0.881
+[dl_a seed 5] standard           1D-CNN  within=0.809 pooled=0.875
+[dl_a seed 5] a_terrain          DNN     within=0.808 pooled=0.876
+[dl_a seed 5] a_terrain          1D-CNN  within=0.808 pooled=0.873
+[dl_a seed 5] a_terrain+Cluster  DNN     within=0.765 pooled=0.853
+[dl_a seed 5] a_terrain+Cluster  1D-CNN  within=0.755 pooled=0.839
+[dl_a_rest] seed 5 done in 1025s
+[dl_a seed 8] standard           DNN     within=0.749 pooled=0.848
+[dl_a seed 8] standard           1D-CNN  within=0.764 pooled=0.848
+[dl_a seed 8] a_terrain          DNN     within=0.742 pooled=0.849
+[dl_a seed 8] a_terrain          1D-CNN  within=0.759 pooled=0.849
+[dl_a seed 8] a_terrain+Cluster  DNN     within=0.660 pooled=0.817
+[dl_a seed 8] a_terrain+Cluster  1D-CNN  within=0.706 pooled=0.831
+[dl_a_rest] seed 8 done in 991s

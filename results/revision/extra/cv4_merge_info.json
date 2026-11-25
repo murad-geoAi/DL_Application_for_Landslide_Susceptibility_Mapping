@@ -1,0 +1,23 @@
+{
+  "merged_fold": 5,
+  "merged_into_fold": 4,
+  "min_block_centroid_distance_km_from_fold5": {
+    "fold1": 27.86,
+    "fold2": 22.41,
+    "fold3": 28.32,
+    "fold4": 22.32
+  },
+  "n_pos_per_fold": [
+    122,
+    44,
+    20,
+    10
+  ],
+  "n_per_fold": [
+    145,
+    74,
+    41,
+    236
+  ],
+  "min_pos_ge_10": true
+}

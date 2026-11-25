@@ -1,0 +1,23 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795551267.212855 6558606 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795551267.212965 6558606 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7090ecfba0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7090ecfba0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[lstm_reg seed 4] spatial random_ES within=0.549 pooled=0.542
+[lstm_reg seed 4] spatial spatial_ES within=0.458 pooled=0.258
+[lstm_reg seed 4] random random_ES within=0.704 pooled=0.691
+[lstm_reg seed 4] random spatial_ES within=0.700 pooled=0.690
+[lstm_reg] seed 4 done in 2266s
+[lstm_unreg_randomcv] seed 4 done in 947s
+| model | design | within-fold AUC | pooled AUC | baseline (T4 spatial within) | n seeds |
+|---|---|---|---|---|---|
+| LSTM (unregularised) | spatial CV, random_ES (main) | 0.570 +/- nan | 0.481 +/- nan |  | 1 |
+| LSTM (unregularised) | random CV, random_ES | 0.702 +/- nan | 0.701 +/- nan |  | 1 |
+| LSTM (L2+dropout) | spatial CV, random_ES | 0.549 +/- nan | 0.542 +/- nan |  | 1 |
+| LSTM (L2+dropout) | spatial CV, spatial_ES | 0.458 +/- nan | 0.258 +/- nan |  | 1 |
+| LSTM (L2+dropout) | random CV, random_ES | 0.704 +/- nan | 0.691 +/- nan |  | 1 |
+| LSTM (L2+dropout) | random CV, spatial_ES | 0.700 +/- nan | 0.690 +/- nan |  | 1 |
+[lstm_reg] total 3213s
+real 3222.93
+user 394.03
+sys 910.70

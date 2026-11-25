@@ -1,0 +1,74 @@
+RandomForest 
+        class  prob_min  prob_max  n_samples  n_landslides  share_of_landslides  share_of_samples  frequency_ratio  n_outside_AOA
+0   Very low     0.000     0.101         99             4                0.020             0.200            0.102             15
+1        Low     0.101     0.210         99            15                0.077             0.200            0.383              7
+2   Moderate     0.210     0.383         99            35                0.179             0.200            0.895             19
+3       High     0.383     0.575         99            60                0.306             0.200            1.534              3
+4  Very high     0.576     0.909        100            82                0.418             0.202            2.075              0
+{
+ "model": "RandomForest",
+ "di_features": [
+  "Elevation",
+  "Slope",
+  "Curvature",
+  "TWI",
+  "TRI",
+  "NDVI",
+  "Annual_Rainfall"
+ ],
+ "di_weights_normalised_mean1": {
+  "Elevation": 1.3740883253383738,
+  "Slope": 0.24499024066894415,
+  "Curvature": 0.2444867888297927,
+  "TWI": 0.275668131837312,
+  "TRI": 0.318136025482181,
+  "NDVI": 2.8234546254045405,
+  "Annual_Rainfall": 1.7191758624388562
+ },
+ "threshold_rule": "Q3 + 1.5*IQR of training-point DI (nearest training point in another fold), per training set",
+ "threshold_per_fold": {
+  "fold1": 0.4595290934887356,
+  "fold2": 0.46128470855416726,
+  "fold3": 0.45687464533399713,
+  "fold4": 0.4624524208884957,
+  "fold5": 0.5819539857010856
+ },
+ "mean_pairwise_dist_per_fold": {
+  "fold1": 4.362268635437137,
+  "fold2": 4.317968260955441,
+  "fold3": 4.312010684869286,
+  "fold4": 4.19344458373789,
+  "fold5": 4.299983677124643
+ },
+ "n_outside_AOA": 44,
+ "share_outside_AOA": 0.08870967741935484,
+ "share_outside_by_class": {
+  "Very low": 0.15151515151515152,
+  "Low": 0.0707070707070707,
+  "Moderate": 0.1919191919191919,
+  "High": 0.030303030303030304,
+  "Very high": 0.0
+ },
+ "share_outside_by_fold": {
+  "fold1": 0.0,
+  "fold2": 0.0,
+  "fold3": 0.024390243902439025,
+  "fold4": 0.06666666666666667,
+  "fold5": 0.2360248447204969
+ },
+ "n_outside_by_fold": {
+  "fold1": 0,
+  "fold2": 0,
+  "fold3": 1,
+  "fold4": 5,
+  "fold5": 38
+ },
+ "share_outside_landslides": 0.01020408163265306,
+ "share_outside_nonlandslides": 0.14,
+ "DI_quantiles": {
+  "0.5": 0.16693454152405202,
+  "0.9": 0.5129951321588291,
+  "0.99": 1.2308946706504917
+ }
+}
+[map] total 0s

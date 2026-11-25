@@ -1,0 +1,29 @@
+{
+  "n_negatives": 300,
+  "n_positives": 196,
+  "ratio_neg_to_pos": 1.530612244897959,
+  "min_dist_to_landslide_km": 0.3045464088655094,
+  "p05_dist_km": 1.7057081322810543,
+  "median_dist_km": 14.290040050154687,
+  "max_dist_km": 94.40820862926898,
+  "share_within_1km": 0.023333333333333334,
+  "share_beyond_5km": 0.7733333333333333,
+  "lat_range_neg": [
+    21.87579042,
+    23.71861474
+  ],
+  "lon_range_neg": [
+    91.95103668,
+    92.6033389
+  ],
+  "lat_range_pos": [
+    22.35216672,
+    22.874182
+  ],
+  "lon_range_pos": [
+    92.002117,
+    92.53953896
+  ],
+  "slope_median_neg": 10.55667782,
+  "slope_median_pos": 10.51193571
+}

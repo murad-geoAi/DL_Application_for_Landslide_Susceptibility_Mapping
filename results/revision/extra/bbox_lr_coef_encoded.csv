@@ -1,0 +1,24 @@
+encoded_column,coef,abs_coef,factor
+Elevation,-1.0442,1.0442,Elevation
+Slope,-0.23837,0.23837,Slope
+Curvature,-0.00863,0.00863,Curvature
+TWI,0.01299,0.01299,TWI
+TRI,0.8229,0.8229,TRI
+NDVI,-0.83918,0.83918,NDVI
+Annual_Rainfall,-0.09292,0.09292,Annual rainfall
+Aspect_sin,0.282,0.282,Aspect
+Aspect_cos,-0.42682,0.42682,Aspect
+is_flat,-2.77781,2.77781,Aspect
+TWI_was_missing,0.73376,0.73376,TWI
+Soil_Texture_was_missing,-0.08482,0.08482,Soil texture
+LULC_1,-1.01995,1.01995,LULC
+LULC_11,0.91672,0.91672,LULC
+LULC_2,0.34225,0.34225,LULC
+LULC_4,-0.89189,0.89189,LULC
+LULC_5,-1.17131,1.17131,LULC
+LULC_7,1.80321,1.80321,LULC
+LULC_missing,0.0,0.0,LULC
+Soil_Texture_4,0.56158,0.56158,Soil texture
+Soil_Texture_6,-0.17242,0.17242,Soil texture
+Soil_Texture_7,-0.32531,0.32531,Soil texture
+Soil_Texture_missing,-0.08482,0.08482,Soil texture

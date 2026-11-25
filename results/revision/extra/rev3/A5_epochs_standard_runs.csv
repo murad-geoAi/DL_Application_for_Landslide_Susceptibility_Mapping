@@ -1,0 +1,4 @@
+model,n,best_epoch_median,best_epoch_mean,best_epoch_min,best_epoch_max,stop_epoch_median
+1D-CNN,50,37.5,36.06,20,50,42.5
+DNN,50,27.5,32.7,15,50,32.5
+LSTM,50,15.0,19.4,2,46,20.0

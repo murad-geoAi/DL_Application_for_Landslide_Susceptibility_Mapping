@@ -1,0 +1,16 @@
+{
+  "bbox_area_deg2": 1.2020783950059815,
+  "avg_density_pts_per_deg2": 412.6186794976312,
+  "threshold_original_rule": 40931.773006165015,
+  "largest_cluster_count": 340,
+  "all_clusters_flagged_sparse": true,
+  "study_density_pts_per_km2": 0.06808615340238987,
+  "k_distance_knee_deg": 0.05508906815696506,
+  "k_distance_knee_km": 6.091418622388254,
+  "share_kdist_le_1p1km": 0.2862903225806452,
+  "eps_km_used": 1.1,
+  "min_samples_used": 5,
+  "coordinate_system": "local equirectangular km, fixed lat0 = mean latitude of full data",
+  "n_clusters_original": 9,
+  "noise_share_original": 0.6854838709677419
+}

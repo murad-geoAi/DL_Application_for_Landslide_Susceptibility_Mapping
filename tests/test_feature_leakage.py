@@ -115,15 +115,16 @@ def test_dbscan_fitted_on_train_coordinates_only(verbose: bool = False):
     #     within eps of a train core point, anything else is -1.
     from sklearn.neighbors import NearestNeighbors
 
-    nn = NearestNeighbors(n_neighbors=1).fit(assigner.core_points_)
-    dist, _ = nn.kneighbors(val[D.COORD_COLS].to_numpy())
+    nn = NearestNeighbors(n_neighbors=1).fit(assigner.core_points_km_)
+    vc = val[D.COORD_COLS].to_numpy()
+    dist, _ = nn.kneighbors(F.project_km(vc[:, 0], vc[:, 1]))
     within = dist[:, 0] <= F.DBSCAN_EPS
     assert np.array_equal(within, (val_labels >= 0).to_numpy()), (
         "a point was assigned to a cluster whose core point is beyond eps"
     )
     if verbose:
         print(f"    eps rule holds: all {int(within.sum())} assigned val points lie "
-              f"within {F.DBSCAN_EPS} deg of a train core point; "
+              f"within {F.DBSCAN_EPS} km of a train core point; "
               f"the other {int((~within).sum())} are noise")
 
         # The assignment rule reproduces DBSCAN's own labels on the fitted data.
@@ -260,6 +261,104 @@ def test_flat_cells_and_aspect_encoding(verbose: bool = False):
               f"{int(radius.isna().sum())}")
 
 
+def _all_encoded_dims():
+    """Encoded width of every spatial fold plus the random split (terrain config)."""
+    from src.splits import random_split, spatial_block_cv
+
+    df = D.clean(D.load_raw(DATA_PATH)).reset_index(drop=True)
+    dims, names = [], []
+    for tr, _ in spatial_block_cv(df):
+        pre = F.build_preprocessor()
+        X = pre.fit_transform(df.iloc[tr], df.iloc[tr][D.TARGET])
+        dims.append(X.shape[1])
+        names.append(F.feature_names(pre))
+    train, _, _ = random_split(df, random_state=SEED)
+    pre = F.build_preprocessor()
+    dims.append(pre.fit_transform(train, train[D.TARGET]).shape[1])
+    names.append(F.feature_names(pre))
+    return df, dims, names
+
+
+def test_encoded_dimension_constant_across_folds_and_random_split(verbose: bool = False):
+    df, dims, names = _all_encoded_dims()
+    assert set(dims) == {23}, f"encoded width varies: {dims}"
+    assert all(n == names[0] for n in names), "column names/order differ between folds"
+    assert names[0] == F.terrain_feature_names(), "schema names drifted from fitted names"
+    # category schema equals the data's distinct values (+ missing)
+    for col in D.CATEGORICAL_COLS:
+        levels = sorted(str(int(v)) for v in df[col].dropna().unique())
+        assert F.CATEGORY_LEVELS[col] == levels + [F.MISSING_LEVEL] or \
+            sorted(F.CATEGORY_LEVELS[col][:-1]) == sorted(levels)
+    assert abs(df["Latitude"].mean() - F.FIXED_LAT0) < 1e-9
+    if verbose:
+        print("\n[7] encoded dims", dims)
+
+
+def test_binary_flags_not_scaled(verbose: bool = False):
+    df = D.clean(D.load_raw(DATA_PATH)).reset_index(drop=True)
+    pre = F.build_preprocessor()
+    X = pd.DataFrame(pre.fit_transform(df, df[D.TARGET]), columns=F.feature_names(pre))
+    for c in F.BINARY_FLAG_COLS:
+        assert set(np.unique(X[c])) <= {0.0, 1.0}, c
+    ok = (X.is_flat == 0).to_numpy() & df['Aspect'].notna().to_numpy()  # KNN-imputed aspects are not unit length
+    assert np.allclose(np.hypot(X.Aspect_sin, X.Aspect_cos)[ok], 1.0)
+
+
+def test_smote_synthetic_rows_are_valid_encodings(verbose: bool = False):
+    from src.sampling import SnapSMOTE
+
+    df = D.clean(D.load_raw(DATA_PATH)).reset_index(drop=True)
+    pre = F.build_preprocessor()
+    X = pre.fit_transform(df, df[D.TARGET])
+    y = df[D.TARGET].to_numpy(dtype=int)
+    # imbalance the training set so SMOTE has work to do
+    keep = np.r_[np.where(y == 0)[0], np.where(y == 1)[0][:60]]
+    Xk, yk = np.asarray(X)[keep], y[keep]
+    Xr, yr = SnapSMOTE(random_state=0, feature_names=F.terrain_feature_names()).fit_resample(Xk, yk)
+    n = len(Xk)
+    assert len(Xr) > n and np.array_equal(Xr[:n], Xk)
+    syn = pd.DataFrame(Xr[n:], columns=F.terrain_feature_names())
+    for col in D.CATEGORICAL_COLS:
+        grp = [f"{col}_{lvl}" for lvl in F.CATEGORY_LEVELS[col]]
+        assert (syn[grp].sum(axis=1) == 1).all(), f"{col} group not one-hot"
+        assert set(np.unique(syn[grp])) <= {0.0, 1.0}
+    for c in F.BINARY_FLAG_COLS:
+        assert set(np.unique(syn[c])) <= {0.0, 1.0}, c
+    r = np.hypot(syn.Aspect_sin, syn.Aspect_cos)
+    assert (np.isclose(r, 1.0, atol=1e-6) | np.isclose(r, 0.0, atol=1e-6)).all()
+    flat = syn.is_flat == 1
+    assert np.allclose(r[flat], 0.0)
+
+
+def test_keras_validation_split_precedes_smote(verbose: bool = False):
+    """The internal validation rows must be real: sampler sees only the post-split 80%."""
+    from src.models import KerasBinaryClassifier
+
+    seen = {}
+
+    class Spy:
+        def fit_resample(self, X, y):
+            seen["n"] = len(X)
+            return X, y
+
+    rng = np.random.default_rng(0)
+    X = rng.normal(size=(100, 5))
+    y = (rng.random(100) > 0.5).astype(int)
+    KerasBinaryClassifier(architecture="dnn", epochs=1, sampler=Spy()).fit(X, y)
+    assert seen["n"] == 80
+
+
+def test_encoders_and_smote_fit_on_train_only(verbose: bool = False):
+    """Fold pipeline fitted on train rows: vocabularies fixed, scaler stats equal train-only stats."""
+    train, val, _ = make_splits()
+    pre = F.build_preprocessor().fit(train, train[D.TARGET])
+    scaler = pre.named_steps["columns"].named_transformers_["continuous"].named_steps["scale"]
+    el = list(scaler.feature_names_in_).index("Elevation")
+    pre2 = F.build_preprocessor().fit(pd.concat([train, val]), pd.concat([train, val])[D.TARGET])
+    s2 = pre2.named_steps["columns"].named_transformers_["continuous"].named_steps["scale"]
+    assert not np.isclose(scaler.mean_[el], s2.mean_[el]), "scaler did not depend on its fit data"
+
+
 def main() -> int:
     print("=" * 72)
     print("SESSION 2 -- PROOF THAT FITTED FEATURE STEPS SEE TRAIN ROWS ONLY")
@@ -269,6 +368,7 @@ def main() -> int:
     test_preprocessor_is_fit_on_train_only(verbose=True)
     test_unseen_category_maps_to_all_zeros(verbose=True)
     test_flat_cells_and_aspect_encoding(verbose=True)
+    test_encoded_dimension_constant_across_folds_and_random_split(verbose=True)
     print("\n" + "=" * 72)
     print("All checks passed.")
     print("=" * 72)

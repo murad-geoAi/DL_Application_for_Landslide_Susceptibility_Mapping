@@ -1,0 +1,59 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795499466.695667 3846200 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795499466.695736 3846200 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x709c20e480> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x709c20e480> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[cnnorder seed 42] perm orig within=0.787 pooled=0.856
+[cnnorder seed 42] perm 100 within=0.787 pooled=0.844
+[cnnorder seed 42] perm 101 within=0.758 pooled=0.855
+[cnnorder seed 42] perm 102 within=0.814 pooled=0.887
+[cnnorder seed 42] perm 103 within=0.775 pooled=0.861
+[cnnorder seed 42] perm 104 within=0.776 pooled=0.858
+[cnnorder] seed 42 done in 364s
+[cnnorder seed 0] perm orig within=0.773 pooled=0.855
+[cnnorder seed 0] perm 100 within=0.772 pooled=0.855
+[cnnorder seed 0] perm 101 within=0.758 pooled=0.867
+[cnnorder seed 0] perm 102 within=0.799 pooled=0.864
+[cnnorder seed 0] perm 103 within=0.760 pooled=0.840
+[cnnorder seed 0] perm 104 within=0.760 pooled=0.849
+[cnnorder] seed 0 done in 413s
+[cnnorder seed 1] perm orig within=0.805 pooled=0.837
+[cnnorder seed 1] perm 100 within=0.800 pooled=0.824
+[cnnorder seed 1] perm 101 within=0.788 pooled=0.842
+[cnnorder seed 1] perm 102 within=0.814 pooled=0.831
+[cnnorder seed 1] perm 103 within=0.796 pooled=0.829
+[cnnorder seed 1] perm 104 within=0.796 pooled=0.847
+[cnnorder] seed 1 done in 464s
+           perm_id  within_AUC_mean  pooled_AUC_mean  n_seeds
+0             orig           0.7882           0.8491        3
+1              100           0.7864           0.8409        3
+2              101           0.7677           0.8544        3
+3              102           0.8090           0.8606        3
+4              103           0.7771           0.8430        3
+5              104           0.7771           0.8513        3
+6     main_run_DNN           0.6166           0.5949        3
+7  main_run_1D-CNN           0.7882           0.8491        3
+{
+ "seeds": [
+  42,
+  0,
+  1
+ ],
+ "n_permutations": 5,
+ "within_AUC_mean": {
+  "min": 0.7677142179405715,
+  "max": 0.8089792506996619,
+  "range": 0.041265032759090436,
+  "sd_across_permutations": 0.015721653275946375,
+  "orig": 0.7882162044954985
+ },
+ "pooled_AUC_mean": {
+  "min": 0.8409126984126983,
+  "max": 0.8605725623582767,
+  "range": 0.019659863945578393,
+  "sd_across_permutations": 0.008122492422313481,
+  "orig": 0.8490873015873016
+ },
+ "sd_across_seeds_orig_within": 0.016116001824992697
+}
+[cnnorder] total 1241s

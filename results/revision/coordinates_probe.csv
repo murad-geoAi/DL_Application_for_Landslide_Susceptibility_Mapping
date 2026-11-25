@@ -1,0 +1,4 @@
+split,AUC
+spatial block CV (pooled OOF),0.8808333333333332
+spatial block CV (within-fold mean),0.6806482676277538
+random 60/20/20 (test),0.948125

@@ -1,0 +1,10 @@
+[catboost seed 8] spatial within=0.819 pooled=0.775
+[catboost seed 8] random within=0.951 pooled=0.951
+[catboost] seed 8 done in 22s
+| model | design | within-fold AUC | pooled AUC | baseline (T4 spatial within) | n seeds |
+|---|---|---|---|---|---|
+| CatBoost | spatial CV | 0.819 +/- nan | 0.775 +/- nan |  | 1 |
+| CatBoost | random CV | 0.951 +/- nan | 0.951 +/- nan |  | 1 |
+
+TabPFN: skipped (user declined installation).
+[extra_models] total 22s

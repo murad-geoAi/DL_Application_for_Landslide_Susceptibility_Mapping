@@ -1,0 +1,10 @@
+{
+ "pi_k_training_fold_share": {
+  "fold1": 0.21082621082621084,
+  "fold2": 0.36018957345971564,
+  "fold3": 0.3868131868131868,
+  "fold4": 0.44655581947743467,
+  "fold5": 0.5791044776119403
+ },
+ "max_abs_within_fold_AUC_diff_over_all_model_seed_fold": 0.0
+}

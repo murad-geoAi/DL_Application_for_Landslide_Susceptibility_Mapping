@@ -1,0 +1,92 @@
+model,grouping,group,n_seeds,share_pct_mean,share_pct_sd
+RF,10 factors (flags inside parents; Fig. 14a v2),Annual rainfall,10,16.7495,0.4829
+RF,10 factors (flags inside parents; Fig. 14a v2),Aspect,10,6.2653,0.1627
+RF,10 factors (flags inside parents; Fig. 14a v2),Curvature,10,3.0437,0.0815
+RF,10 factors (flags inside parents; Fig. 14a v2),Elevation,10,14.3915,0.2463
+RF,10 factors (flags inside parents; Fig. 14a v2),LULC,10,9.7014,0.2521
+RF,10 factors (flags inside parents; Fig. 14a v2),NDVI,10,28.6185,0.6032
+RF,10 factors (flags inside parents; Fig. 14a v2),Slope,10,3.1791,0.1146
+RF,10 factors (flags inside parents; Fig. 14a v2),Soil texture,10,10.077,0.1129
+RF,10 factors (flags inside parents; Fig. 14a v2),TRI,10,4.1601,0.1811
+RF,10 factors (flags inside parents; Fig. 14a v2),TWI,10,3.8139,0.1275
+RF,11 groups (flags separate),Annual rainfall,10,16.4855,0.467
+RF,11 groups (flags separate),Aspect,10,5.7326,0.1448
+RF,11 groups (flags separate),Curvature,10,2.9958,0.0803
+RF,11 groups (flags separate),Elevation,10,14.1647,0.2392
+RF,11 groups (flags separate),LULC,10,9.5485,0.2459
+RF,11 groups (flags separate),Missingness/flat flags,10,2.486,0.1439
+RF,11 groups (flags separate),NDVI,10,28.1679,0.6065
+RF,11 groups (flags separate),Slope,10,3.1291,0.1128
+RF,11 groups (flags separate),Soil texture,10,9.8465,0.1073
+RF,11 groups (flags separate),TRI,10,4.0946,0.1804
+RF,11 groups (flags separate),TWI,10,3.349,0.1252
+RF,13 groups (3 flags separate),Annual rainfall,10,16.3523,0.463
+RF,13 groups (3 flags separate),Aspect,10,5.6863,0.1425
+RF,13 groups (3 flags separate),Curvature,10,2.9716,0.0789
+RF,13 groups (3 flags separate),Elevation,10,14.0502,0.2343
+RF,13 groups (3 flags separate),Flat-cell flag,10,0.8725,0.0731
+RF,13 groups (3 flags separate),LULC,10,9.4714,0.2441
+RF,13 groups (3 flags separate),NDVI,10,27.9405,0.6056
+RF,13 groups (3 flags separate),Slope,10,3.1038,0.1123
+RF,13 groups (3 flags separate),Soil missing flag,10,0.474,0.048
+RF,13 groups (3 flags separate),Soil texture,10,9.7669,0.106
+RF,13 groups (3 flags separate),TRI,10,4.0616,0.18
+RF,13 groups (3 flags separate),TWI,10,3.3219,0.1239
+RF,13 groups (3 flags separate),TWI missing flag,10,1.927,0.1304
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),Elevation,10,11.7407,0.9995
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),Slope,10,2.8335,0.6174
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),Curvature,10,3.3757,0.381
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),TWI,10,7.2305,0.9027
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),TRI,10,7.6939,1.2765
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),NDVI,10,27.7294,1.018
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),Annual rainfall,10,16.4381,0.9426
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),Aspect,10,8.8324,0.7576
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),Soil texture,10,8.0164,0.942
+1D-CNN,10 factors (flags inside parents; Fig. 14a v2),LULC,10,6.1094,0.7439
+1D-CNN,11 groups (flags separate),Elevation,10,11.5184,0.9515
+1D-CNN,11 groups (flags separate),Slope,10,2.7826,0.6082
+1D-CNN,11 groups (flags separate),Curvature,10,3.3144,0.3653
+1D-CNN,11 groups (flags separate),TWI,10,2.7557,0.407
+1D-CNN,11 groups (flags separate),TRI,10,7.5597,1.2636
+1D-CNN,11 groups (flags separate),NDVI,10,27.2254,1.0032
+1D-CNN,11 groups (flags separate),Annual rainfall,10,16.1346,0.9405
+1D-CNN,11 groups (flags separate),Aspect,10,8.1581,0.7013
+1D-CNN,11 groups (flags separate),Missingness/flat flags,10,6.8428,0.8196
+1D-CNN,11 groups (flags separate),LULC,10,5.9945,0.7206
+1D-CNN,11 groups (flags separate),Soil texture,10,7.7137,1.0497
+1D-CNN,13 groups (3 flags separate),Elevation,10,11.2541,0.9431
+1D-CNN,13 groups (3 flags separate),Slope,10,2.7163,0.5917
+1D-CNN,13 groups (3 flags separate),Curvature,10,3.2365,0.3573
+1D-CNN,13 groups (3 flags separate),TWI,10,2.6913,0.3953
+1D-CNN,13 groups (3 flags separate),TRI,10,7.3769,1.2332
+1D-CNN,13 groups (3 flags separate),NDVI,10,26.5821,0.9502
+1D-CNN,13 groups (3 flags separate),Annual rainfall,10,15.7605,0.9206
+1D-CNN,13 groups (3 flags separate),Aspect,10,7.9612,0.6728
+1D-CNN,13 groups (3 flags separate),Flat-cell flag,10,1.035,0.1606
+1D-CNN,13 groups (3 flags separate),TWI missing flag,10,6.229,0.9627
+1D-CNN,13 groups (3 flags separate),Soil missing flag,10,1.7671,0.2798
+1D-CNN,13 groups (3 flags separate),LULC,10,5.8552,0.7055
+1D-CNN,13 groups (3 flags separate),Soil texture,10,7.5348,1.024
+RF,per encoded column (sum of |SHAP| per column),Annual_Rainfall,10,15.6979,0.4496
+RF,per encoded column (sum of |SHAP| per column),Aspect_cos,10,3.9175,0.1254
+RF,per encoded column (sum of |SHAP| per column),Aspect_sin,10,2.9873,0.0783
+RF,per encoded column (sum of |SHAP| per column),Curvature,10,2.8526,0.0748
+RF,per encoded column (sum of |SHAP| per column),Elevation,10,13.4879,0.2295
+RF,per encoded column (sum of |SHAP| per column),LULC_1,10,0.5781,0.0519
+RF,per encoded column (sum of |SHAP| per column),LULC_11,10,0.6206,0.0458
+RF,per encoded column (sum of |SHAP| per column),LULC_2,10,2.025,0.0896
+RF,per encoded column (sum of |SHAP| per column),LULC_4,10,0.0915,0.0098
+RF,per encoded column (sum of |SHAP| per column),LULC_5,10,0.6186,0.0137
+RF,per encoded column (sum of |SHAP| per column),LULC_7,10,6.8973,0.2293
+RF,per encoded column (sum of |SHAP| per column),LULC_missing,10,0.0073,0.0024
+RF,per encoded column (sum of |SHAP| per column),NDVI,10,26.822,0.5745
+RF,per encoded column (sum of |SHAP| per column),Slope,10,2.9796,0.1081
+RF,per encoded column (sum of |SHAP| per column),Soil_Texture_4,10,4.7013,0.1934
+RF,per encoded column (sum of |SHAP| per column),Soil_Texture_6,10,0.0188,0.0035
+RF,per encoded column (sum of |SHAP| per column),Soil_Texture_7,10,5.0248,0.2025
+RF,per encoded column (sum of |SHAP| per column),Soil_Texture_missing,10,0.4412,0.0405
+RF,per encoded column (sum of |SHAP| per column),Soil_Texture_was_missing,10,0.455,0.0458
+RF,per encoded column (sum of |SHAP| per column),TRI,10,3.899,0.1719
+RF,per encoded column (sum of |SHAP| per column),TWI,10,3.1889,0.1182
+RF,per encoded column (sum of |SHAP| per column),TWI_was_missing,10,1.8499,0.1264
+RF,per encoded column (sum of |SHAP| per column),is_flat,10,0.8376,0.0704

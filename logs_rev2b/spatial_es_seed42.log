@@ -1,0 +1,41 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795550986.109276 6260400 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795550986.109346 6260400 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x704c2c2700> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x704c2c2700> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[spatial_es seed 42] DNN within=0.556 pooled=0.468
+[spatial_es seed 42] 1D-CNN within=0.726 pooled=0.761
+[spatial_es seed 42] LSTM within=0.464 pooled=0.291
+[spatial_es] seed 42 done in 228s
+| model | design | within-fold AUC | pooled AUC | baseline (T4 spatial within) | n seeds |
+|---|---|---|---|---|---|
+| DNN | random_ES (main) | 0.619 +/- nan | 0.589 +/- nan | 0.609 | 1 |
+| 1D-CNN | random_ES (main) | 0.787 +/- nan | 0.856 +/- nan | 0.789 +/- 0.015 | 1 |
+| LSTM | random_ES (main) | 0.506 +/- nan | 0.500 +/- nan | 0.557 | 1 |
+| DNN | spatial_ES | 0.556 +/- nan | 0.468 +/- nan | 0.609 | 1 |
+| 1D-CNN | spatial_ES | 0.726 +/- nan | 0.761 +/- nan | 0.789 +/- 0.015 | 1 |
+| LSTM | spatial_ES | 0.464 +/- nan | 0.291 +/- nan | 0.557 | 1 |
+
+Validation set per fold (averaged over seeds; min/max across seeds)
+
+| model   |   fold |   n_train |   n_val_mean |   n_val_min |   n_val_max |   pos_mean |   pos_min |   neg_mean |   neg_min |   frac_mean |   frac_max |   epochs_mean |
+|:--------|-------:|----------:|-------------:|------------:|------------:|-----------:|----------:|-----------:|----------:|------------:|-----------:|--------------:|
+| 1D-CNN  |      1 |       351 |           88 |          88 |          88 |         21 |        21 |         67 |        67 |        0.25 |       0.25 |            16 |
+| 1D-CNN  |      2 |       422 |          145 |         145 |         145 |        122 |       122 |         23 |        23 |        0.34 |       0.34 |            32 |
+| 1D-CNN  |      3 |       455 |           95 |          95 |          95 |          9 |         9 |         86 |        86 |        0.21 |       0.21 |            34 |
+| 1D-CNN  |      4 |       421 |          145 |         145 |         145 |        122 |       122 |         23 |        23 |        0.34 |       0.34 |            21 |
+| 1D-CNN  |      5 |       335 |           74 |          74 |          74 |         20 |        20 |         54 |        54 |        0.22 |       0.22 |            32 |
+| DNN     |      1 |       351 |           88 |          88 |          88 |         21 |        21 |         67 |        67 |        0.25 |       0.25 |            39 |
+| DNN     |      2 |       422 |          145 |         145 |         145 |        122 |       122 |         23 |        23 |        0.34 |       0.34 |             6 |
+| DNN     |      3 |       455 |           95 |          95 |          95 |          9 |         9 |         86 |        86 |        0.21 |       0.21 |            30 |
+| DNN     |      4 |       421 |          145 |         145 |         145 |        122 |       122 |         23 |        23 |        0.34 |       0.34 |            33 |
+| DNN     |      5 |       335 |           74 |          74 |          74 |         20 |        20 |         54 |        54 |        0.22 |       0.22 |             6 |
+| LSTM    |      1 |       351 |           88 |          88 |          88 |         21 |        21 |         67 |        67 |        0.25 |       0.25 |             6 |
+| LSTM    |      2 |       422 |          145 |         145 |         145 |        122 |       122 |         23 |        23 |        0.34 |       0.34 |             6 |
+| LSTM    |      3 |       455 |           95 |          95 |          95 |          9 |         9 |         86 |        86 |        0.21 |       0.21 |             7 |
+| LSTM    |      4 |       421 |          145 |         145 |         145 |        122 |       122 |         23 |        23 |        0.34 |       0.34 |             6 |
+| LSTM    |      5 |       335 |           74 |          74 |          74 |         20 |        20 |         54 |        54 |        0.22 |       0.22 |             6 |
+[spatial_es] total 230s
+real 232.87
+user 111.98
+sys 46.79

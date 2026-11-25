@@ -1,0 +1,14 @@
+{
+ "model": "RandomForest",
+ "dataset": "terrain+SMOTE",
+ "rule": "highest 10-seed within-fold AUC among terrain+SMOTE",
+ "candidates": {
+  "RandomForest": 0.8,
+  "1D-CNN": 0.7809,
+  "SVM-RBF": 0.7597,
+  "XGBoost": 0.7586,
+  "LogisticRegression": 0.6416,
+  "DNN": 0.6052,
+  "LSTM": 0.5533
+ }
+}

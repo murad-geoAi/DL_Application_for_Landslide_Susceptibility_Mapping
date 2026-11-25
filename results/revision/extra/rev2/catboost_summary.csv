@@ -1,0 +1,3 @@
+model,design,within_AUC_mean,within_AUC_sd,pooled_AUC_mean,pooled_AUC_sd,n_seeds
+CatBoost,spatial CV,0.8128,0.0094,0.774,0.0103,10
+CatBoost,random CV,0.9538,0.0015,0.9522,0.0014,10

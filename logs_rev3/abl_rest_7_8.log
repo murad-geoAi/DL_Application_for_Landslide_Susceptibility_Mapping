@@ -1,0 +1,3 @@
+usage: revision_rev3.py [-h] --part PART [--seeds [SEEDS ...]]
+                        [--models [MODELS ...]]
+revision_rev3.py: error: argument --seeds: invalid int value: '7 8'

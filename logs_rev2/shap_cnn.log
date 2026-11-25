@@ -1,0 +1,26 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795499345.964079 3722996 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795499345.964428 3722996 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70a5b853a0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x70a5b853a0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[shap cnn1d] seed 42 done in 182s, pooled AUC 0.8555
+[shap cnn1d] seed 0 done in 206s, pooled AUC 0.8550
+[shap cnn1d] seed 1 done in 228s, pooled AUC 0.8367
+[shap cnn1d] seed 2 done in 233s, pooled AUC 0.8426
+[shap cnn1d] seed 3 done in 236s, pooled AUC 0.8610
+[shap cnn1d] seed 4 done in 236s, pooled AUC 0.8554
+[shap cnn1d] seed 5 done in 217s, pooled AUC 0.8770
+[shap cnn1d] seed 6 done in 155s, pooled AUC 0.8377
+[shap cnn1d] seed 7 done in 139s, pooled AUC 0.8424
+[shap cnn1d] seed 8 done in 148s, pooled AUC 0.8366
+                     mean       std
+Annual rainfall  0.168413  0.009531
+Aspect           0.089509  0.007704
+Curvature        0.027401  0.004422
+Elevation        0.116895  0.010947
+LULC             0.061743  0.007840
+NDVI             0.288710  0.011614
+Slope            0.022045  0.006766
+Soil texture     0.078349  0.009285
+TRI              0.075172  0.014082
+TWI              0.071763  0.009905

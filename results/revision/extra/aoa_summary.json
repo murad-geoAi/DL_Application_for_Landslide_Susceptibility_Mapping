@@ -1,0 +1,127 @@
+{
+  "model": "RandomForest",
+  "di_features": [
+    "Elevation",
+    "Slope",
+    "Curvature",
+    "TWI",
+    "TRI",
+    "NDVI",
+    "Annual_Rainfall"
+  ],
+  "di_weights": "fold-specific mean|TreeSHAP| (RF, terrain, no SMOTE, 10-seed mean) on TRAINING points of the training folds only; normalised to mean 1",
+  "di_weights_normalised_mean1_by_fold": {
+    "fold1": {
+      "Elevation": 1.457939660067288,
+      "Slope": 0.3615483862011169,
+      "Curvature": 0.4979745860840873,
+      "TWI": 0.5452888855805058,
+      "TRI": 0.4608660878199657,
+      "NDVI": 2.1505212900485238,
+      "Annual_Rainfall": 1.525861104198512
+    },
+    "fold2": {
+      "Elevation": 1.232771354162553,
+      "Slope": 0.2901485657994173,
+      "Curvature": 0.18581859194773176,
+      "TWI": 0.3718269974002036,
+      "TRI": 0.39266542940233395,
+      "NDVI": 2.656569650857946,
+      "Annual_Rainfall": 1.8701994104298139
+    },
+    "fold3": {
+      "Elevation": 1.2227416548131742,
+      "Slope": 0.2852007615607453,
+      "Curvature": 0.15479121730464301,
+      "TWI": 0.3654596775845588,
+      "TRI": 0.34451633430286316,
+      "NDVI": 2.3699871098083345,
+      "Annual_Rainfall": 2.2573032446256813
+    },
+    "fold4": {
+      "Elevation": 1.374752049595659,
+      "Slope": 0.36878714385770434,
+      "Curvature": 0.19559119246571083,
+      "TWI": 0.4302619114124528,
+      "TRI": 0.4727231405675371,
+      "NDVI": 2.163272800903005,
+      "Annual_Rainfall": 1.9946117611979304
+    },
+    "fold5": {
+      "Elevation": 1.0347173820264035,
+      "Slope": 0.35216389856016633,
+      "Curvature": 0.1923711634079569,
+      "TWI": 0.45410841348669645,
+      "TRI": 0.36725991123727086,
+      "NDVI": 2.8822113351491314,
+      "Annual_Rainfall": 1.7171678961323746
+    }
+  },
+  "n_outside_by_fold_and_landslide": {
+    "fold1": [
+      0,
+      0
+    ],
+    "fold2": [
+      0,
+      0
+    ],
+    "fold3": [
+      0,
+      0
+    ],
+    "fold4": [
+      2,
+      2
+    ],
+    "fold5": [
+      0,
+      37
+    ]
+  },
+  "threshold_rule": "Q3 + 1.5*IQR of training-point DI (nearest training point in another fold), per training set",
+  "threshold_per_fold": {
+    "fold1": 0.5784327228550628,
+    "fold2": 0.49901894470541797,
+    "fold3": 0.5138885991819824,
+    "fold4": 0.5880107541485369,
+    "fold5": 0.5917609752914699
+  },
+  "mean_pairwise_dist_per_fold": {
+    "fold1": 3.917135422921297,
+    "fold2": 4.255011617650102,
+    "fold3": 4.289798079565452,
+    "fold4": 3.9424942839457016,
+    "fold5": 4.264411753496302
+  },
+  "n_outside_AOA": 41,
+  "share_outside_AOA": 0.08266129032258064,
+  "share_outside_by_class": {
+    "Very low": 0.13131313131313133,
+    "Low": 0.06060606060606061,
+    "Moderate": 0.1919191919191919,
+    "High": 0.030303030303030304,
+    "Very high": 0.0
+  },
+  "share_outside_by_fold": {
+    "fold1": 0.0,
+    "fold2": 0.0,
+    "fold3": 0.0,
+    "fold4": 0.05333333333333334,
+    "fold5": 0.22981366459627328
+  },
+  "n_outside_by_fold": {
+    "fold1": 0,
+    "fold2": 0,
+    "fold3": 0,
+    "fold4": 4,
+    "fold5": 37
+  },
+  "share_outside_landslides": 0.01020408163265306,
+  "share_outside_nonlandslides": 0.13,
+  "DI_quantiles": {
+    "0.5": 0.19509592455026573,
+    "0.9": 0.5290368481930444,
+    "0.99": 1.045888585917521
+  }
+}

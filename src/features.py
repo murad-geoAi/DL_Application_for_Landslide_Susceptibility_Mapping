@@ -83,15 +83,49 @@ from sklearn.preprocessing import FunctionTransformer, OneHotEncoder, StandardSc
 
 from .data import CATEGORICAL_COLS, COORD_COLS, TARGET
 
-#: DBSCAN neighbourhood radius, in degrees of latitude/longitude. At this study
-#: area's latitude 0.01 degrees is roughly 1.1 km.
-DBSCAN_EPS: float = 0.01
+#: DBSCAN neighbourhood radius in **kilometres** in the local projected plane
+#: (``project_km``). Replaces the earlier 0.01 degrees (~1.1 km), which is
+#: anisotropic (a degree of longitude is shorter than a degree of latitude here).
+DBSCAN_EPS: float = 1.1
 DBSCAN_MIN_SAMPLES: int = 5
+
+#: Fixed reference latitude (mean latitude of the full 496-row dataset) for the
+#: local equirectangular projection. Fixed so that train-fold and test-fold
+#: projections agree; it is a geometric constant, not a fitted statistic.
+FIXED_LAT0: float = 22.73372935082661
+KM_PER_DEG_LAT: float = 110.574
+KM_PER_DEG_LON_EQ: float = 111.320
+
+
+def project_km(lat, lon, lat0: float = FIXED_LAT0) -> np.ndarray:
+    """Local equirectangular projection to km: x = lon*111.320*cos(lat0), y = lat*110.574."""
+    lat = np.asarray(lat, dtype=float)
+    lon = np.asarray(lon, dtype=float)
+    x = lon * KM_PER_DEG_LON_EQ * np.cos(np.deg2rad(lat0))
+    y = lat * KM_PER_DEG_LAT
+    return np.column_stack([x, y])
 
 #: Level used for a categorical code that is missing in the training fold. An
 #: explicit level rather than a mode-fill: 10% of ``Soil_Texture`` is missing,
 #: and mode-filling would assert the majority texture for one row in ten.
 MISSING_LEVEL: str = "missing"
+
+#: Full category schema (schema only, no labels): the distinct class codes seen
+#: anywhere in the 496-row dataset plus the explicit "missing" level. Passed to
+#: the OneHotEncoders so the encoded width is identical in every fold and split
+#: (previously fold 5 lacked LULC_missing and Soil_Texture_6, giving 21 columns
+#: instead of 23). ``tests/test_feature_leakage.py`` checks these against the data.
+CATEGORY_LEVELS: dict[str, list[str]] = {
+    "LULC": sorted(["1", "2", "4", "5", "7", "11"]) + [MISSING_LEVEL],
+    "Soil_Texture": sorted(["4", "6", "7"]) + [MISSING_LEVEL],
+}
+
+#: Binary indicator columns: passed through unscaled.
+BINARY_FLAG_COLS: list[str] = ["is_flat", "TWI_was_missing", "Soil_Texture_was_missing"]
+#: Aspect components are already in [-1, 1]; they are KNN-imputed with the other
+#: continuous columns but NOT standardised, so SMOTE can renormalise (sin, cos)
+#: to unit length directly in the model matrix.
+UNSCALED_CONTINUOUS_COLS: list[str] = ["Aspect_sin", "Aspect_cos"]
 
 
 # --------------------------------------------------------------------------
@@ -302,8 +336,9 @@ class DBSCANClusterAssigner(BaseEstimator, TransformerMixin):
     Parameters
     ----------
     eps:
-        Neighbourhood radius in degrees, matching the units of the coordinate
-        columns. 0.01 degrees is roughly 1.1 km here.
+        Neighbourhood radius in km. Input coordinates are ``[Latitude,
+        Longitude]`` in degrees and are projected to local km with the fixed
+        ``FIXED_LAT0`` before DBSCAN / assignment.
     min_samples:
         Minimum neighbourhood size for a core point.
     """
@@ -314,17 +349,24 @@ class DBSCANClusterAssigner(BaseEstimator, TransformerMixin):
 
     @staticmethod
     def _as_array(X) -> np.ndarray:
+        """Coordinates in degrees, column order [Latitude, Longitude]."""
         if isinstance(X, pd.DataFrame):
             return X[COORD_COLS].to_numpy(dtype=float)
         return np.asarray(X, dtype=float)
 
+    @staticmethod
+    def _km(coords: np.ndarray) -> np.ndarray:
+        return project_km(coords[:, 0], coords[:, 1])
+
     def fit(self, X, y=None) -> "DBSCANClusterAssigner":
         coords = self._as_array(X)
-        db = DBSCAN(eps=self.eps, min_samples=self.min_samples).fit(coords)
+        km = self._km(coords)
+        db = DBSCAN(eps=self.eps, min_samples=self.min_samples).fit(km)
 
         self.labels_ = db.labels_
         self.core_sample_indices_ = db.core_sample_indices_
-        self.core_points_ = coords[db.core_sample_indices_]
+        self.core_points_ = coords[db.core_sample_indices_]  # degrees
+        self.core_points_km_ = km[db.core_sample_indices_]
         self.core_labels_ = db.labels_[db.core_sample_indices_]
         self.n_train_ = len(coords)
         self.n_clusters_ = int(len(set(db.labels_) - {-1}))
@@ -333,7 +375,7 @@ class DBSCANClusterAssigner(BaseEstimator, TransformerMixin):
 
         # One neighbour is enough: the nearest core point decides the label.
         self._nn = (
-            NearestNeighbors(n_neighbors=1).fit(self.core_points_)
+            NearestNeighbors(n_neighbors=1).fit(self.core_points_km_)
             if len(self.core_points_)
             else None
         )
@@ -346,7 +388,7 @@ class DBSCANClusterAssigner(BaseEstimator, TransformerMixin):
         if self._nn is None:  # no cluster survived min_samples in this fold
             labels = np.full(len(coords), -1, dtype=int)
         else:
-            dist, idx = self._nn.kneighbors(coords, n_neighbors=1)
+            dist, idx = self._nn.kneighbors(self._km(coords), n_neighbors=1)
             within = dist[:, 0] <= self.eps
             labels = np.where(within, self.core_labels_[idx[:, 0]], -1).astype(int)
 
@@ -483,11 +525,38 @@ def build_spatial_imputer(n_neighbors: int = 5, use_coords: bool = False) -> Pip
             ),
         ]
     else:
-        steps = [("impute", imputer), ("scale", StandardScaler())]
+        steps = [
+            ("impute", imputer.set_output(transform="pandas")),
+            ("scale", _PartialStandardScaler(passthrough=UNSCALED_CONTINUOUS_COLS)),
+        ]
 
     pipe = Pipeline(steps)
     pipe.use_coords = use_coords  # read by build_preprocessor's column selector
     return pipe
+
+
+class _PartialStandardScaler(StandardScaler):
+    """StandardScaler that leaves the named columns untouched (mean 0, scale 1).
+
+    Used so ``Aspect_sin``/``Aspect_cos`` (already in [-1, 1]) are not
+    standardised; SMOTE then renormalises (sin, cos) to unit length directly in
+    the model matrix without needing an inverse transform.
+    """
+
+    def __init__(self, passthrough=(), *, copy=True, with_mean=True, with_std=True):
+        super().__init__(copy=copy, with_mean=with_mean, with_std=with_std)
+        self.passthrough = passthrough
+
+    def fit(self, X, y=None, sample_weight=None):
+        super().fit(X, y, sample_weight=sample_weight)
+        names = list(getattr(self, "feature_names_in_", []))
+        for i, n in enumerate(names):
+            if n in set(self.passthrough):
+                self.mean_[i] = 0.0
+                self.scale_[i] = 1.0
+                if getattr(self, "var_", None) is not None:
+                    self.var_[i] = 1.0
+        return self
 
 
 def _drop_coord_columns(X: pd.DataFrame) -> pd.DataFrame:
@@ -534,10 +603,10 @@ def build_categorical_encoder() -> Pipeline:
     Unseen levels map to all-zeros via ``handle_unknown="ignore"``. Two details
     the audit forces:
 
-    - ``Soil_Texture`` code 6 appears once in the whole dataset, so it is absent
-      from most training folds by construction. When it lands in a validation
-      fold it encodes as all-zeros, which is the correct behaviour: the model
-      has never seen that texture and should not pretend otherwise.
+    - The category list is fixed from ``CATEGORY_LEVELS`` (whole-dataset schema,
+      no labels), so the encoded width is identical in every fold. A level absent
+      from a training fold (e.g. ``Soil_Texture`` code 6, which occurs once) is
+      then an all-zero column in training that the model can never use.
     - ``LULC`` code 7 carries a 92.3% landslide rate. It stays in the matrix for
       now, but ``evaluate.py`` should report performance with it ablated,
       because its status as a legitimate predictor rather than a proxy for the
@@ -546,7 +615,14 @@ def build_categorical_encoder() -> Pipeline:
     return Pipeline(
         [
             ("levels", FunctionTransformer(_as_category_strings, feature_names_out="one-to-one")),
-            ("onehot", OneHotEncoder(handle_unknown="ignore", sparse_output=False)),
+            (
+                "onehot",
+                OneHotEncoder(
+                    categories=[CATEGORY_LEVELS[c] for c in CATEGORICAL_COLS],
+                    handle_unknown="ignore",
+                    sparse_output=False,
+                ),
+            ),
         ]
     )
 
@@ -570,6 +646,19 @@ def build_cluster_encoder(
     )
 
 
+class _BinarySelector:
+    """Picklable selector for the binary flags (``BINARY_FLAG_COLS``), in fixed order."""
+
+    def __init__(self, include_missing_indicators: bool = True):
+        self.include_missing_indicators = include_missing_indicators
+
+    def __call__(self, df: pd.DataFrame) -> list[str]:
+        return [
+            c for c in BINARY_FLAG_COLS
+            if c in df.columns and (self.include_missing_indicators or not c.endswith("_was_missing"))
+        ]
+
+
 class _ContinuousSelector:
     """Picklable column selector for the continuous block.
 
@@ -583,7 +672,7 @@ class _ContinuousSelector:
         self.include_coords = include_coords
 
     def __call__(self, df: pd.DataFrame) -> list[str]:
-        excluded = set(CATEGORICAL_COLS) | {TARGET, "Aspect"}
+        excluded = set(CATEGORICAL_COLS) | {TARGET, "Aspect"} | set(BINARY_FLAG_COLS)
         if not self.include_coords:
             excluded |= set(COORD_COLS)
 
@@ -680,6 +769,8 @@ def build_preprocessor(
                 include_coords=use_coords,
             ),
         ),
+        # Binary flags: pass-through, unscaled, no imputation needed (no NaN).
+        ("binary", "passthrough", _BinarySelector(include_missing_indicators)),
         ("categorical", build_categorical_encoder(), list(CATEGORICAL_COLS)),
     ]
     if include_cluster:
@@ -715,3 +806,19 @@ def feature_names(preprocessor: ColumnTransformer | Pipeline) -> list[str]:
     if isinstance(preprocessor, Pipeline):
         preprocessor = preprocessor.named_steps["columns"]
     return [str(n) for n in preprocessor.get_feature_names_out()]
+
+
+#: Continuous terrain columns of the default (drainage dropped) feature set, in
+#: the order ``ColumnTransformer`` emits them. Verified against the fitted
+#: preprocessor in ``tests/test_feature_leakage.py``.
+TERRAIN_CONTINUOUS_COLS: list[str] = [
+    "Elevation", "Slope", "Curvature", "TWI", "TRI", "NDVI", "Annual_Rainfall",
+]
+
+
+def terrain_feature_names() -> list[str]:
+    """Schema-derived names (no data) of the 23 encoded terrain columns."""
+    names = list(TERRAIN_CONTINUOUS_COLS) + list(UNSCALED_CONTINUOUS_COLS) + list(BINARY_FLAG_COLS)
+    for col in CATEGORICAL_COLS:
+        names += [f"{col}_{lvl}" for lvl in CATEGORY_LEVELS[col]]
+    return names

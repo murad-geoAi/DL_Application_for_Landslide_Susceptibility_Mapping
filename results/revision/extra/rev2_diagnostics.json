@@ -1,0 +1,1462 @@
+{
+ "n_total": 496,
+ "n_pos": 196,
+ "n_neg": 300,
+ "A1_clark_evans": {
+  "formula": "R = mean NN dist / (0.5/sqrt(n/A)); SE = 0.26136/sqrt(n*density); z=(r_obs-r_exp)/SE; revision_analyses.py:86-102; NN via cKDTree(k=2) on projected km; NO edge correction in the reported R/z (A = convex hull of all 496 or Rangamati ADM2 polygon)",
+  "district_area_km2": 5755.5695845539285,
+  "hull_area_km2": 7284.887972281749,
+  "landslides_hull": {
+   "n": 196.0,
+   "area_km2": 7284.887972281749,
+   "mean_nn_km": 0.541039736875294,
+   "median_nn_km": 0.133646115837324,
+   "expected_nn_km_CSR": 3.0482698279904494,
+   "R": 0.17749076276228826,
+   "z": -22.029249543403665
+  },
+  "landslides_district": {
+   "n": 196.0,
+   "area_km2": 5755.5695845539285,
+   "mean_nn_km": 0.541039736875294,
+   "median_nn_km": 0.133646115837324,
+   "expected_nn_km_CSR": 2.7094810823108584,
+   "R": 0.19968389534347766,
+   "z": -21.43485128786217
+  },
+  "landslides_district_donnelly": {
+   "perimeter_km": 741.7294840936119,
+   "r_exp": 2.915078547909109,
+   "R": 0.1856003973763809,
+   "z": -19.81201640775448
+  },
+  "non_landslides_hull": {
+   "n": 300.0,
+   "area_km2": 7284.887972281749,
+   "mean_nn_km": 2.333977855608575,
+   "median_nn_km": 2.1124633750396926,
+   "expected_nn_km_CSR": 2.46388716805406,
+   "R": 0.9472746503452569,
+   "z": -1.7470727052504058
+  },
+  "non_landslides_district": {
+   "n": 300.0,
+   "area_km2": 5755.5695845539285,
+   "mean_nn_km": 2.333977855608575,
+   "median_nn_km": 2.1124633750396926,
+   "expected_nn_km_CSR": 2.1900474851309215,
+   "R": 1.0657202053630583,
+   "z": 2.177661745727687
+  },
+  "non_landslides_district_donnelly": {
+   "perimeter_km": 741.7294840936119,
+   "r_exp": 2.3229830522088273,
+   "R": 1.0047330536438022,
+   "z": 0.14421736050340572
+  },
+  "pooled_hull": {
+   "n": 496.0,
+   "area_km2": 7284.887972281749,
+   "mean_nn_km": 1.4779595361202214,
+   "median_nn_km": 1.321590778188824,
+   "expected_nn_km_CSR": 1.9161989809036546,
+   "R": 0.7712975274745396,
+   "z": -9.744119040544618
+  },
+  "pooled_district": {
+   "n": 496.0,
+   "area_km2": 5755.5695845539285,
+   "mean_nn_km": 1.4779595361202214,
+   "median_nn_km": 1.321590778188824,
+   "expected_nn_km_CSR": 1.703230088434961,
+   "R": 0.867739212779095,
+   "z": -5.635115531744713
+  },
+  "pooled_district_donnelly": {
+   "perimeter_km": 741.7294840936119,
+   "r_exp": 1.7828478013372653,
+   "R": 0.8289880577644623,
+   "z": -6.787606822428506
+  }
+ },
+ "A2_projection": {
+  "type": "local equirectangular (NOT an EPSG CRS): x = lon*111.320*cos(lat0) km, y = lat*110.574 km; features.py:100-106 (project_km) and revision_analyses.py:70-75 (to_km, same constants)",
+  "lat0_deg": 22.73372935082661,
+  "lat0_source": "mean latitude of the full 496-row dataset, fixed constant (features.py:51)",
+  "km_per_deg_lon_at_lat0": 102.67163283150705,
+  "km_per_deg_lat": 110.574,
+  "dbscan_eps_1.1km_in_deg": {
+   "lat": 0.009948089062528262,
+   "lon": 0.010713767470759857
+  },
+  "gi_band_5.5km_in_deg": {
+   "lat": 0.04974044531264131,
+   "lon": 0.05356883735379928
+  },
+  "note": "eps (1.1 km) and Gi* band (5.5 km) are defined directly in km on the projected plane; the degree values (~0.01 deg, ~0.05 deg) are nominal conversions only (sparsity code stores eps_deg=round(km/110.574,3))."
+ },
+ "A3_jitter": {
+  "code": "revision_analyses.py:114: np.random.default_rng(42).normal(0, 1e-6, xy.shape) added to km coordinates",
+  "units": "km (xy is projected km), so SD = 1e-6 km = 1 mm; normal(loc, scale) -> 1e-6 is the SD, not the variance",
+  "n_points_with_nn_dist_eq_0": 0,
+  "n_points_nn_below_1e-3_km": 0,
+  "n_points_nn_below_1e-2_km": 0,
+  "min_positive_nn_km": 0.010836205027222823,
+  "n_exact_duplicate_coordinate_rows_in_496": 0,
+  "n_exact_duplicate_coords_landslides": 0,
+  "n_exact_duplicate_coords_non_landslides": 0,
+  "no_jitter_undefined_cells_pos196": 0,
+  "no_jitter_undefined_cells_all496": 0
+ },
+ "A4_voronoi": {
+  "clip_polygon_used_in_pipeline": "Rangamati ADM2 polygon (revision_analyses.py:170-171), not the convex hull",
+  "landslides_196_clip_district": {
+   "n_cells": 196,
+   "mean": 29.365150941601634,
+   "median": 1.274220461850128,
+   "p10": 0.10900172553535076,
+   "p90": 36.91689793322028,
+   "cv": 5.473942854527724,
+   "max": 1914.1790557622535
+  },
+  "landslides_196_clip_hull": {
+   "n_cells": 196,
+   "mean": 37.16779577694769,
+   "median": 1.5577822911972188,
+   "p10": 0.10900172553535076,
+   "p90": 51.308834295314334,
+   "cv": 5.3467207626539075,
+   "max": 2413.728049417778
+  },
+  "all_496_clip_district": {
+   "n_cells": 496,
+   "mean": 11.603970936600648,
+   "median": 9.966010931136463,
+   "p10": 0.2741604095798899,
+   "p90": 26.727540074740936,
+   "cv": 0.9349217656563722,
+   "max": 61.21322883844905
+  },
+  "all_496_clip_hull": {
+   "n_cells": 496,
+   "mean": 14.687274137664886,
+   "median": 10.290888218135631,
+   "p10": 0.28382885622327403,
+   "p90": 32.41577224676382,
+   "cv": 1.2499695532933006,
+   "max": 132.76939686746766
+  },
+  "note_tessellation_is_over_the_points_given_but_hull_for_far_points_uses_all_496_extent": true
+ },
+ "A5_gi_star": {
+  "code": "revision_analyses.py:213-247: libpysal DistanceBand(xy_km, threshold=5.5, binary=True) -> transform 'r' -> esda.getisord.G_Local(y, w, star=True, permutations=999, seed=42), esda 2.9.0 / libpysal 4.14.1",
+  "star_self_weight_included": true,
+  "manual_gi_star_with_self_weight_matches_esda_maxabsdiff": 1.6479873021779667e-17,
+  "mechanism": "input W has zero diagonal; star=True with transform 'R' -> esda fills diagonal with the row-maximum of the row-standardised weights (= 1/k_i) then re-standardises, so self weight == neighbour weight (equivalent to binary incl. self, divided by k_i+1); UserWarning emitted by esda",
+  "diag_example_first_nonisland_row": 1.0,
+  "rowsum_min": 1.0,
+  "rowsum_nonisland_all_one": true,
+  "neighbours_within_5.5km_min_median_max": [
+   0,
+   7.0,
+   92
+  ],
+  "islands_n": 8,
+  "island_rows_in_W": "zero weights (no self weight: row max = 0) -> Gs=0, Zs NaN; islands are excluded from sig by mask `& ~isl` (pipeline code line ~226)",
+  "island_Zs_nan": true,
+  "xbar_S_basis": "esda uses ALL 496 points (N = n for star), x_bar = mean(y)=0.3952, S^2 = mean(y^2)-xbar^2 (population variance, denominator n, ddof=0), S=0.4889; islands not removed from x_bar/S",
+  "permutations": 999,
+  "p_type": "esda default alternative='directed': p_sim = smaller-tail one-sided pseudo p (NOT doubled); pipeline tests p_sim<0.05 for both hot and cold",
+  "counts_pipeline_p_sim_lt_0.05": {
+   "hot": 208,
+   "cold": 224,
+   "ns": 56,
+   "islands": 8
+  },
+  "counts_two_sided_equiv_p_sim_lt_0.025": {
+   "hot": 202,
+   "cold": 222,
+   "ns": 64
+  },
+  "esda_analytic_Zs_range_nonisland(degenerate, not a usable z)": [
+   -0.8082903768654761,
+   1.1678411982591108
+  ],
+  "esda_Zs_used_only_for_sign": true,
+  "textbook_Ord_Getis_Gi*_z(|z|>1.96, binary incl self, S ddof 0 or 1 same counts)": {
+   "hot": 208,
+   "cold": 93,
+   "ns": 187
+  },
+  "cold_pipeline_with_Gs_eq_0 (all-zero neighbourhood incl self)": 217,
+  "cold_pipeline_neighbour_count_excl_self_min_median_max": [
+   1,
+   4.0,
+   11
+  ],
+  "cold_pipeline_with_<=3_neighbours": 90,
+  "cold_overlap_pipeline_and_textbook": 93,
+  "hot_overlap_pipeline_and_textbook": 203,
+  "p_sim_tie_issue": "for observed G_i*=0 esda 'directed' p counts ties (sim>=obs) as extreme -> p_sim=0.001 irrespective of how likely a zero neighbourhood is; cold set is therefore anti-conservative for small neighbourhoods",
+  "no_multiple_testing_correction": true,
+  "hot_share_landslides_among_hot": 0.8461538461538461,
+  "cold_share_landslides_among_cold": 0.013392857142857142
+ },
+ "A6_moran_joins": {
+  "code": "revision_analyses.py:218-239",
+  "moran": {
+   "weights": "KNN k=5 on projected km, row-standardised, asymmetric (not symmetrised), 999 perm, np.random.seed(42)",
+   "I": 0.7652925170068029,
+   "EI": -0.00202020202020202,
+   "z_sim": 29.016087934813438,
+   "p_sim": 0.001
+  },
+  "join_counts_weights": "KNN k=5, binary ('B'), NOT symmetrised, directed kNN graph",
+  "directed_arcs_total": 2480,
+  "mutual_arcs_i_j_both_directions": 1822,
+  "unique_undirected_pairs_if_symmetrised": 1569,
+  "esda_join_counts_convention": "esda sums over all directed arcs and multiplies by 0.5, so n_joins_total = arcs/2",
+  "esda_joins": {
+   "bb": 440.0,
+   "ww": 650.5,
+   "bw": 149.5,
+   "J": 1240.0,
+   "mean_bb_sim": 193.26326326326327,
+   "p_sim_bb": 0.001
+  },
+  "recount_directed_arcs": {
+   "bb": 880,
+   "ww": 1301,
+   "bw": 299,
+   "sum": 2480
+  },
+  "bb_equals_arcs_over_2": true,
+  "observed_and_expected_same_edge_count": "yes: both on J=1240 (=arcs/2); expected analytic BB = J*n1(n1-1)/(n(n-1)) = 193.03; permutation mean_bb=193.26",
+  "if_symmetrised_unique_pairs": {
+   "pairs": 1569,
+   "observed_bb": 549,
+   "expected_bb": 244.24560117302053
+  }
+ },
+ "B_dbscan": {
+  "B7": {
+   "class_blind": "yes: DBSCANClusterAssigner.fit(X, y=None) takes only coordinates of ALL training-fold rows (both classes pooled); y never used (features.py:350-372)",
+   "eps_km": 1.1,
+   "min_samples": 5,
+   "metric": "sklearn DBSCAN default euclidean on projected km (features.py:358-359); min_samples counts the point itself",
+   "assignment_of_test_points": "nearest training CORE point within eps (<=) -> that cluster, else -1 (features.py:376-392); no refit on test"
+  },
+  "B8": {
+   "code": "revision_analyses.py:366-372: cKDTree.query(xy, k=6); kd = sort(d[:, 5])  (column 0 is the point itself)",
+   "convention": "5th-nearest neighbour EXCLUDING self (= 6th incl. self). DBSCAN min_samples=5 INCLUDES self, so the matching k-dist is the 4th NN excl. self (= sklearn NearestNeighbors(n_neighbors=5) last column which includes self as neighbour 1)",
+   "sorted_kdist_excl_self_k5_median_p90_max_km": [
+    4.174987340062534,
+    7.224430453468029,
+    11.503662446203304
+   ],
+   "sorted_kdist_matching_dbscan_k4_excl_self_median_p90_km": [
+    3.6366843400819384,
+    6.621598326613275
+   ],
+   "sklearn_NN5_incl_self_equals_k4_excl_self": true,
+   "frac_points_kdist5_le_1.1": 0.25,
+   "frac_points_kdist4_le_1.1": 0.2862903225806452,
+   "knee_km_in_dbscan_rule_audit": 6.958731437562055,
+   "eps_vs_knee": "adopted eps 1.1 km is far below the chord-knee 6.96 km (knee is at the large-distance tail)"
+  },
+  "B9_spatial_folds": [
+   {
+    "fold": 1,
+    "n_train": 351,
+    "n_test": 145,
+    "n_clusters_train": 3,
+    "n_noise_train": 309,
+    "noise_share_train": 0.8803418803418803,
+    "noise_share_of_train_landslides": 0.43243243243243246,
+    "n_train_landslides": 74,
+    "total_input_dim_terrain_plus_Cluster": 27,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 1.0,
+    "min_dist_test_to_train_core_km": 3.9971499978612077,
+    "median_dist_test_to_core_km": 13.7187517680686,
+    "n_test_within_eps_of_core": 0,
+    "min_dist_test_to_any_train_point_km": 2.1574392743566646
+   },
+   {
+    "fold": 2,
+    "n_train": 422,
+    "n_test": 74,
+    "n_clusters_train": 7,
+    "n_noise_train": 302,
+    "noise_share_train": 0.7156398104265402,
+    "noise_share_of_train_landslides": 0.23026315789473684,
+    "n_train_landslides": 152,
+    "total_input_dim_terrain_plus_Cluster": 31,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5",
+     "Cluster_6"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 1.0,
+    "min_dist_test_to_train_core_km": 2.1574392743566646,
+    "median_dist_test_to_core_km": 9.012191291601344,
+    "n_test_within_eps_of_core": 0,
+    "min_dist_test_to_any_train_point_km": 1.9765893678567308
+   },
+   {
+    "fold": 3,
+    "n_train": 455,
+    "n_test": 41,
+    "n_clusters_train": 8,
+    "n_noise_train": 305,
+    "noise_share_train": 0.6703296703296703,
+    "noise_share_of_train_landslides": 0.16477272727272727,
+    "n_train_landslides": 176,
+    "total_input_dim_terrain_plus_Cluster": 32,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5",
+     "Cluster_6",
+     "Cluster_7"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 1.0,
+    "min_dist_test_to_train_core_km": 4.08327868750555,
+    "median_dist_test_to_core_km": 14.360431874468341,
+    "n_test_within_eps_of_core": 0,
+    "min_dist_test_to_any_train_point_km": 1.7458134235772127
+   },
+   {
+    "fold": 4,
+    "n_train": 421,
+    "n_test": 75,
+    "n_clusters_train": 9,
+    "n_noise_train": 265,
+    "noise_share_train": 0.6294536817102138,
+    "noise_share_of_train_landslides": 0.18617021276595744,
+    "n_train_landslides": 188,
+    "total_input_dim_terrain_plus_Cluster": 33,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5",
+     "Cluster_6",
+     "Cluster_7",
+     "Cluster_8"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 1.0,
+    "min_dist_test_to_train_core_km": 16.24592183650821,
+    "median_dist_test_to_core_km": 37.005564683314546,
+    "n_test_within_eps_of_core": 0,
+    "min_dist_test_to_any_train_point_km": 2.101563257508648
+   },
+   {
+    "fold": 5,
+    "n_train": 335,
+    "n_test": 161,
+    "n_clusters_train": 9,
+    "n_noise_train": 179,
+    "noise_share_train": 0.5343283582089552,
+    "noise_share_of_train_landslides": 0.211340206185567,
+    "n_train_landslides": 194,
+    "total_input_dim_terrain_plus_Cluster": 33,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5",
+     "Cluster_6",
+     "Cluster_7",
+     "Cluster_8"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 1.0,
+    "min_dist_test_to_train_core_km": 10.179417556378862,
+    "median_dist_test_to_core_km": 34.92083693825485,
+    "n_test_within_eps_of_core": 0,
+    "min_dist_test_to_any_train_point_km": 1.7458134235772127
+   }
+  ],
+  "B9_onehot": "build_cluster_encoder uses OneHotEncoder(handle_unknown='ignore'), drop=None -> noise (-1) is its own column 'Cluster_-1', not an all-zero reference (features.py:630-646); unseen labels at test time -> all-zero",
+  "B9_dim_range_spatial": [
+   27,
+   33
+  ],
+  "B9_n_clusters_range_spatial": [
+   3,
+   9
+  ],
+  "B9_noise_landslide_share_range_spatial": [
+   0.16477272727272727,
+   0.43243243243243246
+  ],
+  "B9_noise_all_share_range_spatial": [
+   0.5343283582089552,
+   0.8803418803418803
+  ],
+  "B10_min_dist_test_to_core_per_fold_km": {
+   "1": 3.9971499978612077,
+   "2": 2.1574392743566646,
+   "3": 4.08327868750555,
+   "4": 16.24592183650821,
+   "5": 10.179417556378862
+  },
+  "B10_all_test_points_noise_all_folds": true,
+  "B9_random_60_20_20_seed42_train297": {
+   "fold": "random_split",
+   "n_train": 297,
+   "n_test": 100,
+   "n_clusters_train": 6,
+   "n_noise_train": 228,
+   "noise_share_train": 0.7676767676767676,
+   "noise_share_of_train_landslides": 0.4188034188034188,
+   "n_train_landslides": 117,
+   "total_input_dim_terrain_plus_Cluster": 30,
+   "cluster_columns": [
+    "Cluster_-1",
+    "Cluster_0",
+    "Cluster_1",
+    "Cluster_2",
+    "Cluster_3",
+    "Cluster_4",
+    "Cluster_5"
+   ],
+   "noise_is_own_column(Cluster_-1)": true,
+   "test_share_noise": 0.75,
+   "min_dist_test_to_train_core_km": 0.023721270968576992,
+   "median_dist_test_to_core_km": 18.80660464590803,
+   "n_test_within_eps_of_core": 25,
+   "min_dist_test_to_any_train_point_km": 0.010836205027222823
+  },
+  "B9_random_stratified_5fold_rs42": [
+   {
+    "fold": 1,
+    "n_train": 396,
+    "n_test": 100,
+    "n_clusters_train": 8,
+    "n_noise_train": 273,
+    "noise_share_train": 0.6893939393939394,
+    "noise_share_of_train_landslides": 0.23076923076923078,
+    "n_train_landslides": 156,
+    "total_input_dim_terrain_plus_Cluster": 32,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5",
+     "Cluster_6",
+     "Cluster_7"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 0.77,
+    "min_dist_test_to_train_core_km": 0.04890604429433243,
+    "median_dist_test_to_core_km": 14.984748113282329,
+    "n_test_within_eps_of_core": 23,
+    "min_dist_test_to_any_train_point_km": 0.04890604429433243
+   },
+   {
+    "fold": 2,
+    "n_train": 397,
+    "n_test": 99,
+    "n_clusters_train": 8,
+    "n_noise_train": 288,
+    "noise_share_train": 0.72544080604534,
+    "noise_share_of_train_landslides": 0.3184713375796178,
+    "n_train_landslides": 157,
+    "total_input_dim_terrain_plus_Cluster": 32,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5",
+     "Cluster_6",
+     "Cluster_7"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 0.7272727272727273,
+    "min_dist_test_to_train_core_km": 0.03229651486259286,
+    "median_dist_test_to_core_km": 12.642382294184547,
+    "n_test_within_eps_of_core": 27,
+    "min_dist_test_to_any_train_point_km": 0.03229651486259286
+   },
+   {
+    "fold": 3,
+    "n_train": 397,
+    "n_test": 99,
+    "n_clusters_train": 7,
+    "n_noise_train": 285,
+    "noise_share_train": 0.7178841309823678,
+    "noise_share_of_train_landslides": 0.3057324840764331,
+    "n_train_landslides": 157,
+    "total_input_dim_terrain_plus_Cluster": 31,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5",
+     "Cluster_6"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 0.7474747474747475,
+    "min_dist_test_to_train_core_km": 0.020980289517009164,
+    "median_dist_test_to_core_km": 17.40316956023998,
+    "n_test_within_eps_of_core": 25,
+    "min_dist_test_to_any_train_point_km": 0.020980289517009164
+   },
+   {
+    "fold": 4,
+    "n_train": 397,
+    "n_test": 99,
+    "n_clusters_train": 8,
+    "n_noise_train": 278,
+    "noise_share_train": 0.7002518891687658,
+    "noise_share_of_train_landslides": 0.25477707006369427,
+    "n_train_landslides": 157,
+    "total_input_dim_terrain_plus_Cluster": 32,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5",
+     "Cluster_6",
+     "Cluster_7"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 0.7171717171717171,
+    "min_dist_test_to_train_core_km": 0.020980289517009164,
+    "median_dist_test_to_core_km": 15.144030334826805,
+    "n_test_within_eps_of_core": 28,
+    "min_dist_test_to_any_train_point_km": 0.020980289517009164
+   },
+   {
+    "fold": 5,
+    "n_train": 397,
+    "n_test": 99,
+    "n_clusters_train": 6,
+    "n_noise_train": 289,
+    "noise_share_train": 0.7279596977329975,
+    "noise_share_of_train_landslides": 0.3248407643312102,
+    "n_train_landslides": 157,
+    "total_input_dim_terrain_plus_Cluster": 30,
+    "cluster_columns": [
+     "Cluster_-1",
+     "Cluster_0",
+     "Cluster_1",
+     "Cluster_2",
+     "Cluster_3",
+     "Cluster_4",
+     "Cluster_5"
+    ],
+    "noise_is_own_column(Cluster_-1)": true,
+    "test_share_noise": 0.7373737373737373,
+    "min_dist_test_to_train_core_km": 0.023721270968576992,
+    "median_dist_test_to_core_km": 9.705354861421073,
+    "n_test_within_eps_of_core": 26,
+    "min_dist_test_to_any_train_point_km": 0.023721270968576992
+   }
+  ],
+  "B9_dim_range_random_5fold": [
+   30,
+   32
+  ],
+  "B9_random_5fold_test_share_noise": [
+   0.77,
+   0.7272727272727273,
+   0.7474747474747475,
+   0.7171717171717171,
+   0.7373737373737373
+  ]
+ },
+ "C11_smote": {
+  "code": "sampling.py:26-46 (snap_synthetic), 49-67 (SnapSMOTE); imblearn SMOTE k=5, random_state=seed",
+  "projection": "one-hot groups: np.argmax over group columns (first max wins, i.e. level order in CATEGORY_LEVELS: 1,11,2,4,5,7,missing / 4,6,7,missing; exact tie at lambda=0.5 -> lowest-ordered level, not random); binary flags: >=0.5 -> 1 (tie rounds up); aspect: if flat flag==1 or norm<1e-6 -> flag=1,sin=cos=0, else divide by norm (unit circle); real rows untouched; ASPECT of REAL rows imputed by KNN for 4 missing rows are not renormalised",
+  "per_fold_full_trainfold(RF/XGB/SVM/LR path)": [
+   {
+    "n_synthetic": 203,
+    "flat_flag_rounds_to_1": 0,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 2,
+    "min_norm_nonflat": 0.44208040082630057,
+    "median_norm_nonflat": 0.976787509209326,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 1
+   },
+   {
+    "n_synthetic": 118,
+    "flat_flag_rounds_to_1": 0,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 1,
+    "min_norm_nonflat": 0.4666048858435283,
+    "median_norm_nonflat": 0.9790314595033367,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 2
+   },
+   {
+    "n_synthetic": 103,
+    "flat_flag_rounds_to_1": 0,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 0,
+    "min_norm_nonflat": 0.5963526025761287,
+    "median_norm_nonflat": 0.9853474340042381,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 3
+   },
+   {
+    "n_synthetic": 45,
+    "flat_flag_rounds_to_1": 0,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 1,
+    "min_norm_nonflat": 0.3243211266208497,
+    "median_norm_nonflat": 0.9870980085615109,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 4
+   },
+   {
+    "n_synthetic": 53,
+    "flat_flag_rounds_to_1": 2,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 3,
+    "min_norm_nonflat": 0.36091817086125866,
+    "median_norm_nonflat": 0.9452699233626972,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 5
+   }
+  ],
+  "per_fold_80pct_subtrain(Keras path)": [
+   {
+    "n_synthetic": 162,
+    "flat_flag_rounds_to_1": 0,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 1,
+    "min_norm_nonflat": 0.4753315216427706,
+    "median_norm_nonflat": 0.9744708316245507,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 1
+   },
+   {
+    "n_synthetic": 95,
+    "flat_flag_rounds_to_1": 0,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 1,
+    "min_norm_nonflat": 0.12473684300930446,
+    "median_norm_nonflat": 0.9816585185745844,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 2
+   },
+   {
+    "n_synthetic": 82,
+    "flat_flag_rounds_to_1": 0,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 0,
+    "min_norm_nonflat": 0.6462800572583245,
+    "median_norm_nonflat": 0.988166973679603,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 3
+   },
+   {
+    "n_synthetic": 36,
+    "flat_flag_rounds_to_1": 0,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 0,
+    "min_norm_nonflat": 0.74374663691803,
+    "median_norm_nonflat": 0.9914482406473555,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 4
+   },
+   {
+    "n_synthetic": 42,
+    "flat_flag_rounds_to_1": 1,
+    "flat_flag_eq_exactly_0.5": 0,
+    "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+    "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+    "norm_lt_0.1_nonflat": 0,
+    "norm_lt_0.5_nonflat": 1,
+    "min_norm_nonflat": 0.22299767995535408,
+    "median_norm_nonflat": 0.912697902332599,
+    "onehot_group_argmax_ties(LULC+Soil)": 0,
+    "flat_flag_fractional_not_0_or_1": 0,
+    "fold": 5
+   }
+  ],
+  "totals_over_5_folds_full_trainfold": {
+   "n_synthetic": 522,
+   "flat_flag_rounds_to_1": 2,
+   "flat_flag_eq_exactly_0.5": 0,
+   "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+   "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+   "norm_lt_0.1_nonflat": 0,
+   "norm_lt_0.5_nonflat": 7,
+   "onehot_group_argmax_ties(LULC+Soil)": 0,
+   "flat_flag_fractional_not_0_or_1": 0
+  },
+  "totals_over_5_folds_80pct_subtrain": {
+   "n_synthetic": 417,
+   "flat_flag_rounds_to_1": 1,
+   "flat_flag_eq_exactly_0.5": 0,
+   "flat1_with_nonzero_aspect_pre_snap(norm>1e-6)": 0,
+   "flat0_with_norm_lt_1e-6(set_to_flat)": 0,
+   "norm_lt_0.1_nonflat": 0,
+   "norm_lt_0.5_nonflat": 3,
+   "onehot_group_argmax_ties(LULC+Soil)": 0,
+   "flat_flag_fractional_not_0_or_1": 0
+  },
+  "post_snap_invalid_rows(flat with nonzero aspect, or nonflat norm!=1) full-train path": 0
+ },
+ "C12_order": {
+  "fit_pipeline": "models.py:886-913: for any model with X_val=None (the CV path used by revision_analyses.run_seed via cross_validate_model(fit_fn=None) -> pipe.fit(X_train,y_train)) the preprocessor (KNN imputer, scaler, category schema, DBSCAN if included) is fitted on 100% of the training fold",
+  "keras_inner_split": "models.py:466-478: KerasBinaryClassifier.fit then takes the 20% stratified early-stopping split from the ALREADY PREPROCESSED training matrix (random_state=seed); so imputation/scaling statistics include the 20% validation rows (labels are not used by them, only features)",
+  "smote": "models.py:~481-486: SnapSMOTE.fit_resample is applied AFTER the split, on the 80% sub-train only (Keras). Non-Keras models: ResampledClassifier.fit applies SMOTE to the full 100% training fold (no validation set, models.py:956-975)",
+  "test_fold": "never touches fit/transform statistics (transform only)"
+ },
+ "D13_flat": {
+  "n_flat": 20,
+  "flat_landslides": 0,
+  "flat_non_landslides": 20,
+  "flat_and_LULC1_water": 17,
+  "flat_and_water_by_class": {
+   "landslide": 0,
+   "non_landslide": 17
+  },
+  "flat_LULC_value_counts": {
+   "1": 17,
+   "4": 2,
+   "5": 1
+  },
+  "water_pixels_total(LULC==1)": 33,
+  "water_by_class": {
+   "landslide": 6,
+   "non_landslide": 27
+  },
+  "water_flag_note": "no separate water flag in the code; water = LULC code 1 (revision_extra.py part_water: df.LULC==1)",
+  "flat_where_Aspect_eq_-1": 20
+ },
+ "D14_folds": {
+  "spatial5": [
+   {
+    "fold": 1,
+    "n": 145,
+    "pos": 122,
+    "neg": 23,
+    "test_prev": 0.8413793103448276,
+    "train_n": 351,
+    "train_prev": 0.21082621082621084
+   },
+   {
+    "fold": 2,
+    "n": 74,
+    "pos": 44,
+    "neg": 30,
+    "test_prev": 0.5945945945945946,
+    "train_n": 422,
+    "train_prev": 0.36018957345971564
+   },
+   {
+    "fold": 3,
+    "n": 41,
+    "pos": 20,
+    "neg": 21,
+    "test_prev": 0.4878048780487805,
+    "train_n": 455,
+    "train_prev": 0.3868131868131868
+   },
+   {
+    "fold": 4,
+    "n": 75,
+    "pos": 8,
+    "neg": 67,
+    "test_prev": 0.10666666666666667,
+    "train_n": 421,
+    "train_prev": 0.44655581947743467
+   },
+   {
+    "fold": 5,
+    "n": 161,
+    "pos": 2,
+    "neg": 159,
+    "test_prev": 0.012422360248447204,
+    "train_n": 335,
+    "train_prev": 0.5791044776119403
+   }
+  ],
+  "bbox5": [
+   {
+    "fold": 1,
+    "n": 75,
+    "pos": 65,
+    "neg": 10,
+    "test_prev": 0.8666666666666667,
+    "train_n": 274,
+    "train_prev": 0.4781021897810219
+   },
+   {
+    "fold": 2,
+    "n": 64,
+    "pos": 58,
+    "neg": 6,
+    "test_prev": 0.90625,
+    "train_n": 285,
+    "train_prev": 0.4842105263157895
+   },
+   {
+    "fold": 3,
+    "n": 52,
+    "pos": 38,
+    "neg": 14,
+    "test_prev": 0.7307692307692307,
+    "train_n": 297,
+    "train_prev": 0.531986531986532
+   },
+   {
+    "fold": 4,
+    "n": 53,
+    "pos": 20,
+    "neg": 33,
+    "test_prev": 0.37735849056603776,
+    "train_n": 296,
+    "train_prev": 0.5945945945945946
+   },
+   {
+    "fold": 5,
+    "n": 105,
+    "pos": 15,
+    "neg": 90,
+    "test_prev": 0.14285714285714285,
+    "train_n": 244,
+    "train_prev": 0.7418032786885246
+   }
+  ],
+  "bbox_n_total_pos_neg": [
+   349,
+   196,
+   153
+  ],
+  "bbox5_n_range": [
+   52,
+   105
+  ],
+  "bbox5_pos_share_range": [
+   0.14285714285714285,
+   0.90625
+  ],
+  "cv4": [
+   {
+    "fold": 1,
+    "n": 145,
+    "pos": 122,
+    "neg": 23,
+    "test_prev": 0.8413793103448276,
+    "train_n": 351,
+    "train_prev": 0.21082621082621084
+   },
+   {
+    "fold": 2,
+    "n": 74,
+    "pos": 44,
+    "neg": 30,
+    "test_prev": 0.5945945945945946,
+    "train_n": 422,
+    "train_prev": 0.36018957345971564
+   },
+   {
+    "fold": 3,
+    "n": 41,
+    "pos": 20,
+    "neg": 21,
+    "test_prev": 0.4878048780487805,
+    "train_n": 455,
+    "train_prev": 0.3868131868131868
+   },
+   {
+    "fold": 4,
+    "n": 236,
+    "pos": 10,
+    "neg": 226,
+    "test_prev": 0.0423728813559322,
+    "train_n": 260,
+    "train_prev": 0.7153846153846154
+   }
+  ],
+  "cv4_merge_info": {
+   "merged_fold": 5,
+   "merged_into_fold": 4,
+   "min_block_centroid_distance_km_from_fold5": {
+    "fold1": 27.86,
+    "fold2": 22.41,
+    "fold3": 28.32,
+    "fold4": 22.32
+   },
+   "n_pos_per_fold": [
+    122,
+    44,
+    20,
+    10
+   ],
+   "n_per_fold": [
+    145,
+    74,
+    41,
+    236
+   ],
+   "min_pos_ge_10": true
+  }
+ },
+ "D15_lat_rain": {
+  "fold1": {
+   "lat_min": 22.534555,
+   "lat_max": 22.72017331,
+   "lon_min": 91.95103668,
+   "lon_max": 92.2242197,
+   "n_distinct_rainfall_values": 101,
+   "n_rainfall_nan": 1,
+   "n_distinct_0.5deg_grid_cells(floor lat/lon over 0.5)": 2
+  },
+  "fold2": {
+   "lat_min": 22.3446547,
+   "lat_max": 22.54065022,
+   "lon_min": 92.11969099,
+   "lon_max": 92.31473641,
+   "n_distinct_rainfall_values": 61,
+   "n_rainfall_nan": 1,
+   "n_distinct_0.5deg_grid_cells(floor lat/lon over 0.5)": 2
+  },
+  "fold3": {
+   "lat_min": 22.727832,
+   "lat_max": 22.91849316,
+   "lon_min": 91.98833342,
+   "lon_max": 92.202991,
+   "n_distinct_rainfall_values": 38,
+   "n_rainfall_nan": 0,
+   "n_distinct_0.5deg_grid_cells(floor lat/lon over 0.5)": 2
+  },
+  "fold4": {
+   "lat_min": 22.22924484,
+   "lat_max": 23.41487893,
+   "lon_min": 92.11284843,
+   "lon_max": 92.56958318,
+   "n_distinct_rainfall_values": 75,
+   "n_rainfall_nan": 0,
+   "n_distinct_0.5deg_grid_cells(floor lat/lon over 0.5)": 3
+  },
+  "fold5": {
+   "lat_min": 21.87579042,
+   "lat_max": 23.71861474,
+   "lon_min": 92.09364792,
+   "lon_max": 92.6033389,
+   "n_distinct_rainfall_values": 161,
+   "n_rainfall_nan": 0,
+   "n_distinct_0.5deg_grid_cells(floor lat/lon over 0.5)": 7
+  },
+  "all": {
+   "n_distinct_rainfall_values": 436,
+   "n_distinct_0.5deg_grid_cells": 8
+  }
+ },
+ "D16_threshold_by_fold": {
+  "source": "results/revision/seeds/oof_seed42.csv (saved OOF, seed 42, terrain, no SMOTE); threshold = training-fold prevalence (revision_extra.py part_thresholds, 574-580)",
+  "XGBoost": [
+   {
+    "fold": 1,
+    "n_test": 145,
+    "test_prev": 0.8413793103448276,
+    "mean_pred_prob": 0.11880928230520081,
+    "train_prev_threshold": 0.21082621082621084,
+    "frac_test_above_thr": 0.18620689655172415,
+    "recall": 0.21311475409836064,
+    "specificity": 0.9565217391304348,
+    "frac_above_0.5": 0.020689655172413793,
+    "mean_prob_landslides": 0.13241402531752638,
+    "mean_prob_nonlandslides": 0.04664499328329997
+   },
+   {
+    "fold": 2,
+    "n_test": 74,
+    "test_prev": 0.5945945945945946,
+    "mean_pred_prob": 0.4403388303314411,
+    "train_prev_threshold": 0.36018957345971564,
+    "frac_test_above_thr": 0.5405405405405406,
+    "recall": 0.75,
+    "specificity": 0.7666666666666667,
+    "frac_above_0.5": 0.44594594594594594,
+    "mean_prob_landslides": 0.5884696385738525,
+    "mean_prob_nonlandslides": 0.2230803115759045
+   },
+   {
+    "fold": 3,
+    "n_test": 41,
+    "test_prev": 0.4878048780487805,
+    "mean_pred_prob": 0.025556071840294795,
+    "train_prev_threshold": 0.3868131868131868,
+    "frac_test_above_thr": 0.0,
+    "recall": 0.0,
+    "specificity": 1.0,
+    "frac_above_0.5": 0.0,
+    "mean_prob_landslides": 0.03846647735335864,
+    "mean_prob_nonlandslides": 0.013260447542138752
+   },
+   {
+    "fold": 4,
+    "n_test": 75,
+    "test_prev": 0.10666666666666667,
+    "mean_pred_prob": 0.044043310169751444,
+    "train_prev_threshold": 0.44655581947743467,
+    "frac_test_above_thr": 0.0,
+    "recall": 0.0,
+    "specificity": 1.0,
+    "frac_above_0.5": 0.0,
+    "mean_prob_landslides": 0.12036975545925088,
+    "mean_prob_nonlandslides": 0.03492970476205002
+   },
+   {
+    "fold": 5,
+    "n_test": 161,
+    "test_prev": 0.012422360248447204,
+    "mean_pred_prob": 0.18075178118975058,
+    "train_prev_threshold": 0.5791044776119403,
+    "frac_test_above_thr": 0.09937888198757763,
+    "recall": 0.0,
+    "specificity": 0.89937106918239,
+    "frac_above_0.5": 0.10559006211180125,
+    "mean_prob_landslides": 0.36557111144065857,
+    "mean_prob_nonlandslides": 0.17842700974005363
+   }
+  ],
+  "RandomForest": [
+   {
+    "fold": 1,
+    "n_test": 145,
+    "test_prev": 0.8413793103448276,
+    "mean_pred_prob": 0.32471724137931035,
+    "train_prev_threshold": 0.21082621082621084,
+    "frac_test_above_thr": 0.7655172413793103,
+    "recall": 0.8278688524590164,
+    "specificity": 0.5652173913043478,
+    "frac_above_0.5": 0.1310344827586207,
+    "mean_prob_landslides": 0.3521475409836065,
+    "mean_prob_nonlandslides": 0.17921739130434783
+   },
+   {
+    "fold": 2,
+    "n_test": 74,
+    "test_prev": 0.5945945945945946,
+    "mean_pred_prob": 0.4173783783783784,
+    "train_prev_threshold": 0.36018957345971564,
+    "frac_test_above_thr": 0.581081081081081,
+    "recall": 0.7727272727272727,
+    "specificity": 0.7,
+    "frac_above_0.5": 0.36486486486486486,
+    "mean_prob_landslides": 0.5164545454545455,
+    "mean_prob_nonlandslides": 0.2720666666666667
+   },
+   {
+    "fold": 3,
+    "n_test": 41,
+    "test_prev": 0.4878048780487805,
+    "mean_pred_prob": 0.1528780487804878,
+    "train_prev_threshold": 0.3868131868131868,
+    "frac_test_above_thr": 0.04878048780487805,
+    "recall": 0.1,
+    "specificity": 1.0,
+    "frac_above_0.5": 0.024390243902439025,
+    "mean_prob_landslides": 0.1967,
+    "mean_prob_nonlandslides": 0.11114285714285717
+   },
+   {
+    "fold": 4,
+    "n_test": 75,
+    "test_prev": 0.10666666666666667,
+    "mean_pred_prob": 0.14845333333333333,
+    "train_prev_threshold": 0.44655581947743467,
+    "frac_test_above_thr": 0.02666666666666667,
+    "recall": 0.125,
+    "specificity": 0.9850746268656716,
+    "frac_above_0.5": 0.013333333333333334,
+    "mean_prob_landslides": 0.306,
+    "mean_prob_nonlandslides": 0.1296417910447761
+   },
+   {
+    "fold": 5,
+    "n_test": 161,
+    "test_prev": 0.012422360248447204,
+    "mean_pred_prob": 0.25592546583850934,
+    "train_prev_threshold": 0.5791044776119403,
+    "frac_test_above_thr": 0.07453416149068323,
+    "recall": 0.0,
+    "specificity": 0.9245283018867925,
+    "frac_above_0.5": 0.12422360248447205,
+    "mean_prob_landslides": 0.456,
+    "mean_prob_nonlandslides": 0.2534088050314465
+   }
+  ]
+ },
+ "D17_quintiles": {
+  "source": "oof_seed_ensemble.csv RandomForest|terrain+SMOTE (10-seed mean OOF); breaks=np.quantile(p,[.2,.4,.6,.8]), np.digitize (revision_extra.py:~895-897); map_model.json: RF chosen",
+  "breaks": [
+   0.1014,
+   0.2104,
+   0.3834,
+   0.5758000000000001
+  ],
+  "classes": [
+   {
+    "class": 1,
+    "n": 99,
+    "n_landslides": 4,
+    "prevalence": 0.04040404040404041,
+    "share_of_landslides": 0.02040816326530612,
+    "share_of_samples": 0.19959677419354838,
+    "FR": 0.10224695938981652,
+    "prob_range": [
+     0.0,
+     0.1012
+    ]
+   },
+   {
+    "class": 2,
+    "n": 99,
+    "n_landslides": 15,
+    "prevalence": 0.15151515151515152,
+    "share_of_landslides": 0.07653061224489796,
+    "share_of_samples": 0.19959677419354838,
+    "FR": 0.383426097711812,
+    "prob_range": [
+     0.1014,
+     0.21039999999999998
+    ]
+   },
+   {
+    "class": 3,
+    "n": 99,
+    "n_landslides": 35,
+    "prevalence": 0.35353535353535354,
+    "share_of_landslides": 0.17857142857142858,
+    "share_of_samples": 0.19959677419354838,
+    "FR": 0.8946608946608947,
+    "prob_range": [
+     0.2104,
+     0.38320000000000004
+    ]
+   },
+   {
+    "class": 4,
+    "n": 99,
+    "n_landslides": 60,
+    "prevalence": 0.6060606060606061,
+    "share_of_landslides": 0.30612244897959184,
+    "share_of_samples": 0.19959677419354838,
+    "FR": 1.533704390847248,
+    "prob_range": [
+     0.3834,
+     0.5751999999999999
+    ]
+   },
+   {
+    "class": 5,
+    "n": 100,
+    "n_landslides": 82,
+    "prevalence": 0.82,
+    "share_of_landslides": 0.41836734693877553,
+    "share_of_samples": 0.20161290322580644,
+    "FR": 2.0751020408163265,
+    "prob_range": [
+     0.5758000000000001,
+     0.9090000000000001
+    ]
+   }
+  ],
+  "max_FR_top_bin_theoretical": 2.5306122448979593,
+  "max_FR_note": "if all n_top points were landslides: (n_top/196)/(n_top/496)=496/196 = 1/prevalence"
+ },
+ "D18_aoa": {
+  "code": "revision_extra.py:835-870 (di_weights, compute_di), 885-905 (part_map)",
+  "features": [
+   "Elevation",
+   "Slope",
+   "Curvature",
+   "TWI",
+   "TRI",
+   "NDVI",
+   "Annual_Rainfall"
+  ],
+  "continuous_only": true,
+  "excluded": "Aspect_sin/cos, is_flat, TWI/Soil missing flags, LULC and Soil_Texture one-hots (16 of 23 encoded columns)",
+  "weights_source": "mean|SHAP| per factor of the RF terrain model from shap_importance_by_model.csv column 'RF' (TreeSHAP, OUT-OF-FOLD SHAP values pooled over all 496 points, 10-seed mean) -> NOT Gini; NOT in-fold (the weights are global: they used SHAP of every fold's test points, so each held-out fold contributes to the weights that define its own DI) ; normalised to mean 1",
+  "weights": {
+   "Elevation": 1.362157591997267,
+   "Slope": 0.3009079046664843,
+   "Curvature": 0.28809153566623324,
+   "TWI": 0.3609849595224843,
+   "TRI": 0.3937528729089499,
+   "NDVI": 2.70875360431405,
+   "Annual_Rainfall": 1.585351530924531
+  },
+  "reference_cloud": "real samples only (other four spatial folds, no SMOTE); NaN (TWI) -> training-fold median; standardised by training-fold mean/sd, then multiplied by weights",
+  "threshold_rule": "Q3 + 1.5*IQR of training-point DI, where each training point's DI is its distance to the nearest training point in a DIFFERENT fold (leave-fold-out within the 4 training folds), divided by mean pairwise distance; per outer fold; CV scheme = the same 5 spatial folds",
+  "reproduced_current_n_outside": 36,
+  "current_by_fold": [
+   0,
+   0,
+   1,
+   6,
+   29
+  ],
+  "variant_all23_encoded": {
+   "weights": "per encoded column mean|SHAP| from shap_values_random_forest.csv (seed-avg OOF), normalised to mean 1",
+   "weights_by_column": {
+    "Elevation": 3.1076810809007527,
+    "Slope": 0.6777561802270693,
+    "Curvature": 0.6474956483058334,
+    "TWI": 0.7304705916072907,
+    "TRI": 0.889038243931286,
+    "NDVI": 6.190964170886557,
+    "Annual_Rainfall": 3.6110305804277774,
+    "Aspect_sin": 0.6799046471824076,
+    "Aspect_cos": 0.8989118398238455,
+    "is_flat": 0.19347365538082079,
+    "TWI_was_missing": 0.42612083522227406,
+    "Soil_Texture_was_missing": 0.10265426926639777,
+    "LULC_1": 0.13229962871072015,
+    "LULC_11": 0.14249271739091868,
+    "LULC_2": 0.4633247574080286,
+    "LULC_4": 0.021143670112971302,
+    "LULC_5": 0.14235488552538644,
+    "LULC_7": 1.5929604943682396,
+    "LULC_missing": 0.0016943998661085014,
+    "Soil_Texture_4": 1.0855082606947106,
+    "Soil_Texture_6": 0.004343805388073836,
+    "Soil_Texture_7": 1.159971818728523,
+    "Soil_Texture_missing": 0.09840381864400594
+   },
+   "A_weighted_standardised_all23": {
+    "n_outside": 32,
+    "by_fold": [
+     4,
+     0,
+     0,
+     3,
+     25
+    ],
+    "landslides_outside": 5,
+    "non_landslides_outside": 27
+   },
+   "B_weighted_as_preprocessed_no_restandardise": {
+    "n_outside": 47,
+    "by_fold": [
+     0,
+     0,
+     1,
+     6,
+     40
+    ],
+    "landslides_outside": 2,
+    "non_landslides_outside": 45
+   },
+   "C_unweighted_standardised_all23": {
+    "n_outside": 15,
+    "by_fold": [
+     0,
+     2,
+     1,
+     1,
+     11
+    ],
+    "landslides_outside": 2,
+    "non_landslides_outside": 13
+   },
+   "D_unweighted_as_preprocessed": {
+    "n_outside": 19,
+    "by_fold": [
+     0,
+     2,
+     0,
+     2,
+     15
+    ],
+    "landslides_outside": 2,
+    "non_landslides_outside": 17
+   }
+  },
+  "variant_continuous7_check_via_encoded_matrix": {
+   "n_outside": 38,
+   "by_fold": [
+    0,
+    0,
+    1,
+    7,
+    30
+   ],
+   "landslides_outside": 2,
+   "non_landslides_outside": 36
+  }
+ },
+ "D19_shap_files": {
+  "random_forest": {
+   "values_file": "results/revision/shap_values_random_forest.csv",
+   "features_file": "results/revision/shap_features_random_forest.csv",
+   "shape": [
+    496,
+    23
+   ],
+   "columns_are_encoded(ungrouped)": [
+    "Elevation",
+    "Slope",
+    "Curvature",
+    "TWI",
+    "TRI",
+    "NDVI",
+    "Annual_Rainfall",
+    "Aspect_sin",
+    "Aspect_cos",
+    "is_flat",
+    "TWI_was_missing",
+    "Soil_Texture_was_missing",
+    "LULC_1",
+    "LULC_11",
+    "LULC_2",
+    "LULC_4",
+    "LULC_5",
+    "LULC_7",
+    "LULC_missing",
+    "Soil_Texture_4",
+    "Soil_Texture_6",
+    "Soil_Texture_7",
+    "Soil_Texture_missing"
+   ],
+   "seeds_averaged": [
+    42,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "explainer": "TreeExplainer(tree_path_dependent)",
+   "per_seed_values_saved": false,
+   "per_seed_files": "only per-seed factor shares (shap_share_by_seed_random_forest.csv); per-seed per-sample values not saved"
+  },
+  "cnn1d": {
+   "values_file": "results/revision/shap_values_cnn1d.csv",
+   "features_file": "results/revision/shap_features_cnn1d.csv",
+   "shape": [
+    496,
+    23
+   ],
+   "columns_are_encoded(ungrouped)": [
+    "Elevation",
+    "Slope",
+    "Curvature",
+    "TWI",
+    "TRI",
+    "NDVI",
+    "Annual_Rainfall",
+    "Aspect_sin",
+    "Aspect_cos",
+    "is_flat",
+    "TWI_was_missing",
+    "Soil_Texture_was_missing",
+    "LULC_1",
+    "LULC_11",
+    "LULC_2",
+    "LULC_4",
+    "LULC_5",
+    "LULC_7",
+    "LULC_missing",
+    "Soil_Texture_4",
+    "Soil_Texture_6",
+    "Soil_Texture_7",
+    "Soil_Texture_missing"
+   ],
+   "seeds_averaged": [
+    42,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "explainer": "KernelExplainer(kmeans bg=20, nsamples=200)",
+   "per_seed_values_saved": false,
+   "per_seed_files": "only per-seed factor shares (shap_share_by_seed_cnn1d.csv); per-seed per-sample values not saved"
+  }
+ }
+}

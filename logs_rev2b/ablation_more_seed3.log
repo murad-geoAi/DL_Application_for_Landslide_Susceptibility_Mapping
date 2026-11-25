@@ -1,0 +1,61 @@
+[ablation seed 3] no_ndvi_lulc  SVM-RBF            within=0.632 pooled=0.625
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795554479.022866 7367337 pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+I0000 00:00:1795554479.022923 7367337 pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x703cbcbf60> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x703cbcbf60> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[ablation seed 3] no_ndvi_lulc  DNN                within=0.571 pooled=0.558
+[ablation seed 3] no_ndvi_lulc  LSTM               within=0.571 pooled=0.521
+[ablation seed 3] no_rainfall   SVM-RBF            within=0.713 pooled=0.799
+[ablation seed 3] no_rainfall   DNN                within=0.581 pooled=0.656
+[ablation seed 3] no_rainfall   LSTM               within=0.513 pooled=0.289
+[ablation seed 3] no_flags      SVM-RBF            within=0.761 pooled=0.840
+[ablation seed 3] no_flags      DNN                within=0.606 pooled=0.639
+[ablation seed 3] no_flags      LSTM               within=0.630 pooled=0.580
+[ablation_more] seed 3 done in 430s
+| model | ablation | within-fold AUC | pooled AUC | baseline (T4 spatial within) | n seeds |
+|---|---|---|---|---|---|
+| DNN | none | 0.596 +/- nan | 0.626 +/- nan | 0.609 | 1 |
+| 1D-CNN | none | 0.795 +/- nan | 0.861 +/- nan | 0.789 +/- 0.015 | 1 |
+| LSTM | none | 0.598 +/- nan | 0.555 +/- nan | 0.557 | 1 |
+| RandomForest | none | 0.811 +/- nan | 0.763 +/- nan | 0.811 +/- 0.007 | 1 |
+| XGBoost | none | 0.784 +/- nan | 0.697 +/- nan | 0.778 | 1 |
+| SVM-RBF | none | 0.754 +/- nan | 0.833 +/- nan | 0.754 | 1 |
+| LogisticRegression | none | 0.638 +/- nan | 0.768 +/- nan | 0.638 | 1 |
+| 1D-CNN | no_ndvi_lulc | 0.610 +/- nan | 0.679 +/- nan | 0.789 +/- 0.015 | 1 |
+| RandomForest | no_ndvi_lulc | 0.572 +/- nan | 0.566 +/- nan | 0.811 +/- 0.007 | 1 |
+| XGBoost | no_ndvi_lulc | 0.531 +/- nan | 0.578 +/- nan | 0.778 | 1 |
+| LogisticRegression | no_ndvi_lulc | 0.586 +/- nan | 0.654 +/- nan | 0.638 | 1 |
+| 1D-CNN | no_rainfall | 0.736 +/- nan | 0.839 +/- nan | 0.789 +/- 0.015 | 1 |
+| RandomForest | no_rainfall | 0.772 +/- nan | 0.774 +/- nan | 0.811 +/- 0.007 | 1 |
+| XGBoost | no_rainfall | 0.747 +/- nan | 0.764 +/- nan | 0.778 | 1 |
+| LogisticRegression | no_rainfall | 0.586 +/- nan | 0.763 +/- nan | 0.638 | 1 |
+| 1D-CNN | no_flags | 0.797 +/- nan | 0.874 +/- nan | 0.789 +/- 0.015 | 1 |
+| RandomForest | no_flags | 0.804 +/- nan | 0.768 +/- nan | 0.811 +/- 0.007 | 1 |
+| XGBoost | no_flags | 0.775 +/- nan | 0.698 +/- nan | 0.778 | 1 |
+| LogisticRegression | no_flags | 0.628 +/- nan | 0.763 +/- nan | 0.638 | 1 |
+| SVM-RBF | no_ndvi_lulc | 0.632 +/- nan | 0.625 +/- nan | 0.754 | 1 |
+| DNN | no_ndvi_lulc | 0.571 +/- nan | 0.558 +/- nan | 0.609 | 1 |
+| LSTM | no_ndvi_lulc | 0.571 +/- nan | 0.521 +/- nan | 0.557 | 1 |
+| SVM-RBF | no_rainfall | 0.713 +/- nan | 0.799 +/- nan | 0.754 | 1 |
+| DNN | no_rainfall | 0.581 +/- nan | 0.656 +/- nan | 0.609 | 1 |
+| LSTM | no_rainfall | 0.513 +/- nan | 0.289 +/- nan | 0.557 | 1 |
+| SVM-RBF | no_flags | 0.761 +/- nan | 0.840 +/- nan | 0.754 | 1 |
+| DNN | no_flags | 0.606 +/- nan | 0.639 +/- nan | 0.609 | 1 |
+| LSTM | no_flags | 0.630 +/- nan | 0.580 +/- nan | 0.557 | 1 |
+
+Bounding-box negatives (existing caches, spatial CV, 7 models)
+
+| model | design | within-fold AUC | pooled AUC | baseline (T4 spatial within) | n seeds |
+|---|---|---|---|---|---|
+| DNN | bbox_spatial | 0.573 +/- nan | 0.550 +/- nan | 0.609 | 1 |
+| 1D-CNN | bbox_spatial | 0.711 +/- nan | 0.798 +/- nan | 0.789 +/- 0.015 | 1 |
+| LSTM | bbox_spatial | 0.544 +/- nan | 0.476 +/- nan | 0.557 | 1 |
+| RandomForest | bbox_spatial | 0.640 +/- nan | 0.674 +/- nan | 0.811 +/- 0.007 | 1 |
+| XGBoost | bbox_spatial | 0.591 +/- nan | 0.593 +/- nan | 0.778 | 1 |
+| SVM-RBF | bbox_spatial | 0.686 +/- nan | 0.767 +/- nan | 0.754 | 1 |
+| LogisticRegression | bbox_spatial | 0.655 +/- nan | 0.709 +/- nan | 0.638 | 1 |
+[ablation_more] total 430s
+real 433.99
+user 322.39
+sys 122.03

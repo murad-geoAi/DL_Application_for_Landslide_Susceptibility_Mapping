@@ -1,0 +1,69 @@
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x705d59d760> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x705d59d760> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[abl seed 3] no_ndvi        DNN                within=0.648 pooled=0.759
+[abl seed 3] no_ndvi        1D-CNN             within=0.626 pooled=0.723
+[abl seed 3] no_ndvi        RandomForest       within=0.618 pooled=0.627
+[abl seed 3] no_ndvi        XGBoost            within=0.548 pooled=0.601
+[abl seed 3] no_ndvi        SVM-RBF            within=0.661 pooled=0.682
+[abl seed 3] no_ndvi        LogisticRegression within=0.572 pooled=0.707
+[abl seed 3] no_lulc        DNN                within=0.765 pooled=0.845
+[abl seed 3] no_lulc        1D-CNN             within=0.790 pooled=0.839
+[abl seed 3] no_lulc        RandomForest       within=0.785 pooled=0.729
+[abl seed 3] no_lulc        XGBoost            within=0.770 pooled=0.699
+[abl seed 3] no_lulc        SVM-RBF            within=0.732 pooled=0.806
+[abl seed 3] no_lulc        LogisticRegression within=0.639 pooled=0.709
+[abl seed 3] no_flags_flat  DNN                within=0.776 pooled=0.869
+[abl seed 3] no_flags_flat  1D-CNN             within=0.789 pooled=0.867
+[abl seed 3] no_flags_flat  RandomForest       within=0.811 pooled=0.758
+[abl seed 3] no_flags_flat  XGBoost            within=0.769 pooled=0.705
+[abl seed 3] no_flags_flat  SVM-RBF            within=0.761 pooled=0.841
+[abl seed 3] no_flags_flat  LogisticRegression within=0.599 pooled=0.722
+[abl_rest] seed 3 done in 3065s
+[abl seed 6] no_ndvi        DNN                within=0.664 pooled=0.738
+[abl seed 6] no_ndvi        1D-CNN             within=0.640 pooled=0.736
+[abl seed 6] no_ndvi        RandomForest       within=0.619 pooled=0.624
+[abl seed 6] no_ndvi        XGBoost            within=0.537 pooled=0.616
+[abl seed 6] no_ndvi        SVM-RBF            within=0.661 pooled=0.694
+[abl seed 6] no_ndvi        LogisticRegression within=0.572 pooled=0.707
+[abl seed 6] no_lulc        DNN                within=0.757 pooled=0.827
+[abl seed 6] no_lulc        1D-CNN             within=0.768 pooled=0.834
+[abl seed 6] no_lulc        RandomForest       within=0.780 pooled=0.742
+[abl seed 6] no_lulc        XGBoost            within=0.765 pooled=0.703
+[abl seed 6] no_lulc        SVM-RBF            within=0.732 pooled=0.813
+[abl seed 6] no_lulc        LogisticRegression within=0.639 pooled=0.709
+[abl seed 6] no_flags_flat  DNN                within=0.747 pooled=0.840
+[abl seed 6] no_flags_flat  1D-CNN             within=0.761 pooled=0.834
+[abl seed 6] no_flags_flat  RandomForest       within=0.805 pooled=0.770
+[abl seed 6] no_flags_flat  XGBoost            within=0.763 pooled=0.698
+[abl seed 6] no_flags_flat  SVM-RBF            within=0.761 pooled=0.844
+[abl seed 6] no_flags_flat  LogisticRegression within=0.599 pooled=0.722
+[abl_rest] seed 6 done in 2936s
+                 model       ablation  n_seeds  within_AUC_mean  within_AUC_sd  pooled_AUC_mean  pooled_AUC_sd  delta_within_mean  delta_within_sd  delta_pooled_mean  delta_pooled_sd
+0                  DNN           none       10            0.609          0.012            0.598          0.035              0.000            0.000              0.000            0.000
+7                  DNN        no_ndvi       10            0.627          0.033            0.688          0.067              0.019            0.040              0.090            0.079
+14                 DNN        no_lulc       10            0.694          0.089            0.728          0.139              0.085            0.093              0.130            0.145
+21                 DNN  no_flags_flat       10            0.702          0.087            0.757          0.126              0.093            0.091              0.159            0.134
+1               1D-CNN           none       10            0.789          0.015            0.850          0.013              0.000            0.000              0.000            0.000
+8               1D-CNN        no_ndvi       10            0.635          0.013            0.726          0.013             -0.154            0.011             -0.124            0.015
+15              1D-CNN        no_lulc       10            0.779          0.014            0.829          0.018             -0.010            0.009             -0.021            0.011
+22              1D-CNN  no_flags_flat       10            0.774          0.019            0.852          0.013             -0.015            0.009              0.002            0.009
+2                 LSTM           none       10            0.557          0.025            0.462          0.065              0.000            0.000              0.000            0.000
+9                 LSTM        no_ndvi        4            0.536          0.043            0.514          0.037             -0.013            0.025              0.071            0.085
+16                LSTM        no_lulc        4            0.541          0.012            0.464          0.071             -0.007            0.037              0.021            0.141
+23                LSTM  no_flags_flat        4            0.541          0.014            0.436          0.087             -0.007            0.023             -0.007            0.140
+3         RandomForest           none       10            0.811          0.007            0.761          0.005              0.000            0.000              0.000            0.000
+10        RandomForest        no_ndvi       10            0.619          0.008            0.627          0.005             -0.192            0.008             -0.134            0.006
+17        RandomForest        no_lulc       10            0.779          0.007            0.732          0.005             -0.031            0.010             -0.028            0.006
+24        RandomForest  no_flags_flat       10            0.808          0.007            0.761          0.005             -0.003            0.012              0.001            0.008
+4              XGBoost           none       10            0.778          0.008            0.707          0.009              0.000            0.000              0.000            0.000
+11             XGBoost        no_ndvi       10            0.544          0.012            0.610          0.009             -0.234            0.015             -0.097            0.011
+18             XGBoost        no_lulc       10            0.767          0.006            0.698          0.008             -0.011            0.009             -0.008            0.013
+25             XGBoost  no_flags_flat       10            0.769          0.004            0.707          0.006             -0.009            0.008              0.001            0.008
+5              SVM-RBF           none       10            0.754          0.000            0.838          0.003              0.000            0.000              0.000            0.000
+12             SVM-RBF        no_ndvi       10            0.661          0.000            0.689          0.004             -0.092            0.000             -0.149            0.004
+19             SVM-RBF        no_lulc       10            0.732          0.000            0.811          0.003             -0.022            0.000             -0.027            0.003
+26             SVM-RBF  no_flags_flat       10            0.761          0.000            0.844          0.003              0.008            0.000              0.006            0.001
+6   LogisticRegression           none       10            0.638          0.000            0.768          0.000              0.000            0.000              0.000            0.000
+13  LogisticRegression        no_ndvi       10            0.572          0.000            0.707          0.000             -0.066            0.000             -0.061            0.000
+20  LogisticRegression        no_lulc       10            0.639          0.000            0.709          0.000              0.001            0.000             -0.059            0.000
+27  LogisticRegression  no_flags_flat       10            0.599          0.000            0.722          0.000             -0.039            0.000             -0.046            0.000

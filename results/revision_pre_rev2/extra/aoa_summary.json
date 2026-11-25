@@ -1,0 +1,66 @@
+{
+  "model": "RandomForest",
+  "di_features": [
+    "Elevation",
+    "Slope",
+    "Curvature",
+    "TWI",
+    "TRI",
+    "NDVI",
+    "Annual_Rainfall"
+  ],
+  "di_weights_normalised_mean1": {
+    "Elevation": 1.362157591997267,
+    "Slope": 0.3009079046664843,
+    "Curvature": 0.28809153566623324,
+    "TWI": 0.3609849595224843,
+    "TRI": 0.3937528729089499,
+    "NDVI": 2.70875360431405,
+    "Annual_Rainfall": 1.585351530924531
+  },
+  "threshold_rule": "Q3 + 1.5*IQR of training-point DI (nearest training point in another fold), per training set",
+  "threshold_per_fold": {
+    "fold1": 0.463632661810389,
+    "fold2": 0.49153028175445124,
+    "fold3": 0.498610406483056,
+    "fold4": 0.4854632838087174,
+    "fold5": 0.6366803161127841
+  },
+  "mean_pairwise_dist_per_fold": {
+    "fold1": 4.215951430383046,
+    "fold2": 4.177235722745152,
+    "fold3": 4.171564452169087,
+    "fold4": 4.062238271736314,
+    "fold5": 4.162667254841521
+  },
+  "n_outside_AOA": 36,
+  "share_outside_AOA": 0.07258064516129033,
+  "share_outside_by_class": {
+    "Very low": 0.1111111111111111,
+    "Low": 0.06060606060606061,
+    "Moderate": 0.16161616161616163,
+    "High": 0.030303030303030304,
+    "Very high": 0.0
+  },
+  "share_outside_by_fold": {
+    "fold1": 0.0,
+    "fold2": 0.0,
+    "fold3": 0.024390243902439025,
+    "fold4": 0.08,
+    "fold5": 0.18012422360248448
+  },
+  "n_outside_by_fold": {
+    "fold1": 0,
+    "fold2": 0,
+    "fold3": 1,
+    "fold4": 6,
+    "fold5": 29
+  },
+  "share_outside_landslides": 0.01020408163265306,
+  "share_outside_nonlandslides": 0.11333333333333333,
+  "DI_quantiles": {
+    "0.5": 0.18364079661435373,
+    "0.9": 0.5299773942440835,
+    "0.99": 1.2377750506134757
+  }
+}

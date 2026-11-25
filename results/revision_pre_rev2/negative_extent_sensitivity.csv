@@ -1,0 +1,6 @@
+model,within_AUC_mean,within_AUC_std,pooled_AUC_mean,pooled_AUC_std
+1D-CNN,0.624,0.044,0.596,0.172
+LogisticRegression,0.689,0.0,0.752,0.0
+RandomForest,0.631,0.01,0.667,0.004
+SVM-RBF,0.666,0.0,0.74,0.004
+XGBoost,0.591,0.008,0.599,0.012

@@ -1,0 +1,73 @@
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7012a17740> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7012a17740> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[abl seed 42] no_ndvi        DNN                within=0.658 pooled=0.743
+[abl seed 42] no_lulc        DNN                within=0.781 pooled=0.851
+[abl seed 42] no_flags_flat  DNN                within=0.790 pooled=0.866
+[abl_dnn_cpu] seed 42 done in 29s
+[abl seed 0] no_ndvi        DNN                within=0.674 pooled=0.756
+[abl seed 0] no_lulc        DNN                within=0.747 pooled=0.844
+[abl seed 0] no_flags_flat  DNN                within=0.765 pooled=0.868
+[abl_dnn_cpu] seed 0 done in 29s
+[abl seed 4] no_ndvi        DNN                within=0.669 pooled=0.740
+[abl seed 4] no_lulc        DNN                within=0.777 pooled=0.843
+[abl seed 4] no_flags_flat  DNN                within=0.786 pooled=0.871
+[abl_dnn_cpu] seed 4 done in 29s
+[abl seed 5] no_ndvi        DNN                within=0.686 pooled=0.772
+[abl seed 5] no_lulc        DNN                within=0.793 pooled=0.858
+[abl seed 5] no_flags_flat  DNN                within=0.790 pooled=0.877
+[abl_dnn_cpu] seed 5 done in 30s
+                 model       ablation  n_seeds  within_AUC_mean  within_AUC_sd  pooled_AUC_mean  pooled_AUC_sd  delta_within_mean  delta_within_sd  delta_pooled_mean  delta_pooled_sd
+0                  DNN           none       10            0.609          0.012            0.598          0.035              0.000            0.000              0.000            0.000
+7                  DNN        no_ndvi       10            0.627          0.033            0.688          0.067              0.019            0.040              0.090            0.079
+14                 DNN        no_lulc       10            0.694          0.089            0.728          0.139              0.085            0.093              0.130            0.145
+21                 DNN  no_flags_flat       10            0.702          0.087            0.757          0.126              0.093            0.091              0.159            0.134
+1               1D-CNN           none       10            0.789          0.015            0.850          0.013              0.000            0.000              0.000            0.000
+8               1D-CNN        no_ndvi       10            0.635          0.013            0.726          0.013             -0.154            0.011             -0.124            0.015
+15              1D-CNN        no_lulc       10            0.779          0.014            0.829          0.018             -0.010            0.009             -0.021            0.011
+22              1D-CNN  no_flags_flat       10            0.774          0.019            0.852          0.013             -0.015            0.009              0.002            0.009
+2                 LSTM           none       10            0.557          0.025            0.462          0.065              0.000            0.000              0.000            0.000
+9                 LSTM        no_ndvi       10            0.538          0.037            0.493          0.045             -0.019            0.031              0.031            0.080
+16                LSTM        no_lulc       10            0.552          0.032            0.472          0.064             -0.005            0.031              0.010            0.094
+23                LSTM  no_flags_flat       10            0.555          0.026            0.446          0.073             -0.002            0.023             -0.015            0.094
+3         RandomForest           none       10            0.811          0.007            0.761          0.005              0.000            0.000              0.000            0.000
+10        RandomForest        no_ndvi       10            0.619          0.008            0.627          0.005             -0.192            0.008             -0.134            0.006
+17        RandomForest        no_lulc       10            0.779          0.007            0.732          0.005             -0.031            0.010             -0.028            0.006
+24        RandomForest  no_flags_flat       10            0.808          0.007            0.761          0.005             -0.003            0.012              0.001            0.008
+4              XGBoost           none       10            0.778          0.008            0.707          0.009              0.000            0.000              0.000            0.000
+11             XGBoost        no_ndvi       10            0.544          0.012            0.610          0.009             -0.234            0.015             -0.097            0.011
+18             XGBoost        no_lulc       10            0.767          0.006            0.698          0.008             -0.011            0.009             -0.008            0.013
+25             XGBoost  no_flags_flat       10            0.769          0.004            0.707          0.006             -0.009            0.008              0.001            0.008
+5              SVM-RBF           none       10            0.754          0.000            0.838          0.003              0.000            0.000              0.000            0.000
+12             SVM-RBF        no_ndvi       10            0.661          0.000            0.689          0.004             -0.092            0.000             -0.149            0.004
+19             SVM-RBF        no_lulc       10            0.732          0.000            0.811          0.003             -0.022            0.000             -0.027            0.003
+26             SVM-RBF  no_flags_flat       10            0.761          0.000            0.844          0.003              0.008            0.000              0.006            0.001
+6   LogisticRegression           none       10            0.638          0.000            0.768          0.000              0.000            0.000              0.000            0.000
+13  LogisticRegression        no_ndvi       10            0.572          0.000            0.707          0.000             -0.066            0.000             -0.061            0.000
+20  LogisticRegression        no_lulc       10            0.639          0.000            0.709          0.000              0.001            0.000             -0.059            0.000
+27  LogisticRegression  no_flags_flat       10            0.599          0.000            0.722          0.000             -0.039            0.000             -0.046            0.000
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7021dbbe20> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7021dbbe20> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[dl_a seed 42] standard           DNN     within=0.788 pooled=0.872
+[dl_a seed 42] a_terrain          DNN     within=0.792 pooled=0.874
+[dl_a seed 42] a_terrain+Cluster  DNN     within=0.683 pooled=0.831
+[dl_a_dnn_cpu] seed 42 done in 29s
+[dl_a seed 0] standard           DNN     within=0.760 pooled=0.869
+[dl_a seed 0] a_terrain          DNN     within=0.761 pooled=0.869
+[dl_a seed 0] a_terrain+Cluster  DNN     within=0.669 pooled=0.822
+[dl_a_dnn_cpu] seed 0 done in 30s
+[dl_a seed 3] standard           DNN     within=0.776 pooled=0.868
+[dl_a seed 3] a_terrain          DNN     within=0.771 pooled=0.863
+[dl_a seed 3] a_terrain+Cluster  DNN     within=0.712 pooled=0.835
+[dl_a_dnn_cpu] seed 3 done in 29s
+[dl_a seed 4] standard           DNN     within=0.794 pooled=0.871
+[dl_a seed 4] a_terrain          DNN     within=0.791 pooled=0.870
+[dl_a seed 4] a_terrain+Cluster  DNN     within=0.751 pooled=0.843
+[dl_a_dnn_cpu] seed 4 done in 30s
+[dl_a seed 6] standard           DNN     within=0.760 pooled=0.840
+[dl_a seed 6] a_terrain          DNN     within=0.751 pooled=0.841
+[dl_a seed 6] a_terrain+Cluster  DNN     within=0.672 pooled=0.796
+[dl_a_dnn_cpu] seed 6 done in 29s
+[dl_a seed 7] standard           DNN     within=0.783 pooled=0.854
+[dl_a seed 7] a_terrain          DNN     within=0.789 pooled=0.856
+[dl_a seed 7] a_terrain+Cluster  DNN     within=0.731 pooled=0.839
+[dl_a_dnn_cpu] seed 7 done in 29s

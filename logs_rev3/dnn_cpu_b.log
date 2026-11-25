@@ -1,0 +1,23 @@
+WARNING:tensorflow:5 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7055ecbd80> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:6 out of the last 10 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7055ecbd80> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+fixed epochs {'DNN': 50}
+[dl_b seed 42] DNN     E=50 within=0.791 pooled=0.870
+[dl_b_dnn_cpu] seed 42 done in 6s
+[dl_b seed 0] DNN     E=50 within=0.784 pooled=0.865
+[dl_b_dnn_cpu] seed 0 done in 6s
+[dl_b seed 1] DNN     E=50 within=0.789 pooled=0.866
+[dl_b_dnn_cpu] seed 1 done in 6s
+[dl_b seed 2] DNN     E=50 within=0.785 pooled=0.856
+[dl_b_dnn_cpu] seed 2 done in 6s
+[dl_b seed 3] DNN     E=50 within=0.782 pooled=0.857
+[dl_b_dnn_cpu] seed 3 done in 6s
+[dl_b seed 4] DNN     E=50 within=0.774 pooled=0.859
+[dl_b_dnn_cpu] seed 4 done in 7s
+[dl_b seed 5] DNN     E=50 within=0.788 pooled=0.857
+[dl_b_dnn_cpu] seed 5 done in 6s
+[dl_b seed 6] DNN     E=50 within=0.792 pooled=0.864
+[dl_b_dnn_cpu] seed 6 done in 7s
+[dl_b seed 7] DNN     E=50 within=0.794 pooled=0.864
+[dl_b_dnn_cpu] seed 7 done in 6s
+[dl_b seed 8] DNN     E=50 within=0.770 pooled=0.854
+[dl_b_dnn_cpu] seed 8 done in 6s

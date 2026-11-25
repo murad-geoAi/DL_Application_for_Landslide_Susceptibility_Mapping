@@ -1,0 +1,7 @@
+,0
+TWI_was_missing,0.05955711379027835
+Soil_Texture_was_missing,0.011074183579978896
+TWI (continuous column),0.018784220494329124
+Soil_Texture_missing (one-hot level),0.0013794261750943704
+is_flat,0.006090821445691196
+Soil_Texture_* one-hot incl. missing level,0.07448099299876736

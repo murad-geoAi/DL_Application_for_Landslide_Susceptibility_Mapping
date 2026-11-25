@@ -1,0 +1,176 @@
+{
+  "projection": "project_km, FIXED_LAT0",
+  "knn_k": 5,
+  "permutations": 999,
+  "TWI_was_missing": {
+    "n_missing": 200,
+    "share_missing": 0.4032258064516129,
+    "morans_I": 0.056648648648648645,
+    "expected_I": -0.00202020202020202,
+    "p_sim": 0.02,
+    "z_sim": 2.236020426525695,
+    "missing_among_landslides": 83,
+    "n_landslides": 196,
+    "share_missing_among_landslides": 0.42346938775510207,
+    "missing_among_negatives": 117,
+    "n_negatives": 300,
+    "share_missing_among_negatives": 0.39,
+    "mean_elevation_missing": 111.62,
+    "mean_elevation_nonmissing": 118.76013513513513,
+    "mean_dist_to_nearest_landslide_km_missing": 15.896349490786825,
+    "mean_dist_to_nearest_landslide_km_nonmissing": 16.13933093975643,
+    "median_dist_to_nearest_landslide_km_missing": 3.575161126906516,
+    "median_dist_to_nearest_landslide_km_nonmissing": 4.426926348441333,
+    "fisher_exact_p_landslide_vs_negative": 0.5123288737636122,
+    "mean_elevation_landslides_missing": 72.44578313253012,
+    "mean_elevation_landslides_nonmissing": 66.93805309734513,
+    "mean_dist_nn_landslide_km_landslides_missing": 0.6803740367262504,
+    "mean_dist_nn_landslide_km_landslides_nonmissing": 0.4386968440644146,
+    "mean_elevation_negatives_missing": 139.4102564102564,
+    "mean_elevation_negatives_nonmissing": 150.75956284153006,
+    "mean_dist_nn_landslide_km_negatives_missing": 26.69058848811185,
+    "mean_dist_nn_landslide_km_negatives_nonmissing": 25.834258004309422
+  },
+  "Soil_Texture_was_missing": {
+    "n_missing": 48,
+    "share_missing": 0.0967741935483871,
+    "morans_I": 0.4407738095238096,
+    "expected_I": -0.00202020202020202,
+    "p_sim": 0.001,
+    "z_sim": 16.813853804000804,
+    "missing_among_landslides": 20,
+    "n_landslides": 196,
+    "share_missing_among_landslides": 0.10204081632653061,
+    "missing_among_negatives": 28,
+    "n_negatives": 300,
+    "share_missing_among_negatives": 0.09333333333333334,
+    "mean_elevation_missing": 50.770833333333336,
+    "mean_elevation_nonmissing": 122.85714285714286,
+    "mean_dist_to_nearest_landslide_km_missing": 6.3752249749703305,
+    "mean_dist_to_nearest_landslide_km_nonmissing": 17.07701128912208,
+    "median_dist_to_nearest_landslide_km_missing": 3.0842697345985215,
+    "median_dist_to_nearest_landslide_km_nonmissing": 4.184459552720603,
+    "fisher_exact_p_landslide_vs_negative": 0.7579985454604169,
+    "mean_elevation_landslides_missing": 36.35,
+    "mean_elevation_landslides_nonmissing": 73.01136363636364,
+    "mean_dist_nn_landslide_km_landslides_missing": 0.4851128642275353,
+    "mean_dist_nn_landslide_km_landslides_nonmissing": 0.5473950633125395,
+    "mean_elevation_negatives_missing": 61.07142857142857,
+    "mean_elevation_negatives_nonmissing": 155.11029411764707,
+    "mean_dist_nn_landslide_km_negatives_missing": 10.582447911215185,
+    "mean_dist_nn_landslide_km_negatives_nonmissing": 27.772645317587074
+  },
+  "sparse_missing_points": [
+    {
+      "variable": "Slope",
+      "row": 101,
+      "lat": 22.37230756,
+      "lon": 92.11969099,
+      "landslide": 0,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0214234118089073
+    },
+    {
+      "variable": "Slope",
+      "row": 184,
+      "lat": 22.611873,
+      "lon": 92.040762,
+      "landslide": 1,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.02243349005940899
+    },
+    {
+      "variable": "Slope",
+      "row": 396,
+      "lat": 22.13160426,
+      "lon": 92.58902238,
+      "landslide": 0,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0016143979170654254
+    },
+    {
+      "variable": "Slope",
+      "row": 456,
+      "lat": 22.617797,
+      "lon": 92.041207,
+      "landslide": 1,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0135587434135713
+    },
+    {
+      "variable": "Aspect",
+      "row": 101,
+      "lat": 22.37230756,
+      "lon": 92.11969099,
+      "landslide": 0,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0214234118089073
+    },
+    {
+      "variable": "Aspect",
+      "row": 184,
+      "lat": 22.611873,
+      "lon": 92.040762,
+      "landslide": 1,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.02243349005940899
+    },
+    {
+      "variable": "Aspect",
+      "row": 396,
+      "lat": 22.13160426,
+      "lon": 92.58902238,
+      "landslide": 0,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0016143979170654254
+    },
+    {
+      "variable": "Aspect",
+      "row": 456,
+      "lat": 22.617797,
+      "lon": 92.041207,
+      "landslide": 1,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0135587434135713
+    },
+    {
+      "variable": "Annual_Rainfall",
+      "row": 101,
+      "lat": 22.37230756,
+      "lon": 92.11969099,
+      "landslide": 0,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0214234118089073
+    },
+    {
+      "variable": "Annual_Rainfall",
+      "row": 456,
+      "lat": 22.617797,
+      "lon": 92.041207,
+      "landslide": 1,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0135587434135713
+    },
+    {
+      "variable": "LULC",
+      "row": 396,
+      "lat": 22.13160426,
+      "lon": 92.58902238,
+      "landslide": 0,
+      "inside_district": true,
+      "dist_to_boundary_km": 0.0016143979170654254
+    }
+  ],
+  "sparse_missing_counts": {
+    "Slope": 4,
+    "Aspect": 4,
+    "Annual_Rainfall": 2,
+    "LULC": 1
+  },
+  "all_points_dist_to_boundary_km_quantiles": {
+    "0.05": 0.4441399657467569,
+    "0.25": 1.768341853070391,
+    "0.5": 5.017120319077129,
+    "0.75": 8.346766205890344
+  }
+}

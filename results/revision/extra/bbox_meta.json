@@ -1,0 +1,28 @@
+{
+  "n_samples": 349,
+  "n_pos": 196,
+  "n_neg": 153,
+  "bbox_latmin_latmax_lonmin_lonmax": [
+    22.35216672,
+    22.874182,
+    92.002117,
+    92.53953896
+  ],
+  "fold_sizes": [
+    75,
+    64,
+    52,
+    53,
+    105
+  ],
+  "fold_pos": [
+    65,
+    58,
+    38,
+    20,
+    15
+  ],
+  "probe_random_test_AUC": 0.9826302729528535,
+  "probe_spatial_within_AUC": 0.4821473305211962,
+  "probe_spatial_pooled_AUC": 0.7202380952380951
+}
