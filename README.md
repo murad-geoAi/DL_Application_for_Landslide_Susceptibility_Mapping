@@ -1,74 +1,101 @@
-# Deep Learning Application for Landslide Susceptibility Mapping
+# Deep Learning for Landslide Susceptibility Mapping, Rangamati District (Bangladesh)
 
 ## Overview
-This research project applies Deep Learning techniques, specifically Convolutional Neural Networks (CNN), to map landslide susceptibility. The goal is to address spatial sparsity in data and provide accurate susceptibility maps to aid in disaster management and planning.
 
-## Key Features
-- **Deep Learning Model**: Utilizes CNNs to process spatial data for landslide prediction.
-- **Data Preprocessing**: Handles missing values using KNN and Simple Imputers.
-- **Visualization**: Generates susceptibility maps and analyzes feature distributions.
+This repository maps landslide susceptibility in Rangamati district, Bangladesh. Three deep models (DNN, 1D-CNN, LSTM) are compared with four classical baselines (Random Forest, XGBoost, SVM-RBF, Logistic Regression) on a sparse inventory of 196 landslides, evaluated with spatial block cross-validation.
 
-## Directory Structure
-The repository is organized as follows:
+The code reproduces the corrected, leakage-free evaluation (every learned preprocessing step is fitted inside the training fold) and supports the major revision of manuscript BOEG-D-26-02116: `src/revision_*.py` generate the numbers, tables and figures of the revised manuscript.
+
+## Repository structure
+
 ```
-├── data/
-│   ├── raw/            # Original data (e.g., Labeled Data Set.csv)
-│   └── processed/      # Cleaned and processed data
-├── docs/               # Project documentation and presentations
-├── notebooks/          # Jupyter notebooks for analysis and modeling
-├── reports/            # Generated figures and reports
-│   └── figures/
-├── src/                # Source code (scripts, utilities)
-├── README.md           # Project overview and instructions
-└── requirements.txt    # Python dependencies
+.
+├── src/                      # Python package (run with `python -m src.<module>` from the repo root)
+│   ├── data.py               # loading, schema validation, row-level cleaning of the labelled dataset
+│   ├── features.py           # fold-safe imputation, encoding, scaling, DBSCAN cluster encoder
+│   ├── sampling.py           # SMOTE with post-hoc snapping of synthetic rows to the encoded feature space
+│   ├── splits.py             # random 60/20/20 split (R1) and spatially blocked 5-fold CV (R2)
+│   ├── models.py             # model constructors (7 models), each wrapped in a fold-safe pipeline; seeding
+│   ├── evaluate.py           # metrics, within-fold vs pooled AUC convention, leakage diagnostics
+│   ├── run.py                # entry point: reproduces the corrected tables (regimes R0/R1/R2)
+│   ├── revision_analyses.py  # revision round 1: sparsity metrics, DBSCAN justification, 7 models x 3 feature sets, SHAP
+│   ├── revision_extra.py     # extra analyses: fold weighting, 4-fold CV, bbox negatives, ablations, thresholds, ROC/map figures
+│   ├── revision_rev2.py      # second-round sensitivity experiments (audit deepreview-2)
+│   ├── revision_rev2_shap.py # second-round SHAP checks and figure fixes
+│   ├── diagnostics_rev2.py   # second pre-submission audit: facts and small read-only diagnostics
+│   └── revision_rev3.py      # third-round analyses (A1-A10)
+├── tests/                    # test_feature_leakage.py (fold-safety of the fitted feature steps)
+├── notebooks/                # original notebooks (legacy/original analysis):
+│                             #   landslide_susceptibility_mapping.ipynb, Landslide_Susceptibility_With_BNN.ipynb
+├── models/                   # *.joblib final terrain-only models
+├── results/
+│   ├── results_R0.csv, results_R1.csv, results_R2.csv   # corrected-pipeline tables (+ *.provenance.json)
+│   ├── final_model_selection.csv, susceptibility_predictions.csv
+│   ├── session*.md           # working notes of the audit sessions
+│   ├── revision/             # revision outputs (extra/ holds the later rounds, incl. rev2/, rev2_shap/, rev3/)
+│   ├── revision_v1/          # archived earlier version
+│   └── revision_pre_rev2/    # archived earlier version
+├── reports/figures/
+│   ├── study_area_map.jpg, lsm_by_cnn.png   # original figures
+│   ├── revision/             # revised figures (revision/rev3/ for the third round)
+│   ├── revision_v1/          # archived earlier version
+│   └── revision_pre_rev2/    # archived earlier version
+├── data/external/            # geoBoundaries district boundary (rangamati_geoboundaries_adm2.geojson)
+├── docs/Presentation.pdf
+├── logs/, logs_extra/, logs_rev2/, logs_rev2b/, logs_rev3/   # run logs
+├── spatial_folds.csv, random_folds.csv                       # fold assignments
+└── requirements.txt
 ```
 
-## Getting Started
+## Installation
 
-### Prerequisites
-- Python 3.8+
-- Jupyter Notebook
-- Dependencies listed in `requirements.txt`
+```bash
+git clone https://github.com/murad-geoAi/DL_Application_for_Landslide_Susceptibility_Mapping.git
+cd DL_Application_for_Landslide_Susceptibility_Mapping
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/murad-geoAi/DL_Application_for_Landslide_Susceptibility_Mapping.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd DL_Application_for_Landslide_Susceptibility_Mapping
-   ```
-3. Install the required packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Packages imported by the code but not listed in `requirements.txt`:
 
-### Data Setup
-Place your dataset (e.g., `Labeled Data Set.csv`) in the `data/raw/` directory. The notebook expects the file at `../data/raw/Labeled Data Set.csv`.
+- `catboost`: imported only by `src/revision_rev2.py --part extra_models`.
+- `geopandas` and `shapely`: used by the revision scripts (district boundary, maps, geodistance); they may already be present as dependencies of `esda`/`libpysal`, otherwise install them.
+- `pytest`: needed to run the tests.
 
-### Usage
-1. Launch Jupyter Notebook:
-   ```bash
-   jupyter notebook
-   ```
-2. Open `notebooks/landslide_susceptibility_mapping.ipynb`.
-3. Run the cells to perform data cleaning, analysis, and model training.
+`scipy` is imported directly but is installed with scikit-learn. LightGBM is not used.
 
-## Results
-### Study Area
-![Study Area Map](reports/figures/study_area_map.jpg)
+## Data
 
-### Landslide Susceptibility Map (CNN)
-![LSM by CNN](reports/figures/lsm_by_cnn.png)
+The labelled dataset `Labeled Data Set.csv` is expected at the repository root (the default `--data` argument of every script). It is gitignored and not distributed with the repository; it is available from the authors on request. The code does not read `data/raw/`. The only bundled data file is the district boundary in `data/external/` (geoBoundaries gbOpen, Runfola et al. 2020).
 
-## License
-[MIT License](LICENSE) (or appropriate license)
+## Core corrected pipeline
+
+```bash
+python -m src.run                                   # all regimes, all models
+python -m src.run --regimes R1 R2 --models random_forest cnn1d --seed 42
+python -m src.run --data "path/to/Labeled Data Set.csv"
+```
+
+Options: `--data` (default `Labeled Data Set.csv`), `--regimes R0 R1 R2`, `--models` (any of the seven model names), `--seed` (default 42), `--output-dir` (default `results`), `--models-dir` (default `models`), `--no-save-models`, `--no-deterministic-ops` (skip TensorFlow deterministic ops).
+
+| Regime | Protocol |
+|---|---|
+| R0 | Original protocol, bugs included (DBSCAN and KNN imputation fit on the full data before splitting, test set used as validation data for early stopping). A documentation spot-check for DNN and 1D-CNN on the enhanced dataset only. Not a result. |
+| R1 | Stratified random 60/20/20 split with preprocessing fit on train only, genuine validation partition, test set used once. Honest code, leaking split. |
+| R2 | Spatially blocked 5-fold CV (`splits.spatial_block_cv`, `balance="both"`). The honest number. |
+
+Feature sets: terrain-only (21 features) and terrain + `Cluster` (31). The final models in `models/` use terrain-only.
+
+Outputs: `results/results_R0.csv`, `results_R1.csv`, `results_R2.csv` with `*.provenance.json` sidecars, and fitted models in `models/*.joblib`.
 
 ## Revision analyses (BOEG-D-26-02116, major revision)
 
-`src/revision_analyses.py` produces every number, table and figure used in the revised manuscript.
-Outputs go to `results/revision/` and `reports/figures/revision/`.
+All commands run from the repository root. Cross-validated results are reported as within-fold and pooled AUC (see `src/evaluate.py`).
+
+### Round 1: `src/revision_analyses.py`
+
+Produces every number, table and figure used in the revised manuscript. Outputs go to `results/revision/` and `reports/figures/revision/`. Parts: `descriptive`, `seeds`, `aggregate`, `shap`, `shapfig`, `negsens`.
 
 ```bash
 # 1. sparsity metrics, DBSCAN justification, negative-sample geometry, flowchart, Gi*/Moran figures
@@ -88,7 +115,7 @@ Key points of the corrected evaluation:
 - deep models are averaged over 10 seeds because single runs are unstable on 196 landslides;
 - the district boundary (`data/external/rangamati_geoboundaries_adm2.geojson`) is from geoBoundaries gbOpen (Runfola et al. 2020).
 
-## Extra revision analyses (`src/revision_extra.py`)
+### Extra analyses: `src/revision_extra.py`
 
 Outputs go to `results/revision/extra/` and `reports/figures/revision/`. Per-seed results are cached in `results/revision/extra/parts/`.
 
@@ -102,5 +129,71 @@ Outputs go to `results/revision/extra/` and `reports/figures/revision/`. Per-see
     python -m src.revision_extra --part map          # Fig. 15 point map with DI / AOA
     python -m src.revision_extra --part foldmap      # Fig. 13a fold map
     python -m src.revision_extra --part rabby        # overlap with Rabby & Li inventory (needs download)
+    python -m src.revision_extra --part water        # water-related sensitivity analysis
 
 `--seeds` selects seeds; the heavy parts can be split across processes by seed.
+
+### Second round: `src/revision_rev2.py`
+
+Outputs: `results/revision/extra/rev2/`, per-seed caches in `results/revision/extra/rev2/parts/`. Optional `--seeds` and `--models`.
+
+    python -m src.revision_rev2 --part repro
+    python -m src.revision_rev2 --part ablation_more
+    python -m src.revision_rev2 --part spatial_es
+    python -m src.revision_rev2 --part lstm_reg
+    python -m src.revision_rev2 --part extra_models   # requires catboost
+
+### Second-round SHAP checks: `src/revision_rev2_shap.py`
+
+Writes only under `results/revision/extra/rev2_shap/` and new `*_v2.png` figures.
+
+    python -m src.revision_rev2_shap --part cnn_grouped
+    python -m src.revision_rev2_shap --part shap_checks
+    python -m src.revision_rev2_shap --part figs
+    python -m src.revision_rev2_shap --part summary
+
+### Second pre-submission audit: `src/diagnostics_rev2.py`
+
+    python -m src.diagnostics_rev2     # writes results/revision/extra/rev2_diagnostics.json and .md
+
+### Third round: `src/revision_rev3.py`
+
+Analyses A1-A10. Outputs: `results/revision/extra/rev3/` and `reports/figures/revision/rev3/`. One CSV per (part, seed) is cached in `results/revision/extra/rev3/parts/`.
+
+    python -m src.revision_rev3 --part <name> [--seeds 42 0 1 ...] [--models ...]
+
+Parts: `abl`, `cw`, `smotenc`, `dl_a`, `dl_b`, `shap_cnn`, `light` (A2, A3 rescale, A6 summary, A7, A8, A9), `figs`.
+
+## Reproducibility notes
+
+- Seeds: 42 0 1 2 3 4 5 6 7 8 (deep models are averaged over these ten seeds).
+- Heavy revision parts cache results per seed (per (part, seed) in `revision_rev3.py`), so an interrupted run resumes without recomputing finished seeds.
+- `PYTHONHASHSEED` is set to 42 (via `os.environ.setdefault`) at the top of the run and revision modules; for a guaranteed hash seed, export it in the shell before the run. `src.run` also enables TensorFlow deterministic ops unless `--no-deterministic-ops` is given.
+- Apple Silicon: TensorFlow's Metal GPU backend gives materially different DNN results (within-fold AUC about 0.61 on Metal versus about 0.78 on CPU). Run deep models on CPU to reproduce the reported numbers, for example `CUDA_VISIBLE_DEVICES=""` or by uninstalling/disabling `tensorflow-metal`. The code has no general device switch; the only mechanism in `src/` is `src/revision_rev3.py`, which hides the GPU (`tf.config.set_visible_devices([], "GPU")`) when the environment variable `REV3_CPU=1` is set (thread counts via `REV3_THREADS`, default 2). The other scripts use whatever device TensorFlow selects. Note that `CUDA_VISIBLE_DEVICES` has no effect on the Metal backend, so on Apple Silicon use `REV3_CPU=1` with `revision_rev3.py` or remove `tensorflow-metal`.
+
+## Tests
+
+```bash
+python -m pytest tests/
+```
+
+`tests/test_feature_leakage.py` checks that the fitted feature steps (DBSCAN structure, imputer, one-hot vocabularies, SMOTE encodings) see training rows only. It also runs standalone: `python tests/test_feature_leakage.py`.
+
+## Results
+
+### Study area
+![Study Area Map](reports/figures/study_area_map.jpg)
+
+### Revised susceptibility map
+![Susceptibility map](reports/figures/revision/fig15_susceptibility.png)
+
+### Model comparison
+![Model comparison](reports/figures/revision/fig13_model_comparison.png)
+
+## Citation
+
+Manuscript under review (BOEG-D-26-02116). Citation details will be added upon publication.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
