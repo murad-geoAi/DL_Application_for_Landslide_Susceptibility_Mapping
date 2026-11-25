@@ -23,7 +23,9 @@ The code reproduces the corrected, leakage-free evaluation (every learned prepro
 │   ├── revision_rev2.py      # second-round sensitivity experiments (audit deepreview-2)
 │   ├── revision_rev2_shap.py # second-round SHAP checks and figure fixes
 │   ├── diagnostics_rev2.py   # second pre-submission audit: facts and small read-only diagnostics
-│   └── revision_rev3.py      # third-round analyses (A1-A10)
+│   ├── revision_rev3.py      # third-round analyses (A1-A10)
+│   ├── raster_stack.py       # wall-to-wall 30 m conditioning-factor rasters from open data
+│   └── raster_mapping.py     # RF+SMOTE refit on raster features, pixel map, AOA, class stats, Fig 15
 ├── tests/                    # test_feature_leakage.py (fold-safety of the fitted feature steps)
 ├── notebooks/                # original notebooks (legacy/original analysis):
 │                             #   landslide_susceptibility_mapping.ipynb, Landslide_Susceptibility_With_BNN.ipynb
@@ -32,7 +34,8 @@ The code reproduces the corrected, leakage-free evaluation (every learned prepro
 │   ├── results_R0.csv, results_R1.csv, results_R2.csv   # corrected-pipeline tables (+ *.provenance.json)
 │   ├── final_model_selection.csv, susceptibility_predictions.csv
 │   ├── session*.md           # working notes of the audit sessions
-│   ├── revision/             # revision outputs (extra/ holds the later rounds, incl. rev2/, rev2_shap/, rev3/)
+│   ├── revision/             # revision outputs (extra/ holds the later rounds, incl. rev2/, rev2_shap/, rev3/;
+│   │                         #   raster/ holds the raster-mapping tables and reports)
 │   ├── revision_v1/          # archived earlier version
 │   └── revision_pre_rev2/    # archived earlier version
 ├── reports/figures/
@@ -62,6 +65,7 @@ Packages imported by the code but not listed in `requirements.txt`:
 - `catboost`: imported only by `src/revision_rev2.py --part extra_models`.
 - `geopandas` and `shapely`: used by the revision scripts (district boundary, maps, geodistance); they may already be present as dependencies of `esda`/`libpysal`, otherwise install them.
 - `pytest`: needed to run the tests.
+- `rasterio`, `requests`, `pyproj`, `pystac-client`, `planetary-computer`, `pysheds`: needed only by the raster-mapping scripts (`src/raster_stack.py`, `src/raster_mapping.py`).
 
 `scipy` is imported directly but is installed with scikit-learn. LightGBM is not used.
 
@@ -164,6 +168,17 @@ Analyses A1-A10. Outputs: `results/revision/extra/rev3/` and `reports/figures/re
 
 Parts: `abl`, `cw`, `smotenc`, `dl_a`, `dl_b`, `shap_cnn`, `light` (A2, A3 rescale, A6 summary, A7, A8, A9), `figs`.
 
+### Raster susceptibility map: `src/raster_stack.py`, `src/raster_mapping.py`
+
+Builds the revised wall-to-wall map (Fig 15). `raster_stack.py` assembles the conditioning factors used by the final RandomForest (terrain + SMOTE) model on one common grid (30 m, EPSG:32646, district boundary + 1 km buffer) from open data: NASADEM terrain derivatives, Esri LULC (plus a water mask), Sentinel-2 NDVI, CRU TS rainfall and SoilGrids texture. Downloads are anonymous (Planetary Computer public STAC, public HTTP files) and cached under `data/rasters/raw/`.
+
+    python -m src.raster_stack <step>      # dem, lulc, ndvi_points, ndvi_full, rain, soil, agree
+    python -m src.raster_mapping <stage>   # table, cv, diag, aoa, stats, fig15, seams
+
+`raster_mapping.py` samples the rasters at the 496 points, reruns spatial CV (10 seeds x 5 folds) with raster features against CSV-feature controls, predicts every valid pixel, computes the area of applicability (dissimilarity index + AOA mask), class breaks and statistics, and draws `reports/figures/revision/fig15_susceptibility_raster.png`. Tables and reports go to `results/revision/raster/`.
+
+The rasters (`data/rasters/`, about 5.6 GB) and the cached pixel arrays (`results/revision/raster/mapping/*.npz`, `*.npy`) are not tracked in git; rerun the steps above to regenerate them.
+
 ## Reproducibility notes
 
 - Seeds: 42 0 1 2 3 4 5 6 7 8 (deep models are averaged over these ten seeds).
@@ -185,7 +200,7 @@ python -m pytest tests/
 ![Study Area Map](reports/figures/study_area_map.jpg)
 
 ### Revised susceptibility map
-![Susceptibility map](reports/figures/revision/fig15_susceptibility.png)
+![Susceptibility map](reports/figures/revision/fig15_susceptibility_raster.png)
 
 ### Model comparison
 ![Model comparison](reports/figures/revision/fig13_model_comparison.png)
