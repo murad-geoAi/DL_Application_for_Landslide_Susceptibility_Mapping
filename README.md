@@ -129,7 +129,7 @@ Outputs go to `results/revision/extra/` and `reports/figures/revision/`. Per-see
     python -m src.revision_extra --part map          # Fig. 15 point map with DI / AOA
     python -m src.revision_extra --part foldmap      # Fig. 13a fold map
     python -m src.revision_extra --part rabby        # overlap with Rabby & Li inventory (needs download)
-    python -m src.revision_extra --part water        # water-related sensitivity analysis
+    python -m src.revision_extra --part water        # re-run CV after dropping non-landslide points on water (LULC == 1)
 
 `--seeds` selects seeds; the heavy parts can be split across processes by seed.
 
